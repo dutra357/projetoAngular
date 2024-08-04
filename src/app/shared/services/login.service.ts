@@ -7,7 +7,7 @@ export class LoginService {
 
   constructor() { }
 
-  usuarioLogado!: {email: string, senha: string, perfil: string}
+  usuarioLogado!: {email: string, senha: string, nome: string, perfil: string}
 
   login(usuario: {email: string, senha: string}): boolean {
     for(let usr of this.usuarios) {
@@ -25,6 +25,10 @@ getLogado() {
   return this.usuarioLogado;
 }
 
+getNome() {
+  return this.usuarioLogado.nome;
+}
+
 getPerfil() {
   return this.usuarioLogado.perfil;
 }
@@ -38,16 +42,19 @@ logout() {
     {
       email: 'jose@gmail.com',
       senha: 'jose123',
+      nome: 'José da Silva',
       perfil: 'Aluno'
     },
     {
       email: 'adm@adm.com',
       senha: 'adm',
+      nome: 'Jorge Saraiva',
       perfil: 'Administrador'
     },
     {
       email: 'paulo@adm.com',
       senha: 'paulo123',
+      nome: 'Paulo da Silva',
       perfil: 'Docente'
     }
   ]
