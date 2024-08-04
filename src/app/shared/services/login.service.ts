@@ -7,7 +7,7 @@ export class LoginService {
 
   constructor() { }
 
-  usuarioLogado!: {email: string, senha: string}
+  usuarioLogado!: {email: string, senha: string, perfil: string}
 
   login(usuario: {email: string, senha: string}): boolean {
     for(let usr of this.usuarios) {
@@ -23,6 +23,10 @@ export class LoginService {
 
 getLogado() {
   return this.usuarioLogado;
+}
+
+getPerfil() {
+  return this.usuarioLogado.perfil;
 }
 
 logout() {
