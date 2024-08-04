@@ -74,7 +74,6 @@ export class MenuComponent {
       alert('Por favor, faça um novo login!')
       window.location.href = "/login";
     }
-
   }
 
 
