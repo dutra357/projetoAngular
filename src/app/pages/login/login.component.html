@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="login">
+        <div>
+            <label for="login">E-mail:</label>
+            <input type="text" name="login" placeholder="fulano@gmail.com" type="email" [(ngModel)]="login.email"
+            #email="ngModel" [ngModelOptions]="{standalone: true}" required>
+        </div>
+        <br>
+        <div>
+            <label for="senha">Senha:</label>
+            <input type="text" name="senha" type="password" [(ngModel)]="login.senha"
+            #senha="ngModel" [ngModelOptions]="{standalone: true}" required>
+        </div>
+
+        <br>
+        
+        <div>
+            <button (click)="entrar()">Entrar</button>
+            <button (click)="criar()"> Criar conta</button>
+        </div>
+        <br>
+        <div>
+            <a href="http://localhost:4200/login" (click)="recuperar()">Recuperar senha</a>
+        </div>
+    </div>
+</div>
