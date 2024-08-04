@@ -30,7 +30,7 @@ getPerfil() {
 }
 
 logout() {
-  sessionStorage.removeItem('usuarioLogado')
+  sessionStorage.removeItem('usuarioLogado');
 }
 
 
