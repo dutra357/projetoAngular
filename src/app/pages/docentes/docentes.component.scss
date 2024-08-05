@@ -1,0 +1,23 @@
+.coluna {
+    display: flex;
+    flex-direction: column;
+}
+
+.linha {
+    display: flex;
+    flex-direction: row;
+}
+
+.conteudo {
+    border: 1px solid black;
+    width: 100%;
+    margin: 5px;
+}
+
+.estatisticas {
+    border: 1px solid black;
+    width: 20%;
+    margin: 5px;
+    margin-right: 40px;
+    padding: 5px;
+}

@@ -6,7 +6,6 @@ import { Injectable } from '@angular/core';
 export class LoginService {
 
   constructor() { }
-
   usuarioLogado!: {email: string, nome: string, perfil: string}
 
   login(usuario: {email: string, senha: string}): boolean {
@@ -20,7 +19,13 @@ export class LoginService {
     return false;
 }
 
-getLogado() {
+getLogado(email: any) {
+  for(let usr of this.usuarios) {
+    if (usr.email == email) {
+      return usr.perfil
+    }
+  }
+
   return this.usuarioLogado;
 }
 
