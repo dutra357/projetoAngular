@@ -57,7 +57,7 @@ logout() {
       perfil: 'Administrador'
     },
     {
-      email: 'paulo@adm.com',
+      email: 'paulo@docente.com',
       senha: 'paulo123',
       nome: 'Paulo da Silva',
       perfil: 'Docente'
