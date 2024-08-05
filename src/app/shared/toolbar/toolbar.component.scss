@@ -1,0 +1,24 @@
+.container {
+    padding: 10px;
+    border: 1px solid black;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.usuario {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+img {
+    width: 40px;
+    height: 40px;
+    padding-right: 10px;
+}
+
+button {
+    margin-left: 10px;
+}

@@ -7,14 +7,13 @@ export class LoginService {
 
   constructor() { }
 
-  usuarioLogado!: {email: string, senha: string, nome: string, perfil: string}
+  usuarioLogado!: {email: string, nome: string, perfil: string}
 
   login(usuario: {email: string, senha: string}): boolean {
     for(let usr of this.usuarios) {
       if((usr.email === usuario.email) && (usr.senha === usuario.senha)) {
-        sessionStorage.setItem('usuarioLogado', JSON.stringify(usuario));
-        sessionStorage.setItem('emailLogado', usuario.email);
-        alert('Usuário logado com sucesso!')
+        sessionStorage.setItem('usuarioLogado', JSON.stringify(usuario.email));
+        alert('Usuário logado com sucesso!');
         return true;
       }
     }
@@ -35,6 +34,7 @@ getPerfil() {
 
 logout() {
   sessionStorage.removeItem('usuarioLogado');
+  window.location.href = "/login";
 }
 
 
