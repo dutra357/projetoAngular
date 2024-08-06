@@ -6,43 +6,52 @@
 
         <div class="central">
 
-            <div class="ordered">
-                <section class="conteudo-ordered">
-                    <h4>Minhas matérias</h4>
+                <section class="conteudo">
+                    
+                    <div class="titulo">
+                        <h4>Minhas avaliações</h4>
+                    </div>
 
-                    <ul>
-                        <li>Materia 1</li>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Avaliação</th>
+                                    <th>Matéria</th>
+                                    <th>Data</th>
+                                </tr>
+                            </thead>
+    
+                            <tbody>
+                                <tr *ngFor=" let avaliacao of notas; let index=index" (click)="paginaNotas()">
+                                    <td>{{avaliacao.avaliacao}}</td>
+                                    <td>{{avaliacao.materia}}</td>
+                                    <td>{{avaliacao.data}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                </section>
+
+
+                <section class="conteudo">
+
+                    <div class="titulo">
+                        <h4>Minhas matérias: </h4>
+                    </div>
+
+                    <ul *ngFor=" let materia of materias; let index=index">
+                        <li> {{materia}}</li>
                     </ul>
                 </section>
 
-                <section class="conteudo-ordered">
-                    <h4>Cursos extras</h4>
+
+                <section class="conteudo">
+
+                    <div class="titulo">
+                        <h4>Cursos extras</h4>
+                    </div>
+
+                
                 </section>
-            </div>
-
-            <section class="conteudo">
-                <h4>Minhas avaliações</h4>
-                <div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Avaliação</th>
-                                <th>Matéria</th>
-                                <th>Data</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <tr>
-                                <td>avaliacao.nome</td>
-                                <td>avaliacao.materia</td>
-                                <td>avaliacao.data</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-            </section>
 
         </div>
 

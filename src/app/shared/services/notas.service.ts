@@ -12,6 +12,18 @@ export class NotasService {
     return this.notas;
   }
 
+  getMaterias() {
+    let saida: string[] = [];
+
+    this.notas.forEach(element => {
+        if (!saida.includes(element.materia)) {
+          saida.push(element.materia);
+        }
+    });
+    
+    return saida;
+  }
+
   notas = [
     {
       materia: 'Matemática',
@@ -36,6 +48,18 @@ export class NotasService {
       nota: '8.5',
       data: '10/06/2024',
       avaliacao: 'Trabalho (equipes)'
+    },
+    {
+      materia: 'Física',
+      nota: '8.9',
+      data: '07/07/2024',
+      avaliacao: 'Prova 1'
+    },
+    {
+      materia: 'Inglês',
+      nota: '8.8',
+      data: '01/06/2024',
+      avaliacao: 'Prova 1'
     }
   ]
 }
