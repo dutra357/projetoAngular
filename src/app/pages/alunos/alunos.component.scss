@@ -1,0 +1,42 @@
+.coluna {
+    display: flex;
+    flex-direction: column;
+}
+
+.linha {
+    display: flex;
+    flex-direction: row;
+}
+
+.central {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+
+.conteudo {
+    border: 1px solid black;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+
+.conteudo-ordered {
+    border: 1px solid black;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    width: 100vh;
+}
+
+.ordered {
+    display: flex;
+    flex-direction: row;
+}
+
+tbody tr:hover {
+    color: blueviolet;
+    cursor: pointer;
+}
