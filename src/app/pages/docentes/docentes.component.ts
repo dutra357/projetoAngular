@@ -19,19 +19,27 @@ export class DocentesComponent {
 
   isAdm: boolean = false;
   parametro: string = '';
-  alunos: any;
+
+  alunos = this.loginService.getAlunos();
+  alunosFiltrados: any;
 
   ngOnInit() {
     let email = JSON.parse(sessionStorage['usuarioLogado']);
     if (this.loginService.getLogado(email) == 'Administrador') {
       this.isAdm = true;
     }
-
-    this.alunos = this.loginService.getAlunos();
+    this.alunosFiltrados = [...this.alunos];
   }
 
   buscar(parametro: string) {
-
+    if (parametro) {
+      this.alunosFiltrados = this.alunos.filter(aluno =>
+        aluno.nome.toLowerCase().includes(this.parametro.toLowerCase()) ||
+        aluno.email.toLowerCase().includes(this.parametro.toLowerCase())
+      );
+    } else {
+      this.alunosFiltrados = [...this.alunos];
+    }
   }
 
 }

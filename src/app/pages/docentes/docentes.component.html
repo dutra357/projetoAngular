@@ -7,13 +7,14 @@
         <section class="conteudo">
 
             <div class="pesquisa">
-                <label for="busca">Busca: </label>
+                <label for="busca">Pesquisar: </label>
                 <input type="text" name="busca" [(ngModel)]="parametro">
+                <button (click)="buscar(parametro)">Buscar</button>
             </div>
 
             <section class="cards">
 
-                <div *ngFor="let aluno of alunos; let index=index">
+                <div *ngFor="let aluno of alunosFiltrados; let index=index">
 
                     <app-card-aluno [nome]="aluno.nome" [idade]="aluno.idade"
                     [contato]="aluno.email"></app-card-aluno>
