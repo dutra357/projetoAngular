@@ -47,7 +47,15 @@
                 <section class="conteudo">
 
                     <div class="titulo">
-                        <h4>Cursos extras</h4>
+                        <h4>Cursos extras: </h4>
+                    </div>
+
+                    <div class="cursos">
+                        <img *ngFor=" let curso of cursosExtras; let index=index" src="{{curso.url}}" alt="{{curso.alt}}" (click)="opcoesCurso(curso)">
+                    </div>
+
+                    <div class="resultado" id="result">
+                    
                     </div>
 
                 

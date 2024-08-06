@@ -50,3 +50,23 @@ td {
     display: flex;
     justify-content: center;
 }
+
+.cursos {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    justify-content: space-evenly;
+}
+
+img:hover {
+    box-shadow: 5px 5px blueviolet 
+}
+
+.resultado {
+    padding: 5px;
+    margin: 3px;
+    margin-top: 30px;
+    font-size: 15px;
+    width: 60%;
+}
