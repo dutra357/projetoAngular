@@ -41,5 +41,4 @@ export class DocentesComponent {
       this.alunosFiltrados = [...this.alunos];
     }
   }
-
 }
