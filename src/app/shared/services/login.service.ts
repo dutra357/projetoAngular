@@ -39,6 +39,36 @@ getAlunos() {
   return alunos;
 }
 
+getTotalAlunos() {
+  let total = 0;
+  for(let usr of this.usuarios) {
+    if (usr.perfil == 'Aluno') {
+      total++;
+    }
+  }
+  return total;
+}
+
+getTotalDocentes() {
+  let total = 0;
+  for(let usr of this.usuarios) {
+    if (usr.perfil == 'Docente') {
+      total++;
+    }
+  }
+  return total;
+}
+
+getTotalTurmas() {
+  let total = 0;
+  for(let usr of this.usuarios) {
+    if (usr.perfil == 'Turma') {
+      total++;
+    }
+  }
+  return total;
+}
+
 getNome() {
   return this.usuarioLogado.nome;
 }

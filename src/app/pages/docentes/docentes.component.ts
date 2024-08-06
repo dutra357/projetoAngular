@@ -20,6 +20,10 @@ export class DocentesComponent {
   isAdm: boolean = false;
   parametro: string = '';
 
+  totalDocentes: string = '';
+  totalAlunos: string = '';
+  totalTurmas: string = '';
+
   alunos = this.loginService.getAlunos();
   alunosFiltrados: any;
 
@@ -29,6 +33,10 @@ export class DocentesComponent {
       this.isAdm = true;
     }
     this.alunosFiltrados = [...this.alunos];
+
+   this.totalAlunos = this.loginService.getTotalAlunos().toString();
+   this.totalDocentes = this.loginService.getTotalDocentes().toString();
+   this.totalTurmas = this.loginService.getTotalTurmas().toString();
   }
 
   buscar(parametro: string) {
