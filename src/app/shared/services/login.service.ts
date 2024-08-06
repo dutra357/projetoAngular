@@ -29,6 +29,16 @@ getLogado(email: any) {
   return this.usuarioLogado;
 }
 
+getAlunos() {
+  let alunos = [];
+  for(let usr of this.usuarios) {
+    if (usr.perfil == 'Aluno') {
+      alunos.push(usr);
+    }
+  }
+  return alunos;
+}
+
 getNome() {
   return this.usuarioLogado.nome;
 }
@@ -45,22 +55,81 @@ logout() {
 
   usuarios = [
     {
-      email: 'jose@gmail.com',
-      senha: 'jose123',
-      nome: 'José da Silva',
-      perfil: 'Aluno'
-    },
-    {
       email: 'adm@adm.com',
       senha: 'adm',
       nome: 'Jorge Saraiva',
+      idade: '41',
       perfil: 'Administrador'
     },
     {
       email: 'paulo@docente.com',
       senha: 'paulo123',
       nome: 'Paulo da Silva',
+      idade: '40',
       perfil: 'Docente'
+    },
+    {
+      email: 'maria@gmail.com',
+      senha: 'maria123',
+      nome: 'Maria da Silva',
+      idade: '21',
+      perfil: 'Aluno'
+    },
+    {
+      email: 'laura@gmail.com',
+      senha: 'laura123',
+      nome: 'Laura da Silva',
+      idade: '19',
+      perfil: 'Aluno'
+    },
+    {
+      email: 'chico@gmail.com',
+      senha: 'francisco123',
+      nome: 'Francisco das Neves',
+      idade: '19',
+      perfil: 'Aluno'
+    },
+    {
+      email: 'manuela@gmail.com',
+      senha: 'manuela123',
+      nome: 'Manuela das Neves',
+      idade: '20',
+      perfil: 'Aluno'
+    },
+    {
+      email: 'julia@gmail.com',
+      senha: 'julia123',
+      nome: 'Julia das Couves',
+      idade: '22',
+      perfil: 'Aluno'
+    },
+    {
+      email: 'roberto@gmail.com',
+      senha: 'roberto123',
+      nome: 'Roberto das Couves',
+      idade: '19',
+      perfil: 'Aluno'
+    },
+    {
+      email: 'renata@gmail.com',
+      senha: 'renata123',
+      nome: 'Renata de Tal',
+      idade: '20',
+      perfil: 'Aluno'
+    },
+    {
+      email: 'julia@gmail.com',
+      senha: 'julia123',
+      nome: 'Julia de Souza',
+      idade: '20',
+      perfil: 'Aluno'
+    },
+    {
+      email: 'renata@gmail.com',
+      senha: 'renata123',
+      nome: 'Renata das Couves',
+      idade: '18',
+      perfil: 'Aluno'
     }
   ]
 }

@@ -1,0 +1,84 @@
+.card {
+    height: 220px;
+    width: 220px;
+    background-color: rgb(140, 132, 182);
+    border-radius: 5px;
+
+    display: flex;
+    flex-direction: column;
+
+    margin-right: 20px;
+    margin-bottom: 30px;
+}
+
+.caput {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px;
+}
+
+img {
+    width: 30px;
+    height: 30px;
+}
+
+.box-descricao {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: white;
+    border-radius: 7px;
+    padding: 5px 8px;
+    margin: 2px;
+}
+
+// @media (max-width: 1440px) {
+//     .box-produto {
+//         height: 250px;
+//         width: 200px;
+//     }
+
+//     .modoSlide {
+//         height: 250px;
+//         width: 200px;
+//     }
+// }
+
+
+// @media (max-width: 1329px) {
+//     .box-produto {
+//         height: 180px;
+//         width: 180px;
+//     }
+
+//     .modoSlide {
+//         height: 180px;
+//         width: 180px;
+//     }
+// }
+
+// @media (max-width: 1134px) {
+//     .box-produto {
+//         height: 130px;
+//         width: 130px;
+//     }
+
+//     .modoSlide {
+//         height: 130px;
+//         width: 130px;
+//     }
+// }
+
+// @media (max-width: 768px) {
+//     .box-produto {
+//         height: 130px;
+//         width: 130px;
+//     }
+
+//     .modoSlide {
+//         height: 130px;
+//         width: 130px;
+//     }
+// }

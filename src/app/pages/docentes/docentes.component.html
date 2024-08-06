@@ -8,11 +8,17 @@
 
             <div class="pesquisa">
                 <label for="busca">Busca: </label>
-                <input type="text" name="busca">
+                <input type="text" name="busca" [(ngModel)]="parametro">
             </div>
 
             <section class="cards">
-                <app-card-aluno></app-card-aluno>
+
+                <div *ngFor="let aluno of alunos; let index=index">
+
+                    <app-card-aluno [nome]="aluno.nome" [idade]="aluno.idade"
+                    [contato]="aluno.email"></app-card-aluno>
+
+                </div>
             </section>
 
         </section>

@@ -1,0 +1,26 @@
+<div class="card">
+
+    <div class="caput">
+        <img class="img-aluno" src="https://img.icons8.com/?size=100&id=98957&format=png&color=000000" />
+    
+        <p>
+            <b>{{nome}}</b>
+        </p>
+    
+    </div>
+
+    <div class="box-descricao">
+        <p>
+            Idade: {{idade}}
+        </p>
+
+        <p>
+            Contato: {{contato}}
+        </p>
+
+        <button *ngIf="isAdm" (click)="verMais()">Ver mais</button>
+        <button *ngIf="isDocente" (click)="lancarNota()">Lançar nota</button>
+
+    </div>
+
+</div>
