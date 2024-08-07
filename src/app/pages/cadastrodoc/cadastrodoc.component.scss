@@ -1,0 +1,36 @@
+.pagina {
+    display: flex;
+    flex-direction: row;
+}
+
+.centro {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+}
+
+.cadastro {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+
+.principal {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    justify-content: space-between;
+}
+
+.endereco {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+input {
+    margin-bottom: 15px;
+    width: 250px;
+}
+
