@@ -4,6 +4,10 @@ import { DocentesComponent } from './pages/docentes/docentes.component';
 import { AlunosComponent } from './pages/alunos/alunos.component';
 import { CadastrodocComponent } from './pages/cadastrodoc/cadastrodoc.component';
 import { cadastrodocGuard } from './shared/guards/cadastrodoc.guard';
+import { CadastroalComponent } from './pages/cadastroal/cadastroal.component';
+import { cadastroalGuard } from './shared/guards/cadastroal.guard';
+import { CadastroturmaComponent } from './pages/cadastroturma/cadastroturma.component';
+import { cadastroturmaGuard } from './shared/guards/cadastroturma.guard';
 
 export const routes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -12,6 +16,14 @@ export const routes: Routes = [
     {
         path: 'cadastrodoc', component: CadastrodocComponent,
         canActivate: [cadastrodocGuard]
+    },
+    {
+        path: 'cadastroal', component: CadastroalComponent,
+        canActivate: [cadastroalGuard]
+    },
+    {
+        path: 'cadastroturma', component: CadastroturmaComponent,
+        canActivate: [cadastroturmaGuard]
     },
     {path: '**', redirectTo: 'login'},
 ];

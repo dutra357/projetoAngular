@@ -1,8 +1,8 @@
-import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { LoginService } from '../services/login.service';
+import { inject } from '@angular/core';
 
-export const cadastrodocGuard: CanActivateFn = (route, state) => {
+export const cadastroalGuard: CanActivateFn = (route, state) => {
 
   const router = inject(Router);
   const service = inject(LoginService)
@@ -13,4 +13,5 @@ export const cadastrodocGuard: CanActivateFn = (route, state) => {
     router.navigate(['/login']);
     return false;
   }
+  
 };

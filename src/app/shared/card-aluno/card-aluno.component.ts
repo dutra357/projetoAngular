@@ -23,9 +23,9 @@ export class CardAlunoComponent {
 
   ngOnInit() {
     let email = JSON.parse(sessionStorage['usuarioLogado']);
-    if (this.loginService.getLogado(email) == 'Administrador') {
+    if (this.loginService.getLogado(email).perfil == 'Administrador') {
       this.isAdm = true;
-    } else if (this.loginService.getLogado(email) == 'Docente') {
+    } else if (this.loginService.getLogado(email).perfil == 'Docente') {
       this.isDocente = true;
     }
   }
