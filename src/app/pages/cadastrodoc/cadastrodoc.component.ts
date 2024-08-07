@@ -59,7 +59,7 @@ export class CadastrodocComponent {
       (this.docente.rg.length <= 20) && (this.docente.expeditor.length < 9) &&
       (this.docente.estadoCivil) && (this.docente.telefone) && (this.docente.email) &&
       (this.docente.naturalidade.length > 8) && (this.docente.naturalidade.length < 65) &&
-      (this.docente.senha.length > 7) && (materias.length != 0)
+      (this.docente.senha.length > 7) && (materias.length != 0) && (this.validaEmail(this.docente.email))
     ) {
       if (
         (this.docente.endereco.cep) && (this.docente.endereco.bairro) &&
@@ -74,7 +74,7 @@ export class CadastrodocComponent {
         alert('Por favor, preencha todos os campos em "endereço".')
       }
     } else {
-      alert('Por favor, preencha todos os campos.')
+      alert('Por favor, confira os campos.')
     }
 
   }
@@ -97,5 +97,17 @@ export class CadastrodocComponent {
       .finally(() => {
         console.log("CEP encontrado!")
       })
+  }
+
+  validaEmail(email: string) {
+    let parametroRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    if(!parametroRegex.test(email)) {
+    }
+    return parametroRegex.test(email);
+  }
+
+  validaCpf(cpf: string) {
+
   }
 }

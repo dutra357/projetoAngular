@@ -3,10 +3,15 @@ import { LoginComponent } from './pages/login/login.component';
 import { DocentesComponent } from './pages/docentes/docentes.component';
 import { AlunosComponent } from './pages/alunos/alunos.component';
 import { CadastrodocComponent } from './pages/cadastrodoc/cadastrodoc.component';
+import { cadastrodocGuard } from './shared/guards/cadastrodoc.guard';
 
 export const routes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'docentes', component: DocentesComponent},
     {path: 'alunos', component: AlunosComponent},
-    {path: 'cadastrodoc', component: CadastrodocComponent},
+    {
+        path: 'cadastrodoc', component: CadastrodocComponent,
+        canActivate: [cadastrodocGuard]
+    },
+    {path: '**', redirectTo: 'login'},
 ];
