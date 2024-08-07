@@ -66,10 +66,10 @@ export class CadastrodocComponent {
         (this.docente.endereco.cidade) && (this.docente.endereco.logradouro) &&
         (this.docente.endereco.numero)
       ) {
-
         console.log(this.docente);
         // this.loginService.cadastrar(this.docente)
-        // alert('Docente cadastrado com sucesso!')
+        alert('Docente cadastrado com sucesso!')
+        
       } else {
         alert('Por favor, preencha todos os campos em "endereço".')
       }
