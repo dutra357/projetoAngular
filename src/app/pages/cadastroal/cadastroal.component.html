@@ -1,0 +1,125 @@
+<div class="pagina">
+
+    <app-menu></app-menu>
+
+    <div class="centro">
+        <app-toolbar></app-toolbar>
+
+        <div class="conteudo">
+
+            <div class="cadastro">
+
+                <section class="principal">
+                    <div class="titulo">
+                        <p>Dados Pessoais:</p>
+                    </div>
+
+                    <label for="nome">* Nome:</label>
+                    <input type="text" name="nome" [(ngModel)]="aluno.nome"
+                    [ngModelOptions]="{standalone: true}" required>
+
+                    <label for="genero">* Gênero:</label>
+                    <select name="genero" [(ngModel)]="aluno.genero"
+                    #senha="ngModel" [ngModelOptions]="{standalone: true}" required>
+                      <option value="Masculino">Masculino</option>
+                      <option value="Feminino">Feminino</option>
+                    </select>
+
+                    <label for="nascimento">* Data de nascimento:</label>
+                    <input type="date" name="nome" [(ngModel)]="aluno.nascimento"
+                    [ngModelOptions]="{standalone: true}" required>
+
+                    <label for="cpf">* CPF:</label>
+                    <input type="text" name="cpf" [(ngModel)]="aluno.cpf"
+                    [ngModelOptions]="{standalone: true}" required>
+
+                    <label for="rg">* RG:</label>
+                    <input type="text" name="rg" [(ngModel)]="aluno.rg"
+                    [ngModelOptions]="{standalone: true}" required>
+
+                    <label for="expeditor">* Órgão expeditor:</label>
+                    <input type="text" name="expeditor" [(ngModel)]="aluno.expeditor"
+                    [ngModelOptions]="{standalone: true}" required>
+
+                    <label for="naturalidade">* Naturalidade:</label>
+                    <input type="text" name="naturalidade" [(ngModel)]="aluno.naturalidade"
+                    [ngModelOptions]="{standalone: true}" required>
+
+                    <label for="telefone">* Telefone:</label>
+                    <input type="text" name="telefone" [(ngModel)]="aluno.telefone"
+                    [ngModelOptions]="{standalone: true}" required>
+
+                    <label for="email">E-mail:</label>
+                    <input type="email" name="email" [(ngModel)]="aluno.email"
+                    [ngModelOptions]="{standalone: true}">
+                    
+                    <label for="senha">* Senha:</label>
+                    <input type="password" name="senha" [(ngModel)]="aluno.senha"
+                    [ngModelOptions]="{standalone: true}" required>
+
+                </section>
+
+                <section class="endereco">
+                    <div class="titulo">
+                        <p>Endereço:</p>
+                    </div>
+
+                    <label for="cep">* CEP:</label>
+                    <div>
+                        <input type="text" id="cep" name="cep" [(ngModel)]="aluno.endereco.cep"
+                        [ngModelOptions]="{standalone: true}" required>
+                        <button (click)="buscaCep()">buscar</button>
+                    </div>
+
+                    <label for="cidade">* Cidade:</label>
+                    <input type="text" name="cidade" [(ngModel)]="aluno.endereco.cidade"
+                    [ngModelOptions]="{standalone: true}" required>
+
+                    <label for="logradouro">* Logradouro:</label>
+                    <input type="text" name="logradouro" [(ngModel)]="aluno.endereco.logradouro"
+                    [ngModelOptions]="{standalone: true}" required>
+
+                    <label for="numero">* Número:</label>
+                    <input type="text" name="numero" [(ngModel)]="aluno.endereco.numero"
+                    [ngModelOptions]="{standalone: true}" required>
+
+                    <label for="complemento">Complemento:</label>
+                    <input type="text" name="complemento" [(ngModel)]="aluno.endereco.complemento"
+                    [ngModelOptions]="{standalone: true}">
+
+                    <label for="bairro">* Bairro:</label>
+                    <input type="text" name="bairro" [(ngModel)]="aluno.endereco.bairro"
+                    [ngModelOptions]="{standalone: true}" required>
+
+                    <label for="referencia">Ponto de ref.:</label>
+                    <input type="text" name="referencia" [(ngModel)]="aluno.endereco.referencia"
+                    [ngModelOptions]="{standalone: true}">
+
+                    <div>
+                        <button (click)="cadastrar()">Cadastrar</button>
+                        <button disabled>Editar</button>
+                        <button disabled>Excluir</button>
+                    </div>
+                </section>
+
+
+                <section class="turmas">
+                    <div class="titulo">
+                        <p>Disciplinas:</p>
+                    </div>
+
+                    <input type="checkbox" name="calculo" value="Cálculo I" checked>
+                    <label for="calculo"> Cálculo I</label><br>
+                    
+                </section>
+            </div>
+
+
+
+
+
+        </div>
+    </div>
+
+
+</div>

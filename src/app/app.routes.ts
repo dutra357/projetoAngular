@@ -4,6 +4,7 @@ import { DocentesComponent } from './pages/docentes/docentes.component';
 import { AlunosComponent } from './pages/alunos/alunos.component';
 import { CadastrodocComponent } from './pages/cadastrodoc/cadastrodoc.component';
 import { cadastrodocGuard } from './shared/guards/cadastrodoc.guard';
+import { CadastroalComponent } from './pages/cadastroal/cadastroal.component';
 
 export const routes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -13,5 +14,6 @@ export const routes: Routes = [
         path: 'cadastrodoc', component: CadastrodocComponent,
         canActivate: [cadastrodocGuard]
     },
+    {path: 'cadastroal', component: CadastroalComponent},
     {path: '**', redirectTo: 'login'},
 ];
