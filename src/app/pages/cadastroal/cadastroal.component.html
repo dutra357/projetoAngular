@@ -105,11 +105,13 @@
 
                 <section class="turmas">
                     <div class="titulo">
-                        <p>Disciplinas:</p>
+                        <p>Turmas disponíveis:</p>
                     </div>
 
-                    <input type="checkbox" name="calculo" value="Cálculo I" checked>
-                    <label for="calculo"> Cálculo I</label><br>
+                    <div *ngFor="let turma of turmas; let index=index">
+                        <input type="checkbox" name="{{turma.id}}" value="{{turma.nome}}">
+                        <label for="{{turma.id}}">{{turma.nome}}</label><br>
+                    </div>
                     
                 </section>
             </div>

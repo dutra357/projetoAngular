@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { LoginService } from '../../shared/services/login.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ToolbarComponent } from "../../shared/toolbar/toolbar.component";
 import { MenuComponent } from "../../shared/menu/menu.component";
+import { TurmasService } from '../../shared/services/turmas.service';
 
 @Component({
   selector: 'app-cadastroal',
@@ -41,6 +42,10 @@ export class CadastroalComponent {
     },
     turmas: {}
   }
+
+  serviceTurmas = inject(TurmasService);
+  turmas = this.serviceTurmas.getTurmas();
+
 
   cadastrar() {
     let inputs = document.getElementsByTagName("input");
