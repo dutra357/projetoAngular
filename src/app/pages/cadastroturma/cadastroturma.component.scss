@@ -25,12 +25,6 @@
     justify-content: space-between;
 }
 
-.endereco {
-    display: flex;
-    flex-direction: column;
-    margin: 20px;
-}
-
 input {
     margin-bottom: 15px;
 }
@@ -38,12 +32,6 @@ input {
 select {
     margin-bottom: 15px;
     width: 250px;
-}
-
-.turmas {
-    display: block;
-    align-items: start;
-    margin: 20px;
 }
 
 option {

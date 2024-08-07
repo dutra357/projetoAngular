@@ -23,6 +23,15 @@ export class CadastroturmaComponent {
   docentes: any = []
   docenteLogado: string = '';
 
+  turma = {
+    id: '',
+    nome: '',
+    dataInicio: '',
+    dataTermino: '',
+    horario: '',
+    professor: '',
+  }
+
   ngOnInit() {
     this.docentes = this.loginService.getDocentes();
 
@@ -32,32 +41,18 @@ export class CadastroturmaComponent {
       this.isDocente = true
       this.docenteLogado = this.loginService.getLogado(JSON.parse(sessionStorage['usuarioLogado'])).nome;
     }
-
-  }
-
-  turma = {
-    id: 0,
-    nome: '',
-    data: '',
-    horario: '',
-    professor: '',
   }
 
   cadastrar() {
-    let inputs = document.getElementsByTagName("input");
-    let turmas: string[] = []
-
-    for (let i = inputs.length - 1; i >= 0; i--) {
-      if (inputs[i].type === "checkbox" && inputs[i].checked) {
-        turmas.push(inputs[i].value);
-      }
-    }
-
     if (
-      (this.turma.nome.length > 8) && (this.turma.nome.length < 65)
+      (this.turma.nome.length > 8) && (this.turma.nome.length < 65) &&
+      (this.turma.dataInicio) && (this.turma.dataTermino) && 
+      (this.turma.horario) && (this.turma.professor)
     ) {
-      this.turmaService.cadastrarTurma(this.turma)
-      alert('Turma cadastrado com sucesso!')
+
+      console.log(this.turma)
+      // this.turmaService.cadastrarTurma(this.turma)
+      alert('Turma cadastrada com sucesso!')
 
     } else {
       alert('Por favor, confira os campos.')
