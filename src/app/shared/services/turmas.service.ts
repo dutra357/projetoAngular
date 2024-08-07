@@ -23,7 +23,7 @@ export class TurmasService {
   }
 
   cadastrarTurma(turma: any) {
-    turma.id = this.countId++;
+    turma.id = ++this.countId;
     this.turmas.push(turma);
   }
 

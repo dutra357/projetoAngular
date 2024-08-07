@@ -7,8 +7,8 @@ export const cadastroturmaGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
   const service = inject(LoginService)
 
-  if((service.getLogado(JSON.parse(sessionStorage['usuarioLogado'])) == 'Administrador') || 
-  service.getLogado(JSON.parse(sessionStorage['usuarioLogado'])) == 'Docente') {
+  if((service.getLogado(JSON.parse(sessionStorage['usuarioLogado'])).perfil == 'Administrador') || 
+  service.getLogado(JSON.parse(sessionStorage['usuarioLogado'])).perfil == 'Docente') {
     return true;
   } else {
     router.navigate(['/login']);

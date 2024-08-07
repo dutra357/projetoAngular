@@ -29,7 +29,7 @@ export class DocentesComponent {
 
   ngOnInit() {
     let email = JSON.parse(sessionStorage['usuarioLogado']);
-    if (this.loginService.getLogado(email) == 'Administrador') {
+    if (this.loginService.getLogado(email).perfil == 'Administrador') {
       this.isAdm = true;
     }
     this.alunosFiltrados = [...this.alunos];

@@ -22,7 +22,7 @@ export class LoginService {
 getLogado(email: any) {
   for(let usr of this.usuarios) {
     if (usr.email == email) {
-      return usr.perfil
+      return usr;
     }
   }
   return this.usuarioLogado;
@@ -36,6 +36,16 @@ getAlunos() {
     }
   }
   return alunos;
+}
+
+getDocentes() {
+  let docentes = [];
+  for(let usr of this.usuarios) {
+    if (usr.perfil == 'Docente') {
+      docentes.push(usr);
+    }
+  }
+  return docentes;
 }
 
 getTotalAlunos() {
@@ -110,8 +120,8 @@ cadastrar(usuario: any) {
       email: 'maria@gmail.com',
       senha: 'maria123',
       nome: 'Maria da Silva',
-      idade: '21',
-      perfil: 'Aluno'
+      idade: '51',
+      perfil: 'Docente'
     },
     {
       id: 4,

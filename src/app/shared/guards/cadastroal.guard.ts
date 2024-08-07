@@ -7,7 +7,7 @@ export const cadastroalGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
   const service = inject(LoginService)
 
-  if(service.getLogado(JSON.parse(sessionStorage['usuarioLogado'])) == 'Administrador') {
+  if(service.getLogado(JSON.parse(sessionStorage['usuarioLogado'])).perfil == 'Administrador') {
     return true;
   } else {
     router.navigate(['/login']);

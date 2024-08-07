@@ -14,7 +14,6 @@ import { TurmasService } from '../../shared/services/turmas.service';
   styleUrl: './cadastroal.component.scss'
 })
 export class CadastroalComponent {
-  docente: any;
 
   constructor(private loginService: LoginService) { }
 

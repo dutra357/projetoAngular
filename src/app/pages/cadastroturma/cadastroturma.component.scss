@@ -1,0 +1,60 @@
+.pagina {
+    display: flex;
+    flex-direction: row;
+}
+
+.centro {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+}
+
+.cadastro {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+.principal {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    margin-left: 40px;
+    justify-content: space-between;
+}
+
+.endereco {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+input {
+    margin-bottom: 15px;
+}
+
+select {
+    margin-bottom: 15px;
+    width: 250px;
+}
+
+.turmas {
+    display: block;
+    align-items: start;
+    margin: 20px;
+}
+
+option {
+    padding: 2px;
+}
+
+.titulo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 18px;
+}
+
