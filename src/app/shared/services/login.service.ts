@@ -82,7 +82,7 @@ logout() {
 }
 
 cadastrar(usuario: any) {
-  usuario.id = this.countId++;
+  usuario.id = ++this.countId;
   this.usuarios.push(usuario);
 }
 

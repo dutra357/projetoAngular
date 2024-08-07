@@ -64,16 +64,15 @@ export class CadastroalComponent {
       (this.aluno.rg.length <= 20) && (this.aluno.expeditor.length < 9) &&
       (this.aluno.telefone) && (this.validaEmail(this.aluno.email)) &&
       (this.aluno.naturalidade.length > 8) && (this.aluno.naturalidade.length < 65) &&
-      (this.aluno.senha.length > 7) && (turmas.length != 0) && (this.validaEmail(this.aluno.email))
+      (this.aluno.senha.length > 7) && (turmas.length != 0)
     ) {
       if (
         (this.aluno.endereco.cep) && (this.aluno.endereco.bairro) &&
         (this.aluno.endereco.cidade) && (this.aluno.endereco.logradouro) &&
         (this.aluno.endereco.numero)
       ) {
-        console.log(this.aluno);
-        // this.loginService.cadastrar(this.docente)
-        alert('Docente cadastrado com sucesso!')
+        this.loginService.cadastrar(this.aluno)
+        alert('Aluno cadastrado com sucesso!')
         
       } else {
         alert('Por favor, preencha todos os campos em "endereço".')
@@ -98,9 +97,6 @@ export class CadastroalComponent {
       })
       .catch(() => {
         console.log("CEP errado!")
-      })
-      .finally(() => {
-        console.log("CEP encontrado!")
       })
   }
 

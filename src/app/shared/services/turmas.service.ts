@@ -22,7 +22,12 @@ export class TurmasService {
     return -1;
   }
 
-  countTurmas = 4;
+  cadastrarTurma(turma: any) {
+    turma.id = this.countId++;
+    this.turmas.push(turma);
+  }
+
+  countId = 4;
   turmas = [
     {
       id: 1,
