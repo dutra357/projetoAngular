@@ -1,0 +1,37 @@
+<div class="coluna">
+    <app-toolbar></app-toolbar>
+
+    <div class="linha">
+        <app-menu></app-menu>
+
+        <section class="conteudo">
+
+            <div class="pesquisa">
+                <label for="busca">Pesquisar:</label>
+                <input type="text" name="busca" [(ngModel)]="parametro">
+                <button (click)="buscar(parametro)">Buscar</button>
+            </div>
+
+            <section class="cards">
+
+                <div *ngFor="let aluno of alunosFiltrados; let index=index">
+
+                    <app-card-aluno [nome]="aluno.nome" [idade]="aluno.idade"
+                    [contato]="aluno.email"></app-card-aluno>
+
+                </div>
+            </section>
+
+        </section>
+
+        <div class="estatisticas" *ngIf="isAdm">
+            <h4>Estatísticas de cadastro:</h4>
+            <p>Turmas: {{totalTurmas}}</p>
+            <p>Docentes: {{totalDocentes}} </p>
+            <p>Alunos: {{totalAlunos}}</p>
+
+        </div>
+
+    </div>
+
+</div>

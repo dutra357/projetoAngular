@@ -1,0 +1,72 @@
+.coluna {
+    display: flex;
+    flex-direction: column;
+}
+
+.linha {
+    display: flex;
+    flex-direction: row;
+}
+
+.central {
+    display: flex;
+    flex-direction: row;
+    height:fit-content;
+    flex-wrap: wrap;
+    width: 75%;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.conteudo {
+    border: 1px solid black;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    font-size: 20px;
+    width: 30%;
+}
+
+tbody tr:hover {
+    color: rgb(2, 0, 138);
+    cursor: pointer;
+    text-decoration:underline;
+}
+
+table {
+    display: block;
+    justify-content: center;
+    width: 60%;
+    padding: 10px;
+}
+
+td {
+    padding: 5px;
+    padding-right: 15px;
+}
+
+.titulo {
+    display: flex;
+    justify-content: center;
+}
+
+.cursos {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    justify-content: space-evenly;
+}
+
+img:hover {
+    box-shadow: 5px 5px rgb(2, 0, 138) 
+}
+
+.resultado {
+    padding: 5px;
+    margin: 3px;
+    margin-top: 30px;
+    font-size: 15px;
+    width: 60%;
+}

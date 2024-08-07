@@ -1,0 +1,165 @@
+<div class="pagina">
+
+    <app-menu></app-menu>
+
+    <div class="centro">
+        <app-toolbar></app-toolbar>
+
+        <div class="conteudo">
+
+            <div class="cadastro">
+
+                <section class="principal">
+                    <div class="titulo">
+                        <p>Dados Pessoais:</p>
+                    </div>
+
+                    <label for="nome">* Nome:</label>
+                    <input type="text" name="nome" [(ngModel)]="docente.nome"
+                    [ngModelOptions]="{standalone: true}" required>
+
+                    <label for="genero">* Gênero:</label>
+                    <select name="genero" [(ngModel)]="docente.genero"
+                    #senha="ngModel" [ngModelOptions]="{standalone: true}" required>
+                      <option value="Masculino">Masculino</option>
+                      <option value="Feminino">Feminino</option>
+                    </select>
+
+                    <label for="nascimento">* Data de nascimento:</label>
+                    <input type="date" name="nome" [(ngModel)]="docente.nascimento"
+                    [ngModelOptions]="{standalone: true}" required>
+
+                    <label for="cpf">* CPF:</label>
+                    <input type="text" name="cpf" [(ngModel)]="docente.cpf"
+                    [ngModelOptions]="{standalone: true}" required>
+
+                    <label for="rg">* RG:</label>
+                    <input type="text" name="rg" [(ngModel)]="docente.rg"
+                    [ngModelOptions]="{standalone: true}" required>
+
+                    <label for="expeditor">* Órgão expeditor:</label>
+                    <input type="text" name="expeditor" [(ngModel)]="docente.expeditor"
+                    [ngModelOptions]="{standalone: true}" required>
+
+                    <label for="naturalidade">* Naturalidade:</label>
+                    <input type="text" name="naturalidade" [(ngModel)]="docente.naturalidade"
+                    [ngModelOptions]="{standalone: true}" required>
+
+                    <label for="estado">* Estado civil:</label>
+                    <select name="estado" [(ngModel)]="docente.estadoCivil"
+                    #senha="ngModel" [ngModelOptions]="{standalone: true}" required>
+                      <option value="Solteiro">Solteiro</option>
+                      <option value="Casado">Casado</option>
+                      <option value="Divorciado">Divorciado</option>
+                      <option value="Viúvo">Viúvo</option>
+                      <option value="Separado jud.">Separado jud.</option>
+                      <option value="União estável">União estável</option>
+                    </select>
+
+                    <label for="telefone">* Telefone:</label>
+                    <input type="text" name="telefone" [(ngModel)]="docente.telefone"
+                    [ngModelOptions]="{standalone: true}" required>
+
+                    <label for="email">* E-mail:</label>
+                    <input type="email" name="email" [(ngModel)]="docente.email"
+                    [ngModelOptions]="{standalone: true}" required>
+                    
+                    <label for="senha">* Senha:</label>
+                    <input type="password" name="senha" [(ngModel)]="docente.senha"
+                    [ngModelOptions]="{standalone: true}" required>
+
+                </section>
+
+                <section class="endereco">
+                    <div class="titulo">
+                        <p>Endereço:</p>
+                    </div>
+
+                    <label for="cep">* CEP:</label>
+                    <div>
+                        <input type="text" id="cep" name="cep" [(ngModel)]="docente.endereco.cep"
+                        [ngModelOptions]="{standalone: true}" required>
+                        <button (click)="buscaCep()">buscar</button>
+                    </div>
+
+                    <label for="cidade">* Cidade:</label>
+                    <input type="text" name="cidade" [(ngModel)]="docente.endereco.cidade"
+                    [ngModelOptions]="{standalone: true}" required>
+
+                    <label for="logradouro">* Logradouro:</label>
+                    <input type="text" name="logradouro" [(ngModel)]="docente.endereco.logradouro"
+                    [ngModelOptions]="{standalone: true}" required>
+
+                    <label for="numero">* Número:</label>
+                    <input type="text" name="numero" [(ngModel)]="docente.endereco.numero"
+                    [ngModelOptions]="{standalone: true}" required>
+
+                    <label for="complemento">Complemento:</label>
+                    <input type="text" name="complemento" [(ngModel)]="docente.endereco.complemento"
+                    [ngModelOptions]="{standalone: true}">
+
+                    <label for="bairro">* Bairro:</label>
+                    <input type="text" name="bairro" [(ngModel)]="docente.endereco.bairro"
+                    [ngModelOptions]="{standalone: true}" required>
+
+                    <label for="referencia">Ponto de ref.:</label>
+                    <input type="text" name="referencia" [(ngModel)]="docente.endereco.referencia"
+                    [ngModelOptions]="{standalone: true}">
+
+                    <div>
+                        <button (click)="cadastrar()">Cadastrar</button>
+                        <button disabled>Editar</button>
+                        <button disabled>Excluir</button>
+                    </div>
+                </section>
+
+
+                <section class="materias">
+                    <div class="titulo">
+                        <p>Disciplinas:</p>
+                    </div>
+
+                    <input type="checkbox" name="calculo" value="Cálculo I" checked>
+                    <label for="calculo"> Cálculo I</label><br>
+                    
+                    <input type="checkbox" name="calculo2" value="Cálculo II">
+                    <label for="calculo2"> Cálculo II</label><br>
+                    
+                    <input type="checkbox" name="gramatica" value="Gramática (Portugês)" checked>
+                    <label for="gramatica"> Gramática (Português)</label><br>
+                
+                    <input type="checkbox" name="fisica1" value="Física I" checked>
+                    <label for="Física1"> Física I</label><br>
+                   
+                    <input type="checkbox" name="introducao" value="Introdução à POO">
+                    <label for="introducao"> Introdução à POO</label><br>
+                    
+                    <input type="checkbox" name="gramatica2" value="Gramática (Inglês)" checked>
+                    <label for="gramatica2"> Gramática (Inglês)</label><br>
+                   
+                    <input type="checkbox" name="java" value="Java básico">
+                    <label for="java"> Java básico</label><br>
+                    
+                    <input type="checkbox" name="spring" value="SpringBoot">
+                    <label for="spring"> SpringBoot</label><br>
+                    
+                    <input type="checkbox" name="introducaodb" value="Introdução ao DB">
+                    <label for="introducaodb"> Introdução ao DB</label><br>
+
+                    <input type="checkbox" name="oracle" value="Linguagem SQL">
+                    <label for="sql"> Linguagem SQL</label><br>
+                    
+                    <input type="checkbox" name="oracle" value="Oracle DB">
+                    <label for="oracle"> Oracle DB</label><br>
+                </section>
+            </div>
+
+
+
+
+
+        </div>
+    </div>
+
+
+</div>

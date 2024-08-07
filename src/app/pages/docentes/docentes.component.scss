@@ -1,0 +1,41 @@
+.coluna {
+    display: flex;
+    flex-direction: column;
+}
+
+.linha {
+    display: flex;
+    flex-direction: row;
+}
+
+.conteudo {
+    border: 1px solid black;
+    width: 100%;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+
+.cards {
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.estatisticas {
+    border: 1px solid black;
+    width: 20%;
+    height: 20%;
+    margin: 5px;
+    margin-right: 45px;
+    padding: 10px;
+}
+
+.pesquisa {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    font-size: 20px;
+}

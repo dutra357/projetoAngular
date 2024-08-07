@@ -1,0 +1,18 @@
+<menu>
+    <div class="container">
+        <ul>
+            <li>UP</li>
+
+            <li (click)="inicio()">Início</li>
+
+            <li (click)="cadastroDocentes()" *ngIf="isAdm">Cadastro Docentes</li>
+            <li (click)="cadastroAlunos()" *ngIf="isAdm">Cadastro Alunos</li>
+            <li (click)="cadastroTurmas()" *ngIf="isAdm || isDocente">Cadastro Turmas</li>
+            <li (click)="cadastroAvaliacao()" *ngIf="isAdm || isDocente">Cadastro de Avaliação</li>
+            <li (click)="listarDocentes()" *ngIf="isAdm">Listar Docentes</li>
+            <li (click)="notas()" *ngIf="isAluno">Notas</li>
+
+            <li (click)="logout()">Sair</li>
+        </ul>
+    </div>
+</menu>
