@@ -25,7 +25,6 @@ getLogado(email: any) {
       return usr.perfil
     }
   }
-
   return this.usuarioLogado;
 }
 
@@ -82,9 +81,16 @@ logout() {
   window.location.href = "/login";
 }
 
+cadastrar(usuario: any) {
+  usuario.id = this.countId++;
+  this.usuarios.push(usuario);
+}
 
+
+  countId = 11;
   usuarios = [
     {
+      id: 1,
       email: 'adm@adm.com',
       senha: 'adm',
       nome: 'Jorge Saraiva',
@@ -92,6 +98,7 @@ logout() {
       perfil: 'Administrador'
     },
     {
+      id: 2,
       email: 'paulo@docente.com',
       senha: 'paulo123',
       nome: 'Paulo da Silva',
@@ -99,6 +106,7 @@ logout() {
       perfil: 'Docente'
     },
     {
+      id: 3,
       email: 'maria@gmail.com',
       senha: 'maria123',
       nome: 'Maria da Silva',
@@ -106,6 +114,7 @@ logout() {
       perfil: 'Aluno'
     },
     {
+      id: 4,
       email: 'laura@gmail.com',
       senha: 'laura123',
       nome: 'Laura da Silva',
@@ -113,6 +122,7 @@ logout() {
       perfil: 'Aluno'
     },
     {
+      id: 5,
       email: 'chico@gmail.com',
       senha: 'francisco123',
       nome: 'Francisco das Neves',
@@ -120,6 +130,7 @@ logout() {
       perfil: 'Aluno'
     },
     {
+      id: 6, 
       email: 'manuela@gmail.com',
       senha: 'manuela123',
       nome: 'Manuela das Neves',
@@ -127,13 +138,15 @@ logout() {
       perfil: 'Aluno'
     },
     {
+      id: 7,
       email: 'julia@gmail.com',
       senha: 'julia123',
       nome: 'Julia das Couves',
       idade: '22',
       perfil: 'Aluno'
     },
-    {
+    { 
+      id: 8,
       email: 'roberto@gmail.com',
       senha: 'roberto123',
       nome: 'Roberto das Couves',
@@ -141,6 +154,7 @@ logout() {
       perfil: 'Aluno'
     },
     {
+      id: 9,
       email: 'renata@gmail.com',
       senha: 'renata123',
       nome: 'Renata de Tal',
@@ -148,6 +162,7 @@ logout() {
       perfil: 'Aluno'
     },
     {
+      id: 10,
       email: 'julia@gmail.com',
       senha: 'julia123',
       nome: 'Julia de Souza',
@@ -155,6 +170,7 @@ logout() {
       perfil: 'Aluno'
     },
     {
+      id: 11,
       email: 'renata@gmail.com',
       senha: 'renata123',
       nome: 'Renata das Couves',
