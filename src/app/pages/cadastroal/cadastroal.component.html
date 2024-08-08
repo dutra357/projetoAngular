@@ -96,9 +96,9 @@
                     [ngModelOptions]="{standalone: true}">
 
                     <div>
-                        <button (click)="cadastrar()">Cadastrar</button>
-                        <button disabled>Editar</button>
-                        <button disabled>Excluir</button>
+                        <button [disabled]="statusEdicao" (click)="cadastrar()">Cadastrar</button>
+                        <button [disabled]="!statusEdicao" (click)="salvar()">Salvar edição</button>
+                        <button [disabled]="!statusEdicao" (click)="excluir(aluno)">Excluir</button>
                     </div>
                 </section>
 

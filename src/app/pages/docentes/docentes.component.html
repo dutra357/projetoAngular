@@ -8,7 +8,7 @@
 
             <div class="pesquisa">
                 <label for="busca">Pesquisar:</label>
-                <input type="text" name="busca" [(ngModel)]="parametro">
+                <input type="text" name="busca" [(ngModel)]="parametro" (keyup.enter)="buscar(parametro)">
                 <button (click)="buscar(parametro)">Buscar</button>
             </div>
 

@@ -27,12 +27,16 @@ export class CardAlunoComponent {
   
   @Output('buttonClick') evento = new EventEmitter();
 
+  textoBotao: string = '';
+
   ngOnInit() {
     let email = JSON.parse(sessionStorage['usuarioLogado']);
     if (this.loginService.getLogado(email).perfil == 'Administrador') {
       this.isAdm = true;
+      this.textoBotao = 'Ver mais';
     } else if (this.loginService.getLogado(email).perfil == 'Docente') {
       this.isDocente = true;
+      this.textoBotao = 'Lançar nota'
     }
   }
 
