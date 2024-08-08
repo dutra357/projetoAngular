@@ -15,14 +15,34 @@ import { Router } from '@angular/router';
 export class CadastrodocComponent {
 
   router = inject(Router);
+  statusEdicao: boolean = false;
 
   constructor(private loginService: LoginService) {
-    let docenteRecebido = this.router.getCurrentNavigation()?.extras.state;
-    console.log(docenteRecebido)
+    let docenteRecebido = this.router.getCurrentNavigation()?.extras.state?.['event'];
 
-    // if (parametro) {
-    //   this.buscar(parametro?.['parametro']);
-    // }
+    if (docenteRecebido) {
+      this.statusEdicao = true;
+
+      this.docente.nome = docenteRecebido.nome;
+      this.docente.genero = docenteRecebido.genero;
+      this.docente.nascimento = docenteRecebido.nascimento;
+      this.docente.cpf = docenteRecebido.cpf;
+      this.docente.rg = docenteRecebido.rg;
+      this.docente.expeditor = docenteRecebido.expeditor;
+      this.docente.naturalidade = docenteRecebido.naturalidade;
+      this.docente.estadoCivil = docenteRecebido.estadoCivil;
+      this.docente.telefone = docenteRecebido.telefone;
+      this.docente.email = docenteRecebido.email;
+      this.docente.senha = docenteRecebido.senha;
+      this.docente.endereco.cep = docenteRecebido.endereco.cep;
+      this.docente.endereco.cidade = docenteRecebido.endereco.cidade;
+      this.docente.endereco.logradouro = docenteRecebido.endereco.logradouro;
+      this.docente.endereco.numero = docenteRecebido.endereco.numero;
+      this.docente.endereco.complemento = docenteRecebido.endereco.complemento;
+      this.docente.endereco.bairro = docenteRecebido.endereco.bairro;
+      this.docente.endereco.referencia = docenteRecebido.endereco.referencia;
+      this.docente.materias = docenteRecebido.materias;
+    }
   }
 
   docente = {
@@ -77,14 +97,21 @@ export class CadastrodocComponent {
       ) {
         this.loginService.cadastrar(this.docente)
         alert('Docente cadastrado com sucesso!')
-        
+
       } else {
         alert('Por favor, preencha todos os campos em "endereço".')
       }
     } else {
       alert('Por favor, confira os campos.')
     }
+  }
 
+  excluir(docente: any) {
+    // this.loginService.excluir(docente);
+  }
+
+  salvar() {
+    // this.loginService.salvar(docente);
   }
 
   buscaCep() {
@@ -107,7 +134,7 @@ export class CadastrodocComponent {
   validaEmail(email: string) {
     let parametroRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-    if(!parametroRegex.test(email)) {
+    if (!parametroRegex.test(email)) {
     }
     return parametroRegex.test(email);
   }
@@ -115,4 +142,5 @@ export class CadastrodocComponent {
   validaCpf(cpf: string) {
 
   }
+
 }

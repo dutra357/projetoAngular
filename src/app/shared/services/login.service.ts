@@ -6,123 +6,197 @@ import { Injectable } from '@angular/core';
 export class LoginService {
 
   constructor() { }
-  usuarioLogado!: {email: string, nome: string, perfil: string}
+  usuarioLogado!: { email: string, nome: string, perfil: string }
 
-  login(usuario: {email: string, senha: string}): boolean {
-    for(let usr of this.usuarios) {
-      if((usr.email === usuario.email) && (usr.senha === usuario.senha)) {
+  login(usuario: { email: string, senha: string }): boolean {
+    for (let usr of this.usuarios) {
+      if ((usr.email === usuario.email) && (usr.senha === usuario.senha)) {
         sessionStorage.setItem('usuarioLogado', JSON.stringify(usuario.email));
         alert('Usuário logado com sucesso!');
         return true;
       }
     }
     return false;
-}
-
-getLogado(email: any) {
-  for(let usr of this.usuarios) {
-    if (usr.email == email) {
-      return usr;
-    }
   }
-  return this.usuarioLogado;
-}
 
-getAlunos() {
-  let alunos = [];
-  for(let usr of this.usuarios) {
-    if (usr.perfil == 'Aluno') {
-      alunos.push(usr);
+  getLogado(email: any) {
+    for (let usr of this.usuarios) {
+      if (usr.email == email) {
+        return usr;
+      }
     }
+    return this.usuarioLogado;
   }
-  return alunos;
-}
 
-getDocentes() {
-  let docentes = [];
-  for(let usr of this.usuarios) {
-    if (usr.perfil == 'Docente') {
-      docentes.push(usr);
+  getAlunos() {
+    let alunos = [];
+    for (let usr of this.usuarios) {
+      if (usr.perfil == 'Aluno') {
+        alunos.push(usr);
+      }
     }
+    return alunos;
   }
-  return docentes;
-}
 
-getTotalAlunos() {
-  let total = 0;
-  for(let usr of this.usuarios) {
-    if (usr.perfil == 'Aluno') {
-      total++;
+  getDocentes() {
+    let docentes = [];
+    for (let usr of this.usuarios) {
+      if (usr.perfil == 'Docente') {
+        docentes.push(usr);
+      }
     }
+    return docentes;
   }
-  return total;
-}
 
-getTotalDocentes() {
-  let total = 0;
-  for(let usr of this.usuarios) {
-    if (usr.perfil == 'Docente') {
-      total++;
+  getTotalAlunos() {
+    let total = 0;
+    for (let usr of this.usuarios) {
+      if (usr.perfil == 'Aluno') {
+        total++;
+      }
     }
+    return total;
   }
-  return total;
-}
 
-getTotalTurmas() {
-  let total = 0;
-  for(let usr of this.usuarios) {
-    if (usr.perfil == 'Turma') {
-      total++;
+  getTotalDocentes() {
+    let total = 0;
+    for (let usr of this.usuarios) {
+      if (usr.perfil == 'Docente') {
+        total++;
+      }
     }
+    return total;
   }
-  return total;
-}
 
-getPerfil(email: string) {
-  for(let usr of this.usuarios) {
-    if (usr.email == email) {
-      return usr.perfil;
+  getTotalTurmas() {
+    let total = 0;
+    for (let usr of this.usuarios) {
+      if (usr.perfil == 'Turma') {
+        total++;
+      }
     }
+    return total;
   }
-  return 'null';
-}
 
-logout() {
-  sessionStorage.removeItem('usuarioLogado');
-  window.location.href = "/login";
-}
+  getPerfil(email: string) {
+    for (let usr of this.usuarios) {
+      if (usr.email == email) {
+        return usr.perfil;
+      }
+    }
+    return 'null';
+  }
 
-cadastrar(usuario: any) {
-  usuario.id = ++this.countId;
-  this.usuarios.push(usuario);
-}
+  logout() {
+    sessionStorage.removeItem('usuarioLogado');
+    window.location.href = "/login";
+  }
+
+  cadastrar(usuario: any) {
+    usuario.id = ++this.countId;
+    this.usuarios.push(usuario);
+  }
+
+  excluir(usuario: any) {
+    let i = 0;
+    let index = 0
+    for (let usr of this.usuarios) {
+      i++;
+      if(usuario.id == usr.id) {
+        index = i;
+      }
+    }
+    
+    // if (index > -1) { // only splice array when item is found
+    //   this.usuarios.splice(index, 1); // 2nd parameter means remove one item only
+    // }
+    console.log(usuario)
+  }
+
+  salvar(usuario: any) {
+    // mock
+  }
 
 
   countId = 11;
   usuarios = [
     {
       id: 1,
+      nome: 'Jorge Saraiva',
+      genero: 'Masculino',
+      nascimento: '01-01-1983',
+      cpf: '',
+      rg: '',
+      idade: '41',
+      expeditor: '',
+      naturalidade: '',
+      estadoCivil: '',
+      telefone: '',
       email: 'adm@adm.com',
       senha: 'adm',
-      nome: 'Jorge Saraiva',
-      idade: '41',
-      perfil: 'Administrador'
+      perfil: 'Administrador',
+      endereco: {
+        cep: '',
+        cidade: '',
+        logradouro: '',
+        numero: '',
+        complemento: '',
+        bairro: '',
+        referencia: '',
+      },
+      materias: {}
     },
     {
       id: 2,
+      nome: 'Paulo da Silva',
+      genero: '',
+      nascimento: '1983-10-10',
+      cpf: '',
+      rg: '',
+      idade: '40',
+      expeditor: '',
+      naturalidade: '',
+      estadoCivil: '',
+      telefone: '',
       email: 'paulo@docente.com',
       senha: 'paulo123',
-      nome: 'Paulo da Silva',
-      idade: '40',
-      perfil: 'Docente'
+      perfil: 'Docente',
+      endereco: {
+        cep: '',
+        cidade: '',
+        logradouro: '',
+        numero: '',
+        complemento: '',
+        bairro: '',
+        referencia: '',
+      },
+      materias: {}
     },
     {
       id: 3,
-      email: 'maria@gmail.com',
+      nome: 'Maria Silverio',
+      genero: '',
+      nascimento: '',
+      cpf: '',
+      rg: '',
+      idade: '45',
+      expeditor: '',
+      naturalidade: '',
+      estadoCivil: '',
+      telefone: '',
+      email: 'maria@docente.com',
       senha: 'maria123',
-      nome: 'Maria da Silva',
-      idade: '51',
-      perfil: 'Docente'
+      perfil: 'Docente',
+      endereco: {
+        cep: '',
+        cidade: '',
+        logradouro: '',
+        numero: '',
+        complemento: '',
+        bairro: '',
+        referencia: '',
+      },
+      materias: {}
     },
     {
       id: 4,
@@ -141,7 +215,7 @@ cadastrar(usuario: any) {
       perfil: 'Aluno'
     },
     {
-      id: 6, 
+      id: 6,
       email: 'manuela@gmail.com',
       senha: 'manuela123',
       nome: 'Manuela das Neves',
@@ -156,7 +230,7 @@ cadastrar(usuario: any) {
       idade: '22',
       perfil: 'Aluno'
     },
-    { 
+    {
       id: 8,
       email: 'roberto@gmail.com',
       senha: 'roberto123',
