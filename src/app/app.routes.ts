@@ -11,6 +11,7 @@ import { cadastroturmaGuard } from './shared/guards/cadastroturma.guard';
 import { CadastroavaComponent } from './pages/cadastroava/cadastroava.component';
 import { cadastroavaGuard } from './shared/guards/cadastroava.guard';
 import { ListadocComponent } from './pages/listadoc/listadoc.component';
+import { NotasComponent } from './pages/notas/notas.component';
 
 export const routes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -36,5 +37,6 @@ export const routes: Routes = [
         path: 'listadoc', component: ListadocComponent,
         canActivate: [cadastrodocGuard]
     },
+    {path: 'notas', component: NotasComponent},
     {path: '**', redirectTo: 'login'},
 ];
