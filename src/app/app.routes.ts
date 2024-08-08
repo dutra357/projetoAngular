@@ -8,6 +8,8 @@ import { CadastroalComponent } from './pages/cadastroal/cadastroal.component';
 import { cadastroalGuard } from './shared/guards/cadastroal.guard';
 import { CadastroturmaComponent } from './pages/cadastroturma/cadastroturma.component';
 import { cadastroturmaGuard } from './shared/guards/cadastroturma.guard';
+import { CadastroavaComponent } from './pages/cadastroava/cadastroava.component';
+import { cadastroavaGuard } from './shared/guards/cadastroava.guard';
 
 export const routes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -24,6 +26,10 @@ export const routes: Routes = [
     {
         path: 'cadastroturma', component: CadastroturmaComponent,
         canActivate: [cadastroturmaGuard]
+    },
+    {
+        path: 'cadastroava', component: CadastroavaComponent,
+        canActivate: [cadastroavaGuard]
     },
     {path: '**', redirectTo: 'login'},
 ];
