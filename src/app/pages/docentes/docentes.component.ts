@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MenuComponent } from "../../shared/menu/menu.component";
 import { ToolbarComponent } from "../../shared/toolbar/toolbar.component";
 import { CommonModule } from '@angular/common';
 import { LoginService } from '../../shared/services/login.service';
-import { CardAlunoComponent } from "../../shared/card-aluno/card-aluno.component";
+import { CardAlunoComponent } from "../../shared/card/card.component";
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-docentes',
@@ -16,6 +17,7 @@ import { FormsModule } from '@angular/forms';
 export class DocentesComponent {
 
   constructor(private loginService: LoginService) { }
+  router = inject(Router);
 
   isAdm: boolean = false;
   parametro: string = '';
@@ -47,6 +49,15 @@ export class DocentesComponent {
       );
     } else {
       this.alunosFiltrados = [...this.alunos];
+    }
+  }
+
+  buttonClicked(event: Event) {
+    if(this.isAdm == true) {
+      this.router.navigate(['/cadastroal'], { state: { event } });
+    } else {
+      console.log('lancar notas!')
+      // this.router.navigate(['/lancarnotas'], { state: { event } });
     }
   }
 }
