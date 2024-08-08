@@ -18,8 +18,9 @@ export class ToolbarComponent {
   usuarioPerfil : string = '';
 
   onInit() {
-    this.usuarioNome = this.loginService.getNome();
-    this.usuarioPerfil = this.loginService.getPerfil();
+    let email = JSON.parse(sessionStorage['usuarioLogado']);
+    this.usuarioNome = this.loginService.getLogado(email).nome;
+    this.usuarioPerfil = this.loginService.getLogado(email).perfil;
     
     console.log(this.usuarioNome);
     console.log('this.usuarioNome');

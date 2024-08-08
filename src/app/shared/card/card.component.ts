@@ -1,13 +1,14 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { LoginService } from '../services/login.service';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-card-aluno',
+  selector: 'app-card',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './card-aluno.component.html',
-  styleUrl: './card-aluno.component.scss'
+  templateUrl: './card.component.html',
+  styleUrl: './card.component.scss'
 })
 export class CardAlunoComponent {
 
@@ -15,11 +16,16 @@ export class CardAlunoComponent {
   isDocente: boolean = false;
 
   constructor(private loginService: LoginService) { }
+  router = inject(Router);
 
   @Input() nome: string = '';
   @Input() idade: string = '';
   @Input() contato: string = '';
+  @Input() id: string = '';
 
+  @Input() usuarioSelecionado: any;
+  
+  @Output('buttonClick') evento = new EventEmitter();
 
   ngOnInit() {
     let email = JSON.parse(sessionStorage['usuarioLogado']);
@@ -30,12 +36,11 @@ export class CardAlunoComponent {
     }
   }
 
-  verMais() {
-    console.log('IMPLEMENTAR paraq ADM!')
-  }
-
-  lancarNota() {
-    console.log('IMPLEMENTAR paraq DOCENTE!')
+  acao() {
+    if (this.router.url === '/listadoc') {
+      this.evento.emit(this.usuarioSelecionado);
+    } else if (this.router.url === '/docentes') {
+      this.evento.emit(this.usuarioSelecionado);
     }
-
+  }
 }

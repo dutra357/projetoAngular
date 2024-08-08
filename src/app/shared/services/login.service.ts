@@ -78,12 +78,13 @@ getTotalTurmas() {
   return total;
 }
 
-getNome() {
-  return this.usuarioLogado.nome;
-}
-
-getPerfil() {
-  return this.usuarioLogado.perfil;
+getPerfil(email: string) {
+  for(let usr of this.usuarios) {
+    if (usr.email == email) {
+      return usr.perfil;
+    }
+  }
+  return 'null';
 }
 
 logout() {

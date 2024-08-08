@@ -3,7 +3,7 @@ import { MenuComponent } from "../../shared/menu/menu.component";
 import { ToolbarComponent } from "../../shared/toolbar/toolbar.component";
 import { CommonModule } from '@angular/common';
 import { LoginService } from '../../shared/services/login.service';
-import { CardAlunoComponent } from "../../shared/card-aluno/card-aluno.component";
+import { CardAlunoComponent } from "../../shared/card/card.component";
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -48,5 +48,11 @@ export class DocentesComponent {
     } else {
       this.alunosFiltrados = [...this.alunos];
     }
+  }
+
+  buttonClicked(event: Event) {
+    // const parametro = (event.target as HTMLInputElement).value;
+    // this.buscar(parametro);
+    console.log(event)
   }
 }

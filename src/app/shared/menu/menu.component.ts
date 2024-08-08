@@ -19,7 +19,8 @@ export class MenuComponent {
   constructor(private loginService: LoginService) { }
 
   onInit() {
-    this.perfil = this.loginService.getPerfil();
+    let email = JSON.parse(sessionStorage['usuarioLogado']);
+    this.perfil = this.loginService.getLogado(email).perfil;
     switch (this.perfil) {
       case 'Aluno':
         this.isAluno = true;

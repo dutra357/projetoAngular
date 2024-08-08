@@ -8,30 +8,20 @@
 
             <div class="pesquisa">
                 <label for="busca">Pesquisar:</label>
-                <input type="text" name="busca" [(ngModel)]="parametro">
+                <input type="text" name="busca" [(ngModel)]="parametro" (keyup.enter)="buscar(parametro)">
                 <button (click)="buscar(parametro)">Buscar</button>
             </div>
 
             <section class="cards">
 
-                <div *ngFor="let aluno of alunosFiltrados; let index=index">
+                <div *ngFor="let docente of docentesFiltrados; let index=index">
 
-                    <!-- <app-card-aluno [nome]="aluno.nome" [idade]="aluno.idade"
-                    [contato]="aluno.email"></app-card-aluno> -->
+                    <app-card (buttonClick)="buttonClicked($event)" [nome]="docente.nome" [idade]="docente.idade"
+                    [contato]="docente.email" [id]="docente.id" [usuarioSelecionado]="docente"></app-card>
 
                 </div>
             </section>
-
         </section>
-
-        <div class="estatisticas" *ngIf="isAdm">
-            <h4>Estatísticas de cadastro:</h4>
-            <p>Turmas: {{totalTurmas}}</p>
-            <p>Docentes: {{totalDocentes}} </p>
-            <p>Alunos: {{totalAlunos}}</p>
-
-        </div>
-
     </div>
 
 </div>

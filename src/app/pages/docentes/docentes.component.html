@@ -16,8 +16,8 @@
 
                 <div *ngFor="let aluno of alunosFiltrados; let index=index">
 
-                    <app-card-aluno [nome]="aluno.nome" [idade]="aluno.idade"
-                    [contato]="aluno.email"></app-card-aluno>
+                    <app-card (buttonClick)="buttonClicked($event)" [nome]="aluno.nome" [idade]="aluno.idade"
+                    [contato]="aluno.email" [usuarioSelecionado]="aluno"></app-card>
 
                 </div>
             </section>

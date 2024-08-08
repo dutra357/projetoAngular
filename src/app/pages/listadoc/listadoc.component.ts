@@ -1,51 +1,46 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { LoginService } from '../../shared/services/login.service';
 import { ToolbarComponent } from "../../shared/toolbar/toolbar.component";
 import { MenuComponent } from "../../shared/menu/menu.component";
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { CardAlunoComponent } from "../../shared/card/card.component";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-listadoc',
   standalone: true,
-  imports: [ToolbarComponent, MenuComponent, CommonModule, FormsModule],
+  imports: [ToolbarComponent, MenuComponent, CommonModule, FormsModule, CardAlunoComponent],
   templateUrl: './listadoc.component.html',
   styleUrl: './listadoc.component.scss'
 })
 export class ListadocComponent {
 
   constructor(private loginService: LoginService) { }
+  router = inject(Router);
 
-  isAdm: boolean = false;
   parametro: string = '';
 
-  totalDocentes: string = '';
-  totalAlunos: string = '';
-  totalTurmas: string = '';
-
-  alunos = this.loginService.getAlunos();
-  alunosFiltrados: any;
+  docentes = this.loginService.getDocentes();
+  docentesFiltrados: any;
 
   ngOnInit() {
-    let email = JSON.parse(sessionStorage['usuarioLogado']);
-    if (this.loginService.getLogado(email).perfil == 'Administrador') {
-      this.isAdm = true;
-    }
-    this.alunosFiltrados = [...this.alunos];
-
-   this.totalAlunos = this.loginService.getTotalAlunos().toString();
-   this.totalDocentes = this.loginService.getTotalDocentes().toString();
-   this.totalTurmas = this.loginService.getTotalTurmas().toString();
+    this.docentesFiltrados = [...this.docentes];
   }
 
   buscar(parametro: string) {
     if (parametro) {
-      this.alunosFiltrados = this.alunos.filter(aluno =>
-        aluno.nome.toLowerCase().includes(this.parametro.toLowerCase()) ||
-        aluno.email.toLowerCase().includes(this.parametro.toLowerCase())
+      this.docentesFiltrados = this.docentes.filter(docente =>
+        docente.nome.toLowerCase().includes(this.parametro.toLowerCase()) ||
+        docente.email.toLowerCase().includes(this.parametro.toLowerCase()) ||
+        docente.id.toString() == this.parametro
       );
     } else {
-      this.alunosFiltrados = [...this.alunos];
+      this.docentesFiltrados = [...this.docentes];
     }
+  }
+
+  buttonClicked(event: Event) {
+    this.router.navigate(['/cadastrodoc'], { state: { event } });
   }
 }

@@ -10,16 +10,21 @@
     </div>
 
     <div class="box-descricao">
+
+        <p>
+            Cadastro (id): <b>{{id}}</b>
+        </p>
+        
         <p>
             Idade: {{idade}}
         </p>
 
         <p>
-            Contato: {{contato}}
+            Email: {{contato}}
         </p>
 
-        <button *ngIf="isAdm" (click)="verMais()">Ver mais</button>
-        <button *ngIf="isDocente" (click)="lancarNota()">Lançar nota</button>
+        <button *ngIf="isAdm" (click)="acao()">Ver mais</button>
+        <button *ngIf="isDocente" (click)="acao()">Lançar nota</button>
 
     </div>
 

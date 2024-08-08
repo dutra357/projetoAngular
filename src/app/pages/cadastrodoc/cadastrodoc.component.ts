@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ToolbarComponent } from "../../shared/toolbar/toolbar.component";
 import { MenuComponent } from "../../shared/menu/menu.component";
 import { FormsModule } from '@angular/forms';
 import { LoginService } from '../../shared/services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastrodoc',
@@ -13,7 +14,16 @@ import { LoginService } from '../../shared/services/login.service';
 })
 export class CadastrodocComponent {
 
-  constructor(private loginService: LoginService) { }
+  router = inject(Router);
+
+  constructor(private loginService: LoginService) {
+    let docenteRecebido = this.router.getCurrentNavigation()?.extras.state;
+    console.log(docenteRecebido)
+
+    // if (parametro) {
+    //   this.buscar(parametro?.['parametro']);
+    // }
+  }
 
   docente = {
     id: '',
@@ -40,7 +50,6 @@ export class CadastrodocComponent {
     },
     materias: {}
   }
-
 
   cadastrar() {
     let inputs = document.getElementsByTagName("input");
