@@ -1,3 +1,8 @@
+.pagina {
+    display: flex;
+    flex-direction: row;
+}
+
 .coluna {
     display: flex;
     flex-direction: column;
@@ -6,32 +11,22 @@
 .linha {
     display: flex;
     flex-direction: row;
-}
-
-.central {
-    display: flex;
-    flex-direction: row;
-    height:fit-content;
-    flex-wrap: wrap;
-    width: 75%;
-    justify-content: center;
-    margin-top: 40px;
+    margin: 20px;
 }
 
 .conteudo {
-    border: 1px solid black;
+    border: 1px solid rgb(180, 211, 247);
     margin: 5px;
     display: flex;
     flex-direction: column;
     padding: 5px;
     font-size: 20px;
-    width: 30%;
+    width: fit-content;
 }
 
 tbody tr:hover {
-    color: rgb(2, 0, 138);
+    background-color: rgb(180, 211, 247);;
     cursor: pointer;
-    text-decoration:underline;
 }
 
 table {
@@ -60,7 +55,7 @@ td {
 }
 
 img:hover {
-    box-shadow: 5px 5px rgb(2, 0, 138) 
+    box-shadow: 3px 3px rgb(180, 211, 247);
 }
 
 .resultado {

@@ -40,7 +40,7 @@ export const routes: Routes = [
     },
     {
         path: 'notas', component: NotasComponent,
-        // canActivate: [notasGuard]
+        canActivate: [notasGuard]
     },
     {path: '**', redirectTo: 'login'},
 ];

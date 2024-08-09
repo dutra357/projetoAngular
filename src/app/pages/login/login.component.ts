@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { LoginService } from '../../shared/services/login.service';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 export class LoginComponent {
 
   constructor(private loginService: LoginService) { }
+  router = inject(Router);
 
   login = {
     email: "",
@@ -22,16 +23,16 @@ export class LoginComponent {
 
   entrar() {
     if (this.login.email && this.login.senha) {
-      if(this.loginService.login(this.login)) {
-
-        //window.location.href = "/home";
-        //this.router.navigate(["alunos"])
-        console.log('Redirecionando...!')
-
+      if (this.loginService.login(this.login)) {
+        if (this.loginService.getLogado(this.login.email).perfil == 'Administrador' ||
+          this.loginService.getLogado(this.login.email).perfil == 'Docente') {
+          this.router.navigate(['/docentes']);
+        } else {
+          this.router.navigate(['/alunos']);
+        }
       } else {
         alert('Usuário ou senha incorretos!')
       }
-
     } else {
       alert('Campos em branco!');
     }

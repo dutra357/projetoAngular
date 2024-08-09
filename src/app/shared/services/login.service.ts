@@ -98,19 +98,14 @@ export class LoginService {
   }
 
   excluir(usuario: any) {
-    let i = 0;
-    let index = 0
-    for (let usr of this.usuarios) {
-      i++;
-      if(usuario.id == usr.id) {
-        index = i;
-      }
-    }
-    
-    // if (index > -1) { // only splice array when item is found
-    //   this.usuarios.splice(index, 1); // 2nd parameter means remove one item only
+    // let i = 0;
+    // let index = 0
+    // for (let usr of this.usuarios) {
+    //   i++;
+    //   if(usuario.id == usr.id) {
+    //     index = i;
+    //   }
     // }
-    console.log(usuario)
   }
 
   salvar(usuario: any) {

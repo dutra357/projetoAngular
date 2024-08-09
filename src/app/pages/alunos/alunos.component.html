@@ -1,36 +1,33 @@
-<div class="coluna">
-    <app-toolbar></app-toolbar>
+<div class="pagina">
+    <app-menu></app-menu>
 
-    <div class="linha">
-        <app-menu></app-menu>
+    <div class="coluna">
+        <app-toolbar></app-toolbar>
 
-        <div class="central">
-
+        <div class="linha">
                 <section class="conteudo">
-                    
                     <div class="titulo">
                         <h4>Minhas avaliações</h4>
                     </div>
 
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Avaliação</th>
-                                    <th>Matéria</th>
-                                    <th>Data</th>
-                                </tr>
-                            </thead>
-    
-                            <tbody>
-                                <tr *ngFor=" let avaliacao of notas; let index=index" (click)="paginaNotas()">
-                                    <td>{{avaliacao.avaliacao}}</td>
-                                    <td>{{avaliacao.materia}}</td>
-                                    <td>{{avaliacao.data}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                </section>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Avaliação</th>
+                                <th>Matéria</th>
+                                <th>Data</th>
+                            </tr>
+                        </thead>
 
+                        <tbody>
+                            <tr *ngFor=" let avaliacao of notas; let index=index" (click)="paginaNotas()">
+                                <td>{{avaliacao.avaliacao}}</td>
+                                <td>{{avaliacao.materia}}</td>
+                                <td>{{avaliacao.data}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
 
                 <section class="conteudo">
 
@@ -43,26 +40,20 @@
                     </ul>
                 </section>
 
-
                 <section class="conteudo">
-
                     <div class="titulo">
                         <h4>Cursos extras: </h4>
                     </div>
 
                     <div class="cursos">
-                        <img *ngFor=" let curso of cursosExtras; let index=index" src="{{curso.url}}" alt="{{curso.alt}}" (click)="opcoesCurso(curso)">
+                        <img *ngFor=" let curso of cursosExtras; let index=index" src="{{curso.url}}"
+                            alt="{{curso.alt}}" (click)="opcoesCurso(curso)">
                     </div>
 
                     <div class="resultado" id="result">
-                    
+
                     </div>
-
-                
                 </section>
-
         </div>
-
-
     </div>
 </div>

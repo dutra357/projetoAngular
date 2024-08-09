@@ -10,12 +10,17 @@
 
 .central {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     height:fit-content;
     flex-wrap: wrap;
     width: 75%;
     justify-content: center;
     margin-top: 40px;
+}
+
+.info {
+    display: flex;
+    flex-direction: row;
 }
 
 .conteudo {

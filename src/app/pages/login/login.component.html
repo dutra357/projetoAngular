@@ -8,14 +8,14 @@
         <br>
         <div>
             <label for="senha">Senha:</label>
-            <input type="text" name="senha" type="password" [(ngModel)]="login.senha"
+            <input (keyup.enter)="entrar()" type="text" name="senha" type="password" [(ngModel)]="login.senha"
             #senha="ngModel" [ngModelOptions]="{standalone: true}" required>
         </div>
 
         <br>
         
         <div>
-            <button (click)="entrar()" (keyup.enter)="entrar()">Entrar</button>
+            <button (click)="entrar()">Entrar</button>
             <button (click)="criar()"> Criar conta</button>
         </div>
         <br>
