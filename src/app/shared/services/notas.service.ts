@@ -13,12 +13,13 @@ export class NotasService {
   }
 
   getTodasNotasAluno(aluno: string) {
+    let notasAluno = []
     for (let nota of this.notas) {
       if(nota.aluno == aluno) {
-        return nota;
+        notasAluno.push(nota);
       }
     }
-    return ;
+    return notasAluno;
   }
 
   getMaterias() {
@@ -39,7 +40,7 @@ export class NotasService {
     console.log(avaliacao)
   }
 
-  countId = 6;
+  countId = 7;
   notas = [
     {
       id: 1,
@@ -53,7 +54,7 @@ export class NotasService {
     },
     {
       id: 2,
-      materia: 'Matemática',
+      materia: 'Excel avançado',
       nota: '9.0',
       data: '10/08/2024',
       avaliacao: 'Prova 2',
@@ -93,13 +94,31 @@ export class NotasService {
     },
     {
       id: 6,
-      materia: 'Inglês',
+      materia: 'Inglês técnico',
       nota: '8.8',
       data: '01/06/2024',
       avaliacao: 'Prova 1',
       turma: 'Turma JAVA',
       docente: 'Maria Silverio',
       aluno: 'João Rodrigues'
+    },
+    {
+      id: 7,
+      materia: 'Quarkus',
+      nota: '10.0',
+      data: '11/07/2024',
+      avaliacao: 'Prova',
+      turma: 'Turma JAVA',
+      docente: 'Maria Silverio',
+      aluno: 'João Rodrigues'
     }
   ]
+
+  getDataAjustada(data: string) {
+    const array = data.split("/");
+    let dia = array[0];
+    let mes = array[1];
+    let ano = array[2];
+    return ano + "-" + mes + "-" + dia;
+  }
 }

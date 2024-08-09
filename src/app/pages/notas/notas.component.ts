@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { ToolbarComponent } from "../../shared/toolbar/toolbar.component";
 import { MenuComponent } from "../../shared/menu/menu.component";
 import { NotasService } from '../../shared/services/notas.service';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { LoginService } from '../../shared/services/login.service';
 
 @Component({
@@ -17,15 +17,18 @@ export class NotasComponent {
   titulo: string = 'HOME Aluno - Bem-vindo!';
   notas: any;
 
-
   constructor(private notasService: NotasService) { }
   loginService = inject(LoginService)
+
 
   ngOnInit() {
     let email = JSON.parse(sessionStorage['usuarioLogado']);
     let nome = this.loginService.getLogado(email).nome;
     this.notas = this.notasService.getTodasNotasAluno(nome);
-
+    
+    for(let nota of this.notas) {
+      console.log(this.notasService.getDataAjustada(nota.data))
+    }
   }
 
   paginaNotas() {

@@ -56,8 +56,7 @@ export class DocentesComponent {
     if(this.isAdm == true) {
       this.router.navigate(['/cadastroal'], { state: { event } });
     } else {
-      console.log('lancar notas!')
-      // this.router.navigate(['/CADASTRODENOTAS'], { state: { event } });
+      this.router.navigate(['/cadastroava']);
     }
   }
 }
