@@ -12,16 +12,17 @@
 .linha {
     display: flex;
     flex-direction: row;
+    margin: 20px;
 }
 
 .central {
     display: flex;
     flex-direction: column;
+
     height:fit-content;
     flex-wrap: wrap;
-    width: 75%;
+
     justify-content: center;
-    margin-top: 40px;
 }
 
 .info {
@@ -29,20 +30,34 @@
     flex-direction: row;
 }
 
-.conteudo {
-    border: 1px solid black;
-    width: fit-content;
-    align-items: center;
+.conteudo-top {
+    border: 1px solid rgb(180, 211, 247);
+    width: 50%;
     justify-content: center;
-    margin: 5px;
+
     display: flex;
     flex-direction: column;
     padding: 5px;
     font-size: 18px;
+    margin: 10px;
+}
+
+.conteudo {
+    border: 1px solid rgb(180, 211, 247);
+    width: fit-content;
+    align-items: center;
+    justify-content: center;
+
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    font-size: 18px;
+
+    margin: 10px;
 }
 
 tbody tr:hover {
-    background-color: rgb(192, 253, 233);
+    background-color: rgb(180, 211, 247);
 }
 
 th {
