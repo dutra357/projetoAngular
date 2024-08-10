@@ -1,17 +1,28 @@
 <div class="pagina">
-
     <app-menu></app-menu>
 
     <div class="centro">
         <app-toolbar></app-toolbar>
 
         <div class="conteudo">
+            
             <div class="cadastro">
 
                 <section class="principal">
                     <div class="titulo">
                         <p>Cadastrar Turma:</p>
                     </div>
+
+                    <label for="professor">* Professor:</label>
+                    <select *ngIf="isAdm" class="principal" name="professor" [(ngModel)]="avaliacao.professor"
+                        [ngModelOptions]="{standalone: true}" required>
+                        <option *ngFor="let docente of docentes; let index=index" value="{{docente.nome}}">
+                            {{docente.nome}}</option>
+                    </select>
+                    <select *ngIf="isDocente" name="professor" [(ngModel)]="avaliacao.professor"
+                        [ngModelOptions]="{standalone: true}" required>
+                        <option selected value="{{docenteLogado}}">{{docenteLogado}}</option>
+                    </select>
 
                     <label for="nomemateria">* Matéria:</label>
                     <select name="nomemateria" [(ngModel)]="avaliacao.nomeMateria"
@@ -27,19 +38,6 @@
                     <label for="data" id="inicio">* Data:</label>
                     <input type="date" name="data" [(ngModel)]="avaliacao.data" [ngModelOptions]="{standalone: true}"
                         required>
-
-                    <label for="professor">* Professor:</label>
-                    <select *ngIf="isAdm" class="principal" name="professor" [(ngModel)]="avaliacao.professor"
-                        [ngModelOptions]="{standalone: true}" required>
-                        <option *ngFor="let docente of docentes; let index=index" value="{{docente.nome}}">
-                            {{docente.nome}}</option>
-                    </select>
-
-
-                    <select *ngIf="isDocente" name="professor" [(ngModel)]="avaliacao.professor"
-                        [ngModelOptions]="{standalone: true}" required>
-                        <option selected value="{{docenteLogado}}">{{docenteLogado}}</option>
-                    </select>
 
                     <label for="aluno">* Aluno:</label>
                     <select name="professor" [(ngModel)]="avaliacao.aluno" [ngModelOptions]="{standalone: true}"

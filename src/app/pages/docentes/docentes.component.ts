@@ -6,6 +6,7 @@ import { LoginService } from '../../shared/services/login.service';
 import { CardAlunoComponent } from "../../shared/card/card.component";
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TurmasService } from '../../shared/services/turmas.service';
 
 @Component({
   selector: 'app-docentes',
@@ -18,13 +19,14 @@ export class DocentesComponent {
 
   constructor(private loginService: LoginService) { }
   router = inject(Router);
+  turmasService = inject(TurmasService)
 
   isAdm: boolean = false;
   parametro: string = '';
 
   totalDocentes: string = '';
   totalAlunos: string = '';
-  totalTurmas: string = '';
+  totalTurmas: number = 0;
 
   alunos = this.loginService.getAlunos();
   alunosFiltrados: any;
@@ -38,7 +40,8 @@ export class DocentesComponent {
 
    this.totalAlunos = this.loginService.getTotalAlunos().toString();
    this.totalDocentes = this.loginService.getTotalDocentes().toString();
-   this.totalTurmas = this.loginService.getTotalTurmas().toString();
+
+   this.totalTurmas = this.turmasService.getStats();
   }
 
   buscar(parametro: string) {

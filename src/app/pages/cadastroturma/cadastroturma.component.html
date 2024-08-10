@@ -13,6 +13,18 @@
                         <p>Cadastrar Turma:</p>
                     </div>
 
+                    <label for="professor">* Professor:</label>
+                    <select *ngIf="isAdm" class="principal" name="professor" [(ngModel)]="turma.professor"
+                        [ngModelOptions]="{standalone: true}" required>
+                        <option *ngFor="let docente of docentes; let index=index" value="{{docente.nome}}">
+                            {{docente.nome}}</option>
+                    </select>
+                    <select *ngIf="isDocente" name="professor" [(ngModel)]="turma.professor"
+                        [ngModelOptions]="{standalone: true}" required>
+                        <option selected value="{{docenteLogado}}">{{docenteLogado}}</option>
+                    </select>
+
+
                     <label for="nome">* Nome:</label>
                     <input type="text" name="nome" [(ngModel)]="turma.nome" [ngModelOptions]="{standalone: true}"
                         required>
@@ -22,25 +34,12 @@
                         required>
 
                     <label for="datafim">* Data de término:</label>
-                    <input type="date" name="datafim" [(ngModel)]="turma.dataTermino" [ngModelOptions]="{standalone: true}"
-                        required>
+                    <input type="date" name="datafim" [(ngModel)]="turma.dataTermino"
+                        [ngModelOptions]="{standalone: true}" required>
 
                     <label for="horario">* Horário:</label>
                     <input type="time" name="horario" [(ngModel)]="turma.horario" [ngModelOptions]="{standalone: true}"
                         required>
-
-                    <label for="professor">* Professor:</label>
-                    <select *ngIf="isAdm" class="principal" name="professor" [(ngModel)]="turma.professor"
-                        [ngModelOptions]="{standalone: true}" required>
-                        <option *ngFor="let docente of docentes; let index=index" value="{{docente.nome}}">
-                            {{docente.nome}}</option>
-                    </select>
-
-
-                    <select *ngIf="isDocente" name="professor" [(ngModel)]="turma.professor"
-                        [ngModelOptions]="{standalone: true}" required>
-                        <option selected value="{{docenteLogado}}">{{docenteLogado}}</option>
-                    </select>
 
                     <div>
                         <button (click)="cadastrar()">Cadastrar</button>

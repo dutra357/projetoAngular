@@ -11,6 +11,11 @@
 }
 
 .cadastro {
+    border: 1px solid rgb(180, 211, 247);
+    margin: 20px;
+}
+
+.cadastro {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -32,10 +37,6 @@ input {
 select {
     margin-bottom: 15px;
     width: 250px;
-}
-
-option {
-    padding: 2px;
 }
 
 .titulo {

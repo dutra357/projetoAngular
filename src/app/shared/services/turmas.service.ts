@@ -7,10 +7,16 @@ export class TurmasService {
 
   constructor() { }
 
-
-
   getTurmas() {
     return this.turmas;
+  }
+
+  getStats() {
+    let qty = 0;
+    for(let turma of this.turmas) {
+      ++qty;
+    }
+    return qty;
   }
 
   getTurmaById (id: number) {

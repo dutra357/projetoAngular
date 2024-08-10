@@ -1,54 +1,57 @@
-<div class="coluna">
-    <app-toolbar></app-toolbar>
+<div class="pagina">
+    <app-menu></app-menu>
 
-    <div class="linha">
-        <app-menu></app-menu>
+    <div class="coluna">
+        <app-toolbar></app-toolbar>
+    
 
-        <div class="central">
-            <div class="info">
-                <section class="conteudo">
-                    <div><p>Dados do aluno:</p></div>
-                    <div>
-                        <p>Nome: </p>
-                        <p></p>
-                    </div>
-                </section>
+        <div class="linha">
+                <div class="central">
+                <div class="info">
+                    <section class="conteudo">
+                        <div><p>Dados do aluno:</p></div>
+                        <div>
+                            <p>Nome: </p>
+                            <p></p>
+                        </div>
+                    </section>
+        
+                    <section class="conteudo">
+                        Dados da turma:
+                    </section>
+                </div>
     
                 <section class="conteudo">
-                    Dados da turma:
+                    <div class="titulo">
+                        <h4>Minhas notas</h4>
+                    </div>
+    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Turma</th>
+                                <th>Docente</th>
+                                <th>Matéria</th>
+                                <th>Avaliação</th>
+                                <th>Data</th>
+                                <th>Nota</th>
+                            </tr>
+                        </thead>
+    
+                        <tbody>
+                            <tr *ngFor=" let avaliacao of notas; let index=index" (click)="paginaNotas()">
+                                <td>{{avaliacao.turma}}</td>
+                                <td>{{avaliacao.docente}}</td>
+                                <td>{{avaliacao.materia}}</td>
+    
+                                <td>{{avaliacao.avaliacao}}</td>
+                                <td>{{avaliacao.data}}</td>
+                                <td><b>{{avaliacao.nota}}</b></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </section>
             </div>
-
-            <section class="conteudo">
-                <div class="titulo">
-                    <h4>Minhas notas</h4>
-                </div>
-
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Turma</th>
-                            <th>Docente</th>
-                            <th>Matéria</th>
-                            <th>Avaliação</th>
-                            <th>Data</th>
-                            <th>Nota</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <tr *ngFor=" let avaliacao of notas; let index=index" (click)="paginaNotas()">
-                            <td>{{avaliacao.turma}}</td>
-                            <td>{{avaliacao.docente}}</td>
-                            <td>{{avaliacao.materia}}</td>
-
-                            <td>{{avaliacao.avaliacao}}</td>
-                            <td>{{avaliacao.data}}</td>
-                            <td><b>{{avaliacao.nota}}</b></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
         </div>
     </div>
 </div>

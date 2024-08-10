@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { LoginService } from '../services/login.service';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -12,13 +13,16 @@ import { CommonModule } from '@angular/common';
 export class MenuComponent {
   perfil: string = '';
 
-  isAluno: boolean = true;
-  isDocente: boolean = true;
-  isAdm: boolean = true;
+  isAluno: boolean = false;
+  isDocente: boolean = false;
+  isAdm: boolean = false;
+
+  recolhido: boolean = true;
 
   constructor(private loginService: LoginService) { }
+  router = inject(Router);
 
-  onInit() {
+  ngOnInit() {
     let email = JSON.parse(sessionStorage['usuarioLogado']);
     this.perfil = this.loginService.getLogado(email).perfil;
     switch (this.perfil) {
@@ -36,41 +40,44 @@ export class MenuComponent {
     }
   }
 
-  logout() {
-    this.loginService.logout();
-    window.location.href = "/login";
+  recolher() {
+    this.recolhido = !this.recolhido;
   }
 
+  logout() {
+    this.loginService.logout();
+  }
+
+
   notas() {
-    //router-passar alunoLogado
     window.location.href = "/notas";
   }
 
   listarDocentes() {
-    window.location.href = "/listaDocentes";
+    window.location.href = "/listadoc";
   }
 
   cadastroAvaliacao() {
-    window.location.href = "/cadastroNotas";
+    window.location.href = "/cadastroava";
   }
 
   cadastroTurmas() {
-    window.location.href = "/cadastroTurmas";
+    window.location.href = "/cadastroturma";
   }
 
   cadastroAlunos() {
-    window.location.href = "/cadastroAlunos";
+    window.location.href = "/cadastroal";
   }
 
   cadastroDocentes() {
-    window.location.href = "/cadastroDocentes";
+    window.location.href = "/cadastrodoc";
   }
 
   inicio() {
     if (this.isDocente || this.isAdm ) {
-      window.location.href = "/homeAdm";
+      window.location.href = "/docentes";
     } else if (this.isAluno) {
-      window.location.href = "/homeAluno";
+      window.location.href = "/alunos";
     } else {
       alert('Por favor, faça um novo login!')
       window.location.href = "/login";

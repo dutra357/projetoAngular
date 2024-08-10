@@ -1,6 +1,12 @@
+.pagina {
+    display: flex;
+    flex-direction: row;
+}
+
 .coluna {
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .linha {
