@@ -56,8 +56,17 @@
     margin: 10px;
 }
 
+legend {
+    color: rgb(91, 168, 255);
+}
+
 tbody tr:hover {
     background-color: rgb(180, 211, 247);
+}
+
+p {
+    margin: 0px;
+    padding: 3px;
 }
 
 th {

@@ -6,7 +6,6 @@ import { Injectable } from '@angular/core';
 export class LoginService {
 
   constructor() { }
-  usuarioLogado!: { email: string, nome: string, perfil: string }
 
   login(usuario: { email: string, senha: string }): boolean {
     for (let usr of this.usuarios) {
@@ -19,13 +18,12 @@ export class LoginService {
     return false;
   }
 
-  getLogado(email: any) {
+  getLogado(email: any): any {
     for (let usr of this.usuarios) {
       if (usr.email == email) {
         return usr;
       }
     }
-    return this.usuarioLogado;
   }
 
   getAlunos() {
@@ -76,6 +74,14 @@ export class LoginService {
       }
     }
     return total;
+  }
+
+  getTurma(aluno: string): any {
+    for(let usr of this.usuarios) {
+      if (usr.nome == aluno) {
+        return usr.turma;
+      }
+    }
   }
 
   getPerfil(email: string) {
@@ -139,6 +145,7 @@ export class LoginService {
         bairro: '',
         referencia: '',
       },
+      turma: '',
       materias: {}
     },
     {
@@ -165,6 +172,7 @@ export class LoginService {
         bairro: '',
         referencia: '',
       },
+      turma: '',
       materias: {}
     },
     {
@@ -191,6 +199,7 @@ export class LoginService {
         bairro: '',
         referencia: '',
       },
+      turma: '',
       materias: {}
     },
     {
@@ -217,7 +226,8 @@ export class LoginService {
         bairro: '',
         referencia: '',
       },
-      turmas: {}
+      turma: '',
+      materias: {}
     },
     {
       id: 5,
@@ -243,7 +253,8 @@ export class LoginService {
         bairro: '',
         referencia: '',
       },
-      turmas: {}
+      turma: 'Excel',
+      materias: {}
     },
     {
       id: 6,
@@ -269,7 +280,8 @@ export class LoginService {
         bairro: '',
         referencia: '',
       },
-      turmas: {}
+      turma: 'Excel',
+      materias: {}
     },
     {
       id: 7,
@@ -295,14 +307,15 @@ export class LoginService {
         bairro: '',
         referencia: '',
       },
-      turmas: {}
+      turma: 'Java',
+      materias: {}
     },
     {
       id: 8,
       nome: 'Bob Field',
       genero: '',
       nascimento: '',
-      cpf: '',
+      cpf: '000.000.000-00',
       rg: '',
       idade: '22',
       expeditor: '',
@@ -321,7 +334,8 @@ export class LoginService {
         bairro: '',
         referencia: '',
       },
-      turmas: {}
+      turma: 'Java',
+      materias: {}
     },
     {
       id: 9,
@@ -347,7 +361,8 @@ export class LoginService {
         bairro: '',
         referencia: '',
       },
-      turmas: {}
+      turma: 'Excel',
+      materias: {}
     },
     {
       id: 10,
@@ -373,7 +388,8 @@ export class LoginService {
         bairro: '',
         referencia: '',
       },
-      turmas: {}
+      turma: 'Oracle DB PL',
+      materias: {}
     },
     {
       id: 8,
@@ -399,7 +415,8 @@ export class LoginService {
         bairro: '',
         referencia: '',
       },
-      turmas: {}
+      turma: 'Oracle DB PL',
+      materias: {}
     }
   ]
 }

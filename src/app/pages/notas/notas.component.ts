@@ -4,6 +4,7 @@ import { MenuComponent } from "../../shared/menu/menu.component";
 import { NotasService } from '../../shared/services/notas.service';
 import { CommonModule, DatePipe } from '@angular/common';
 import { LoginService } from '../../shared/services/login.service';
+import { TurmasService } from '../../shared/services/turmas.service';
 
 @Component({
   selector: 'app-notas',
@@ -17,25 +18,29 @@ export class NotasComponent {
   titulo: string = 'HOME Aluno - Bem-vindo!';
   notas: any;
 
+  aluno: string = '';
+  horario: string = '';
+  turma: string = '';
+
   constructor(private notasService: NotasService) { }
-  loginService = inject(LoginService)
+  loginService = inject(LoginService);
+  turmaService = inject(TurmasService);
 
 
   ngOnInit() {
     let email = JSON.parse(sessionStorage['usuarioLogado']);
     let nome = this.loginService.getLogado(email).nome;
+
     this.notas = this.notasService.getTodasNotasAluno(nome);
-    
-    for(let nota of this.notas) {
+
+    this.aluno = nome;
+    this.turma = this.loginService.getLogado(email).turma;
+    this.horario = this.turmaService.getHorario(this.turma);
+
+    for (let nota of this.notas) {
       console.log(this.notasService.getDataAjustada(nota.data))
     }
   }
-
-  paginaNotas() {
-    console.log('PAGINA DE NOTAS!')
-  }
-
-
 
   //Cursos extras - meramente ilustrativo
   opcoesCurso(curso: any) {

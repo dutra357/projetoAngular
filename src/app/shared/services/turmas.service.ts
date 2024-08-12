@@ -4,7 +4,6 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class TurmasService {
-
   constructor() { }
 
   getTurmas() {
@@ -33,39 +32,39 @@ export class TurmasService {
     this.turmas.push(turma);
   }
 
-  countId = 4;
+  getHorario(nomeTurma: string): any {
+    for (let turma of this.turmas) {
+      if (nomeTurma == turma.nome) {
+        return turma.horario;
+      }
+    }
+  }
+
+  countId = 3;
   turmas = [
     {
       id: 1,
-      nome: 'Turma JAVA',
+      nome: 'Java',
       dataInicio: '',
       dataTermino: '',
-      horario: '',
+      horario: '13:00',
       professor: 'Rosalvo Alves',
     },
     {
-      id: 1,
-      nome: 'Turma SpringBoot',
+      id: 2,
+      nome: 'Excel',
       dataInicio: '',
       dataTermino: '',
-      horario: '',
-      professor: 'Renato das Neves',
+      horario: '14:00',
+      professor: 'Maria Silverio',
     },
     {
-      id: 1,
-      nome: 'Turma Excel',
+      id: 3,
+      nome: 'Oracle DB PL',
       dataInicio: '',
       dataTermino: '',
-      horario: '',
-      professor: 'Florisvaldo da Luz',
-    },
-    {
-      id: 1,
-      nome: 'Turma Oracle DB PL',
-      dataInicio: '',
-      dataTermino: '',
-      horario: '',
-      professor: 'Florinda Nunes',
+      horario: '15:00',
+      professor: 'Laura da Silva',
     },
   ]
 }

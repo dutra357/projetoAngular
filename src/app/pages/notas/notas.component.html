@@ -10,26 +10,21 @@
             <div class="central">
 
                 <div class="info">
+                    <fieldset class="conteudo-top">
+                        <legend>Dados do aluno</legend>
 
-                    <section class="conteudo-top">
                         <div>
-                            <p>Dados do aluno:</p>
+                            <p>Nome: {{aluno}}</p>
+                            <p>Turma: {{turma}}</p>
+                            <p>Horário: {{horario}}</p>
                         </div>
-                        <div>
-                            <p>Nome: </p>
-                            <p>E-mail</p>
-                        </div>
-                    </section>
 
-                    <section class="conteudo-top">
-                        Dados da turma:
-                    </section>
+                    </fieldset>
                 </div>
 
-                <section class="conteudo">
-                    <div class="titulo">
-                        <h4>Minhas notas</h4>
-                    </div>
+
+                <fieldset class="conteudo">
+                    <legend>Minhas notas:</legend>
 
                     <table>
                         <thead>
@@ -44,7 +39,7 @@
                         </thead>
 
                         <tbody>
-                            <tr *ngFor=" let avaliacao of notas; let index=index" (click)="paginaNotas()">
+                            <tr *ngFor=" let avaliacao of notas; let index=index">
                                 <td>{{avaliacao.turma}}</td>
                                 <td>{{avaliacao.docente}}</td>
                                 <td>{{avaliacao.materia}}</td>
@@ -55,7 +50,8 @@
                             </tr>
                         </tbody>
                     </table>
-                </section>
+                </fieldset>
+
             </div>
         </div>
     </div>

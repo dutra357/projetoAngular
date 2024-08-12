@@ -6,6 +6,7 @@
 .coluna {
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .linha {
@@ -14,14 +15,40 @@
     margin: 20px;
 }
 
+.sub-coluna {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+}
+
+.sub-linha {
+    display: flex;
+    flex-direction: row;
+
+    height: 400px;
+    margin-bottom: 20px;
+}
+
 .conteudo {
     border: 1px solid rgb(180, 211, 247);
     margin: 5px;
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     padding: 5px;
     font-size: 20px;
-    width: fit-content;
+    width: 100%;
+}
+
+.conteudo-info {
+    border: 1px solid rgb(180, 211, 247);
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 5px;
+    font-size: 20px;
+    width: 40%;
 }
 
 tbody tr:hover {
