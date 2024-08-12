@@ -48,7 +48,8 @@ export class DocentesComponent {
     if (parametro) {
       this.alunosFiltrados = this.alunos.filter(aluno =>
         aluno.nome.toLowerCase().includes(this.parametro.toLowerCase()) ||
-        aluno.email.toLowerCase().includes(this.parametro.toLowerCase())
+        aluno.email.toLowerCase().includes(this.parametro.toLowerCase()) ||
+        aluno.telefone.toLowerCase().includes(this.parametro.toLowerCase())
       );
     } else {
       this.alunosFiltrados = [...this.alunos];

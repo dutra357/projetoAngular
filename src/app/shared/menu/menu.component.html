@@ -10,10 +10,16 @@
     <div class="menu">
         <ul>
             <li (click)="inicio()">Início</li>
+
+            <br>
+            <p>* <b>Cadastro</b></p>
             <li (click)="cadastroDocentes()" *ngIf="isAdm">Docentes</li>
             <li (click)="cadastroAlunos()" *ngIf="isAdm">Alunos</li>
             <li (click)="cadastroTurmas()" *ngIf="isAdm || isDocente">Turmas</li>
             <li (click)="cadastroAvaliacao()" *ngIf="isAdm || isDocente">Avaliações</li>
+            
+            <br>
+            <p>* <b>Listar</b></p>
             <li (click)="listarDocentes()" *ngIf="isAdm">Listar Docentes</li>
             <li (click)="notas()" *ngIf="isAluno">Notas</li>
 
