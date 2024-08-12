@@ -14,7 +14,6 @@ import { LoginService } from '../../shared/services/login.service';
 })
 export class AlunosComponent {
 
-  titulo: string = 'HOME Aluno - Bem-vindo!';
   notas: any;
   materias: any;
 
@@ -27,10 +26,10 @@ export class AlunosComponent {
   loginService = inject(LoginService);
 
   ngOnInit() {
+    let email = JSON.parse(sessionStorage['usuarioLogado']);
+
     this.notas = this.notasService.getTodasNotas();
     this.materias = this.notasService.getMaterias();
-
-    let email = JSON.parse(sessionStorage['usuarioLogado']);
 
     this.nome = this.loginService.getLogado(email).nome;
     this.email = this.loginService.getLogado(email).email;

@@ -7,6 +7,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+
 }
 
 .linha {
@@ -18,15 +19,15 @@
 .sub-coluna {
     display: flex;
     flex-direction: column;
-    width: 90%;
+    width: 100%;
 }
 
 .sub-linha {
     display: flex;
     flex-direction: row;
-
     height: 400px;
     margin-bottom: 20px;
+    flex-wrap: wrap;
 }
 
 .conteudo {
@@ -36,24 +37,17 @@
     flex-direction: column;
     flex-wrap: wrap;
     padding: 5px;
-    font-size: 20px;
-    width: 100%;
-}
-
-.conteudo-info {
-    border: 1px solid rgb(180, 211, 247);
-    margin: 5px;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    padding: 5px;
-    font-size: 20px;
-    width: 40%;
+    font-size: 18px;
+    width: 400px;
 }
 
 tbody tr:hover {
     background-color: rgb(180, 211, 247);;
     cursor: pointer;
+}
+
+legend {
+    color: rgb(91, 168, 255);
 }
 
 table {

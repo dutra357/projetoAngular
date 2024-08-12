@@ -34,6 +34,14 @@ export class NotasService {
     return saida;
   }
 
+  getAvaliacao(aluno: string): any {
+    for(let avaliacao of this.notas) {
+      if(avaliacao.aluno == aluno) {
+        return avaliacao;
+      }
+    }
+  }
+
   cadastrarAvaliacao(avaliacao: any) {
     avaliacao.id = ++this.countId;
     this.notas.push(avaliacao);
@@ -60,7 +68,7 @@ export class NotasService {
       avaliacao: 'Prova 2',
       turma: 'Turma Excel',
       docente: 'Paulo da Silva',
-      aluno: 'Manuela das Chagas'
+      aluno: 'Francisco das Neves'
     },
     {
       id: 3,
