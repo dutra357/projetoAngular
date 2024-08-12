@@ -1,27 +1,28 @@
-<div class="coluna">
-    <app-toolbar></app-toolbar>
+<div class="pagina">
+    <app-menu></app-menu>
 
-    <div class="linha">
-        <app-menu></app-menu>
-
-        <section class="conteudo">
-
-            <div class="pesquisa">
-                <label for="busca">Pesquisar:</label>
-                <input type="text" name="busca" [(ngModel)]="parametro" (keyup.enter)="buscar(parametro)">
-                <button (click)="buscar(parametro)">Buscar</button>
-            </div>
-
-            <section class="cards">
-
-                <div *ngFor="let docente of docentesFiltrados; let index=index">
-
-                    <app-card (buttonClick)="buttonClicked($event)" [nome]="docente.nome" [idade]="docente.idade"
-                    [contato]="docente.email" [id]="docente.id" [usuarioSelecionado]="docente"></app-card>
-
+    <div class="coluna">
+        <app-toolbar></app-toolbar>
+    
+        <div class="linha">
+    
+            <section class="conteudo">
+    
+                <div class="pesquisa">
+                    <label for="busca">Pesquisar:</label>
+                    <input type="text" name="busca" [(ngModel)]="parametro" (keyup.enter)="buscar(parametro)">
+                    <button (click)="buscar(parametro)">Buscar</button>
                 </div>
+    
+                <section class="cards">
+    
+                    <div *ngFor="let docente of docentesFiltrados; let index=index">
+                        <app-card (buttonClick)="buttonClicked($event)" [nome]="docente.nome" [idade]="docente.idade"
+                        [contato]="docente.email" [id]="docente.id" [usuarioSelecionado]="docente"></app-card>
+                    </div>
+                    
+                </section>
             </section>
-        </section>
+        </div>
     </div>
-
 </div>

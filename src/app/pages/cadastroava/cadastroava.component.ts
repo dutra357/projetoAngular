@@ -46,21 +46,33 @@ export class CadastroavaComponent {
       this.isDocente = true
       this.docenteLogado = this.loginService.getLogado(JSON.parse(sessionStorage['usuarioLogado'])).nome;
     }
+
+    this.avaliacao.data = new Date().toISOString().split('T')[0]
+
   }
 
   cadastrar() {
     if (
       (this.avaliacao.nomeMateria) && (this.avaliacao.data) &&
-      (this.avaliacao.nomeAvaliacao) && (this.avaliacao.professor) && 
+      (this.avaliacao.nomeAvaliacao) && (this.avaliacao.professor) &&
       (this.avaliacao.aluno) && (this.avaliacao.nota) && (parseFloat(this.avaliacao.nota) >= 0) &&
       (parseFloat(this.avaliacao.nota) <= 10)
     ) {
-
+      this.avaliacao.data = this.formataData(this.avaliacao.data);
       this.notasService.cadastrarAvaliacao(this.avaliacao)
       alert('Nota cadastrada com sucesso!')
 
     } else {
       alert('Por favor, confira os campos.')
     }
+  }
+
+  formataData(data: string) {
+    const array = data.split("-");
+    let ano = array[0];
+    let mes = array[1];
+    let dia = array[2];
+    let dataCadastro = dia + "/" + mes + "/" + ano;
+    return dataCadastro;
   }
 }

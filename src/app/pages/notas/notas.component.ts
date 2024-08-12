@@ -1,47 +1,46 @@
 import { Component, inject } from '@angular/core';
-import { MenuComponent } from "../../shared/menu/menu.component";
 import { ToolbarComponent } from "../../shared/toolbar/toolbar.component";
+import { MenuComponent } from "../../shared/menu/menu.component";
 import { NotasService } from '../../shared/services/notas.service';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { LoginService } from '../../shared/services/login.service';
+import { TurmasService } from '../../shared/services/turmas.service';
 
 @Component({
-  selector: 'app-alunos',
+  selector: 'app-notas',
   standalone: true,
-  imports: [MenuComponent, ToolbarComponent, CommonModule],
-  templateUrl: './alunos.component.html',
-  styleUrl: './alunos.component.scss'
+  imports: [ToolbarComponent, MenuComponent, CommonModule],
+  templateUrl: './notas.component.html',
+  styleUrl: './notas.component.scss'
 })
-export class AlunosComponent {
+export class NotasComponent {
 
+  titulo: string = 'HOME Aluno - Bem-vindo!';
   notas: any;
-  materias: any;
 
-  nome: string = '';
-  cpf: string = '';
-  email: string = '';
+  aluno: string = '';
+  horario: string = '';
   turma: string = '';
 
   constructor(private notasService: NotasService) { }
   loginService = inject(LoginService);
+  turmaService = inject(TurmasService);
+
 
   ngOnInit() {
     let email = JSON.parse(sessionStorage['usuarioLogado']);
+    let nome = this.loginService.getLogado(email).nome;
 
-    this.notas = this.notasService.getTodasNotas();
-    this.materias = this.notasService.getMaterias();
+    this.notas = this.notasService.getTodasNotasAluno(nome);
 
-    this.nome = this.loginService.getLogado(email).nome;
-    this.email = this.loginService.getLogado(email).email;
-    this.cpf = this.loginService.getLogado(email).cpf;
+    this.aluno = nome;
     this.turma = this.loginService.getLogado(email).turma;
+    this.horario = this.turmaService.getHorario(this.turma);
+
+    for (let nota of this.notas) {
+      console.log(this.notasService.getDataAjustada(nota.data))
+    }
   }
-
-  paginaNotas() {
-    console.log('PAGINA DE NOTAS!')
-  }
-
-
 
   //Cursos extras - meramente ilustrativo
   opcoesCurso(curso: any) {

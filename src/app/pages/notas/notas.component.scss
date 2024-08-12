@@ -7,7 +7,6 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-
 }
 
 .linha {
@@ -16,45 +15,68 @@
     margin: 20px;
 }
 
-.sub-coluna {
+.central {
     display: flex;
     flex-direction: column;
-    width: 100%;
+
+    height:fit-content;
+    flex-wrap: wrap;
+
+    justify-content: center;
 }
 
-.sub-linha {
+.info {
     display: flex;
     flex-direction: row;
-    height: 400px;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
+}
+
+.conteudo-top {
+    border: 1px solid rgb(180, 211, 247);
+    width: 50%;
+    justify-content: center;
+
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    font-size: 18px;
+    margin: 10px;
 }
 
 .conteudo {
     border: 1px solid rgb(180, 211, 247);
-    margin: 5px;
+    width: fit-content;
+    align-items: center;
+    justify-content: center;
+
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
     padding: 5px;
     font-size: 18px;
-    width: 400px;
-}
 
-tbody tr:hover {
-    background-color: rgb(180, 211, 247);;
-    cursor: pointer;
+    margin: 10px;
 }
 
 legend {
     color: rgb(91, 168, 255);
 }
 
+tbody tr:hover {
+    background-color: rgb(180, 211, 247);
+}
+
+p {
+    margin: 0px;
+    padding: 3px;
+}
+
+th {
+    padding-bottom: 10px;
+}
+
 table {
     display: block;
     justify-content: center;
-    width: 60%;
-    padding: 10px;
+    width: fit-content;
 }
 
 td {
@@ -65,24 +87,4 @@ td {
 .titulo {
     display: flex;
     justify-content: center;
-}
-
-.cursos {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-
-    justify-content: space-evenly;
-}
-
-img:hover {
-    box-shadow: 3px 3px rgb(180, 211, 247);
-}
-
-.resultado {
-    padding: 5px;
-    margin: 3px;
-    margin-top: 30px;
-    font-size: 15px;
-    width: 60%;
 }

@@ -1,0 +1,58 @@
+<div class="pagina">
+    <app-menu></app-menu>
+
+    <div class="coluna">
+        <app-toolbar></app-toolbar>
+
+
+        <div class="linha">
+
+            <div class="central">
+
+                <div class="info">
+                    <fieldset class="conteudo-top">
+                        <legend>Dados do aluno</legend>
+
+                        <div>
+                            <p>Nome: {{aluno}}</p>
+                            <p>Turma: {{turma}}</p>
+                            <p>Horário: {{horario}}</p>
+                        </div>
+
+                    </fieldset>
+                </div>
+
+
+                <fieldset class="conteudo">
+                    <legend>Minhas notas:</legend>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Turma</th>
+                                <th>Docente</th>
+                                <th>Matéria</th>
+                                <th>Avaliação</th>
+                                <th>Data</th>
+                                <th>Nota</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr *ngFor=" let avaliacao of notas; let index=index">
+                                <td>{{avaliacao.turma}}</td>
+                                <td>{{avaliacao.docente}}</td>
+                                <td>{{avaliacao.materia}}</td>
+
+                                <td>{{avaliacao.avaliacao}}</td>
+                                <td>{{avaliacao.data}}</td>
+                                <td><b>{{avaliacao.nota}}</b></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </fieldset>
+
+            </div>
+        </div>
+    </div>
+</div>

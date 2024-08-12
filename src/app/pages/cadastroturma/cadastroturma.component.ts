@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { ToolbarComponent } from "../../shared/toolbar/toolbar.component";
 import { MenuComponent } from "../../shared/menu/menu.component";
 import { LoginService } from '../../shared/services/login.service';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'app-cadastroturma',
@@ -41,16 +42,22 @@ export class CadastroturmaComponent {
       this.isDocente = true
       this.docenteLogado = this.loginService.getLogado(JSON.parse(sessionStorage['usuarioLogado'])).nome;
     }
+
+    let date = new Date();
+    this.turma.dataInicio = date.toISOString().split('T')[0]
+    this.turma.dataTermino = date.toISOString().split('T')[0]
+
+    this.turma.horario = date.getHours() + ':' + date.getMinutes();
   }
 
   cadastrar() {
     if (
       (this.turma.nome.length > 8) && (this.turma.nome.length < 65) &&
-      (this.turma.dataInicio) && (this.turma.dataTermino) && 
+      (this.turma.dataInicio) && (this.turma.dataTermino) &&
       (this.turma.horario) && (this.turma.professor)
     ) {
 
-      console.log(this.turma)
+      console.log()
       // this.turmaService.cadastrarTurma(this.turma)
       alert('Turma cadastrada com sucesso!')
 

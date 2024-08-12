@@ -6,7 +6,6 @@ import { Injectable } from '@angular/core';
 export class LoginService {
 
   constructor() { }
-  usuarioLogado!: { email: string, nome: string, perfil: string }
 
   login(usuario: { email: string, senha: string }): boolean {
     for (let usr of this.usuarios) {
@@ -19,13 +18,12 @@ export class LoginService {
     return false;
   }
 
-  getLogado(email: any) {
+  getLogado(email: any): any {
     for (let usr of this.usuarios) {
       if (usr.email == email) {
         return usr;
       }
     }
-    return this.usuarioLogado;
   }
 
   getAlunos() {
@@ -78,6 +76,14 @@ export class LoginService {
     return total;
   }
 
+  getTurma(aluno: string): any {
+    for(let usr of this.usuarios) {
+      if (usr.nome == aluno) {
+        return usr.turma;
+      }
+    }
+  }
+
   getPerfil(email: string) {
     for (let usr of this.usuarios) {
       if (usr.email == email) {
@@ -98,19 +104,14 @@ export class LoginService {
   }
 
   excluir(usuario: any) {
-    let i = 0;
-    let index = 0
-    for (let usr of this.usuarios) {
-      i++;
-      if(usuario.id == usr.id) {
-        index = i;
-      }
-    }
-    
-    // if (index > -1) { // only splice array when item is found
-    //   this.usuarios.splice(index, 1); // 2nd parameter means remove one item only
+    // let i = 0;
+    // let index = 0
+    // for (let usr of this.usuarios) {
+    //   i++;
+    //   if(usuario.id == usr.id) {
+    //     index = i;
+    //   }
     // }
-    console.log(usuario)
   }
 
   salvar(usuario: any) {
@@ -125,7 +126,7 @@ export class LoginService {
       nome: 'Jorge Saraiva',
       genero: 'Masculino',
       nascimento: '01-01-1983',
-      cpf: '',
+      cpf: '000.000.000-00',
       rg: '',
       idade: '41',
       expeditor: '',
@@ -144,6 +145,7 @@ export class LoginService {
         bairro: '',
         referencia: '',
       },
+      turma: '',
       materias: {}
     },
     {
@@ -151,7 +153,7 @@ export class LoginService {
       nome: 'Paulo da Silva',
       genero: '',
       nascimento: '1983-10-10',
-      cpf: '',
+      cpf: '000.000.000-00',
       rg: '',
       idade: '40',
       expeditor: '',
@@ -170,6 +172,7 @@ export class LoginService {
         bairro: '',
         referencia: '',
       },
+      turma: '',
       materias: {}
     },
     {
@@ -177,7 +180,7 @@ export class LoginService {
       nome: 'Maria Silverio',
       genero: '',
       nascimento: '',
-      cpf: '',
+      cpf: '000.000.000-00',
       rg: '',
       idade: '45',
       expeditor: '',
@@ -196,6 +199,7 @@ export class LoginService {
         bairro: '',
         referencia: '',
       },
+      turma: '',
       materias: {}
     },
     {
@@ -203,16 +207,16 @@ export class LoginService {
       nome: 'Laura da Silva',
       genero: '',
       nascimento: '',
-      cpf: '',
+      cpf: '000.000.000-00',
       rg: '',
-      idade: '19',
+      idade: '59',
       expeditor: '',
       naturalidade: '',
       estadoCivil: '',
       telefone: '',
       email: 'laura@gmail.com',
       senha: 'laura123',
-      perfil: 'Aluno',
+      perfil: 'Docente',
       endereco: {
         cep: '',
         cidade: '',
@@ -222,14 +226,15 @@ export class LoginService {
         bairro: '',
         referencia: '',
       },
-      turmas: {}
+      turma: '',
+      materias: {}
     },
     {
       id: 5,
       nome: 'Francisco das Neves',
       genero: '',
       nascimento: '',
-      cpf: '',
+      cpf: '000.000.000-00',
       rg: '',
       idade: '19',
       expeditor: '',
@@ -248,14 +253,15 @@ export class LoginService {
         bairro: '',
         referencia: '',
       },
-      turmas: {}
+      turma: 'Excel',
+      materias: {}
     },
     {
       id: 6,
       nome: 'Manuela das Chagas',
       genero: '',
       nascimento: '',
-      cpf: '',
+      cpf: '000.000.000-00',
       rg: '',
       idade: '20',
       expeditor: '',
@@ -274,14 +280,15 @@ export class LoginService {
         bairro: '',
         referencia: '',
       },
-      turmas: {}
+      turma: 'Excel',
+      materias: {}
     },
     {
       id: 7,
       nome: 'Julia Gonçalves',
       genero: '',
       nascimento: '',
-      cpf: '',
+      cpf: '000.000.000-00',
       rg: '',
       idade: '22',
       expeditor: '',
@@ -300,14 +307,15 @@ export class LoginService {
         bairro: '',
         referencia: '',
       },
-      turmas: {}
+      turma: 'Java',
+      materias: {}
     },
     {
       id: 8,
       nome: 'Bob Field',
       genero: '',
       nascimento: '',
-      cpf: '',
+      cpf: '000.000.000-00',
       rg: '',
       idade: '22',
       expeditor: '',
@@ -326,14 +334,15 @@ export class LoginService {
         bairro: '',
         referencia: '',
       },
-      turmas: {}
+      turma: 'Java',
+      materias: {}
     },
     {
       id: 9,
       nome: 'João Rodrigues',
       genero: '',
       nascimento: '',
-      cpf: '',
+      cpf: '000.000.000-00',
       rg: '',
       idade: '22',
       expeditor: '',
@@ -352,14 +361,15 @@ export class LoginService {
         bairro: '',
         referencia: '',
       },
-      turmas: {}
+      turma: 'Excel',
+      materias: {}
     },
     {
       id: 10,
       nome: 'Maria Berenice',
       genero: '',
       nascimento: '',
-      cpf: '',
+      cpf: '000.000.000-00',
       rg: '',
       idade: '22',
       expeditor: '',
@@ -378,14 +388,15 @@ export class LoginService {
         bairro: '',
         referencia: '',
       },
-      turmas: {}
+      turma: 'Oracle DB PL',
+      materias: {}
     },
     {
       id: 8,
       nome: 'Renata Lacerda',
       genero: '',
       nascimento: '',
-      cpf: '',
+      cpf: '000.000.000-00',
       rg: '',
       idade: '22',
       expeditor: '',
@@ -404,7 +415,8 @@ export class LoginService {
         bairro: '',
         referencia: '',
       },
-      turmas: {}
+      turma: 'Oracle DB PL',
+      materias: {}
     }
   ]
 }

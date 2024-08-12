@@ -1,15 +1,23 @@
-.coluna {
-    display: flex;
-    flex-direction: column;
-}
-
-.linha {
+.pagina {
     display: flex;
     flex-direction: row;
 }
 
+.coluna {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.subcoluna {
+    display: flex;
+    flex-direction: row;
+    height: fit-content;
+    margin: 20px;
+}
+
 .conteudo {
-    border: 1px solid black;
+    border: 1px solid rgb(180, 211, 247);
     width: 100%;
     margin: 5px;
     display: flex;
@@ -18,6 +26,7 @@
 }
 
 .cards {
+    height: fit-content;
     padding: 20px;
     display: flex;
     flex-direction: row;
@@ -25,11 +34,8 @@
 }
 
 .estatisticas {
-    border: 1px solid black;
-    width: 20%;
-    height: 20%;
-    margin: 5px;
-    margin-right: 45px;
+    border: 1px solid rgb(180, 211, 247);
+    margin: 20px;
     padding: 10px;
 }
 
@@ -38,4 +44,26 @@
     justify-content: center;
     padding: 20px;
     font-size: 20px;
+}
+
+.info {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.titulo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.info p {
+    padding: 10px;
+}
+
+input {
+    margin-left: 5px;
 }
