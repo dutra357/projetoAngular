@@ -21,9 +21,14 @@ export class LoginComponent {
     senha: ""
   };
 
+  ngOnInit() {
+    this.loginService.start();
+  }
+
   entrar() {
     if (this.login.email && this.login.senha) {
       if (this.loginService.login(this.login)) {
+        
         if (this.loginService.getLogado(this.login.email).perfil == 'Administrador' ||
           this.loginService.getLogado(this.login.email).perfil == 'Docente') {
           this.router.navigate(['/docentes']);

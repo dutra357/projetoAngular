@@ -7,15 +7,40 @@ export class LoginService {
 
   constructor() { }
 
-  login(usuario: { email: string, senha: string }): boolean {
+  start() {
     for (let usr of this.usuarios) {
-      if ((usr.email === usuario.email) && (usr.senha === usuario.senha)) {
+      localStorage.setItem(`${usr.email}`, JSON.stringify(usr))
+    }
+  }
+
+  login(usuario: { email: string, senha: string }): boolean {
+    let arrayChaves = Object.keys(localStorage);
+    let usrLogin;
+
+    for (let chave of arrayChaves) {
+      if (usuario.email == chave) {
+        usrLogin = JSON.parse(localStorage.getItem(chave) || "{}")
+      }
+    }    
+
+    if(usrLogin) {
+      if ((usrLogin.email === usuario.email) && (usrLogin.senha === usuario.senha)) {
         sessionStorage.setItem('usuarioLogado', JSON.stringify(usuario.email));
         alert('Usuário logado com sucesso!');
         return true;
       }
     }
+
     return false;
+
+    // for (let usr of array) {
+    //   if ((usr.email === usuario.email) && (usr.senha === usuario.senha)) {
+    //     sessionStorage.setItem('usuarioLogado', JSON.stringify(usuario.email));
+    //     alert('Usuário logado com sucesso!');
+    //     return true;
+    //   }
+    // }
+    // return false;
   }
 
   getLogado(email: any): any {
@@ -77,7 +102,7 @@ export class LoginService {
   }
 
   getTurma(aluno: string): any {
-    for(let usr of this.usuarios) {
+    for (let usr of this.usuarios) {
       if (usr.nome == aluno) {
         return usr.turma;
       }
@@ -119,26 +144,30 @@ export class LoginService {
   }
 
 
+
+
+
+  //Mock inicial a ser carregado no LocalStorage
   countId = 11;
   usuarios = [
     {
       id: 1,
       nome: 'Jorge Saraiva',
       genero: 'Masculino',
-      nascimento: '01-01-1983',
+      nascimento: '1983-01-01',
       cpf: '000.000.000-00',
-      rg: '',
+      rg: '000000-1',
       idade: '41',
-      expeditor: '',
-      naturalidade: '',
-      estadoCivil: '',
-      telefone: '',
+      expeditor: 'SSP',
+      naturalidade: 'Florianópolis',
+      estadoCivil: 'Casado',
+      telefone: '(99) 9 9999-99999',
       email: 'adm@adm.com',
       senha: 'adm',
       perfil: 'Administrador',
       endereco: {
-        cep: '',
-        cidade: '',
+        cep: '88040000',
+        cidade: 'Florianopolis',
         logradouro: '',
         numero: '',
         complemento: '',
@@ -151,21 +180,21 @@ export class LoginService {
     {
       id: 2,
       nome: 'Paulo da Silva',
-      genero: '',
+      genero: 'Masculino',
       nascimento: '1983-10-10',
-      cpf: '000.000.000-00',
-      rg: '',
+      cpf: '111.111.111-11',
+      rg: '1111111',
       idade: '40',
-      expeditor: '',
-      naturalidade: '',
-      estadoCivil: '',
-      telefone: '',
+      expeditor: 'IGP',
+      naturalidade: 'Florianópolis',
+      estadoCivil: 'Casado',
+      telefone: '(99) 9 8888-99999',
       email: 'paulo@docente.com',
       senha: 'paulo123',
       perfil: 'Docente',
       endereco: {
-        cep: '',
-        cidade: '',
+        cep: '88040010',
+        cidade: 'Florianópolis',
         logradouro: '',
         numero: '',
         complemento: '',
@@ -178,21 +207,21 @@ export class LoginService {
     {
       id: 3,
       nome: 'Maria Silverio',
-      genero: '',
-      nascimento: '',
-      cpf: '000.000.000-00',
-      rg: '',
+      genero: 'Feminino',
+      nascimento: '1971-01-01',
+      cpf: '222.222.222-22',
+      rg: '222222',
       idade: '45',
-      expeditor: '',
-      naturalidade: '',
-      estadoCivil: '',
-      telefone: '',
+      expeditor: 'SSP',
+      naturalidade: 'Florianópolis',
+      estadoCivil: 'Casado',
+      telefone: '(99) 9 7777-99999',
       email: 'maria@docente.com',
       senha: 'maria123',
       perfil: 'Docente',
       endereco: {
-        cep: '',
-        cidade: '',
+        cep: '88040020',
+        cidade: 'Florianópolis',
         logradouro: '',
         numero: '',
         complemento: '',
@@ -205,21 +234,21 @@ export class LoginService {
     {
       id: 4,
       nome: 'Laura da Silva',
-      genero: '',
-      nascimento: '',
-      cpf: '000.000.000-00',
-      rg: '',
+      genero: 'Feminino',
+      nascimento: '1970-02-02',
+      cpf: '999.777.88-44',
+      rg: '999999',
       idade: '59',
-      expeditor: '',
-      naturalidade: '',
-      estadoCivil: '',
-      telefone: '',
+      expeditor: 'SSP',
+      naturalidade: 'Florianópolis',
+      estadoCivil: 'Casado',
+      telefone: '(99) 9 9999-99999',
       email: 'laura@gmail.com',
       senha: 'laura123',
       perfil: 'Docente',
       endereco: {
-        cep: '',
-        cidade: '',
+        cep: '88040090',
+        cidade: 'Florianópolis',
         logradouro: '',
         numero: '',
         complemento: '',
@@ -232,48 +261,21 @@ export class LoginService {
     {
       id: 5,
       nome: 'Francisco das Neves',
-      genero: '',
-      nascimento: '',
-      cpf: '000.000.000-00',
-      rg: '',
+      genero: 'Masculino',
+      nascimento: '2005-01-01',
+      cpf: '888.000.888-08',
+      rg: '33635587',
       idade: '19',
-      expeditor: '',
-      naturalidade: '',
-      estadoCivil: '',
-      telefone: '',
+      expeditor: 'IGP',
+      naturalidade: 'São José/SC',
+      estadoCivil: 'Solteiro',
+      telefone: '(99) 9 9898-9898',
       email: 'chico@gmail.com',
       senha: 'francisco123',
       perfil: 'Aluno',
       endereco: {
-        cep: '',
-        cidade: '',
-        logradouro: '',
-        numero: '',
-        complemento: '',
-        bairro: '',
-        referencia: '',
-      },
-      turma: 'Excel',
-      materias: {}
-    },
-    {
-      id: 6,
-      nome: 'Manuela das Chagas',
-      genero: '',
-      nascimento: '',
-      cpf: '000.000.000-00',
-      rg: '',
-      idade: '20',
-      expeditor: '',
-      naturalidade: '',
-      estadoCivil: '',
-      telefone: '',
-      email: 'manuela@gmail.com',
-      senha: 'manuela123',
-      perfil: 'Aluno',
-      endereco: {
-        cep: '',
-        cidade: '',
+        cep: '88040001',
+        cidade: 'Florianópolis',
         logradouro: '',
         numero: '',
         complemento: '',
@@ -286,21 +288,21 @@ export class LoginService {
     {
       id: 7,
       nome: 'Julia Gonçalves',
-      genero: '',
-      nascimento: '',
+      genero: 'Feminino',
+      nascimento: '2002-01-01',
       cpf: '000.000.000-00',
-      rg: '',
+      rg: '64444',
       idade: '22',
-      expeditor: '',
-      naturalidade: '',
-      estadoCivil: '',
-      telefone: '',
+      expeditor: 'IGP',
+      naturalidade: 'São José/SC',
+      estadoCivil: 'Solteiro',
+      telefone: '(99) 9 9999-99999',
       email: 'julia@gmail.com',
       senha: 'julia123',
       perfil: 'Aluno',
       endereco: {
-        cep: '',
-        cidade: '',
+        cep: '88010092',
+        cidade: 'Florianópolis',
         logradouro: '',
         numero: '',
         complemento: '',
@@ -313,21 +315,21 @@ export class LoginService {
     {
       id: 8,
       nome: 'Bob Field',
-      genero: '',
-      nascimento: '',
+      genero: 'Masculino',
+      nascimento: '1999-01-01',
       cpf: '000.000.000-00',
       rg: '',
-      idade: '22',
-      expeditor: '',
-      naturalidade: '',
-      estadoCivil: '',
-      telefone: '',
+      idade: '25',
+      expeditor: 'SSP',
+      naturalidade: 'Palhoça/SC',
+      estadoCivil: 'Solteiro',
+      telefone: '(99) 9 9999-99999',
       email: 'bob@gmail.com',
       senha: 'bob123',
       perfil: 'Aluno',
       endereco: {
-        cep: '',
-        cidade: '',
+        cep: '88010091',
+        cidade: 'Florianópolis',
         logradouro: '',
         numero: '',
         complemento: '',
@@ -335,87 +337,6 @@ export class LoginService {
         referencia: '',
       },
       turma: 'Java',
-      materias: {}
-    },
-    {
-      id: 9,
-      nome: 'João Rodrigues',
-      genero: '',
-      nascimento: '',
-      cpf: '000.000.000-00',
-      rg: '',
-      idade: '22',
-      expeditor: '',
-      naturalidade: '',
-      estadoCivil: '',
-      telefone: '',
-      email: 'joao@gmail.com',
-      senha: 'joao123',
-      perfil: 'Aluno',
-      endereco: {
-        cep: '',
-        cidade: '',
-        logradouro: '',
-        numero: '',
-        complemento: '',
-        bairro: '',
-        referencia: '',
-      },
-      turma: 'Excel',
-      materias: {}
-    },
-    {
-      id: 10,
-      nome: 'Maria Berenice',
-      genero: '',
-      nascimento: '',
-      cpf: '000.000.000-00',
-      rg: '',
-      idade: '22',
-      expeditor: '',
-      naturalidade: '',
-      estadoCivil: '',
-      telefone: '',
-      email: 'berenice@gmail.com',
-      senha: 'berenice123',
-      perfil: 'Aluno',
-      endereco: {
-        cep: '',
-        cidade: '',
-        logradouro: '',
-        numero: '',
-        complemento: '',
-        bairro: '',
-        referencia: '',
-      },
-      turma: 'Oracle DB PL',
-      materias: {}
-    },
-    {
-      id: 8,
-      nome: 'Renata Lacerda',
-      genero: '',
-      nascimento: '',
-      cpf: '000.000.000-00',
-      rg: '',
-      idade: '22',
-      expeditor: '',
-      naturalidade: '',
-      estadoCivil: '',
-      telefone: '',
-      email: 'renata@gmail.com',
-      senha: 'renata123',
-      perfil: 'Aluno',
-      endereco: {
-        cep: '',
-        cidade: '',
-        logradouro: '',
-        numero: '',
-        complemento: '',
-        bairro: '',
-        referencia: '',
-      },
-      turma: 'Oracle DB PL',
       materias: {}
     }
   ]
