@@ -198,7 +198,7 @@ export class LoginService {
       senha: 'adm',
       perfil: 'Administrador',
       endereco: {
-        cep: '88040000',
+        cep: '88015-200',
         cidade: 'Florianopolis',
         logradouro: '',
         numero: '',

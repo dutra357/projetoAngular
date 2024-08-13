@@ -122,8 +122,6 @@ export class CadastroalComponent {
   buscaCep() {
     let inputCep = this.aluno.endereco.cep;
 
-    console.log('aqui')
-
     const viaCep = fetch(`https://viacep.com.br/ws/${inputCep}/json/`);
     viaCep.then(r => r.json())
       .then(body => {
@@ -146,8 +144,9 @@ export class CadastroalComponent {
     return parametroRegex.test(email);
   }
 
-  validaCpf(cpf: string) {
 
+
+  validaCpf(cpf: string) {
   }
 
 }
