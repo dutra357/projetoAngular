@@ -142,6 +142,8 @@ export class LoginService {
     let idAtual = JSON.parse(localStorage.getItem('countId') || "{}")
     usuario.id = ++idAtual;
     localStorage.setItem(`${usuario.email}`, JSON.stringify(usuario))
+    localStorage.removeItem('countId');
+    localStorage.setItem('countId', JSON.stringify(usuario.id))
   }
 
   excluir(usuario: any) {
