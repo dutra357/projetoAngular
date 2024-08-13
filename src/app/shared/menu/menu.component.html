@@ -12,7 +12,7 @@
             <li (click)="inicio()">Início</li>
 
             <br>
-            <p>* <b>Cadastro</b></p>
+            <p *ngIf="!isAluno">* <b>Cadastro</b></p>
             <li (click)="cadastroDocentes()" *ngIf="isAdm">Docentes</li>
             <li (click)="cadastroAlunos()" *ngIf="isAdm">Alunos</li>
             <li (click)="cadastroTurmas()" *ngIf="isAdm || isDocente">Turmas</li>

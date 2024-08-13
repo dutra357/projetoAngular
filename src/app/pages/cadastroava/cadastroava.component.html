@@ -10,7 +10,7 @@
 
                 <section class="principal">
                     <div class="titulo">
-                        <p>Cadastrar Turma:</p>
+                        <p>Cadastrar Avaliação:</p>
                     </div>
 
                     <label for="professor">* Professor:</label>
@@ -42,7 +42,7 @@
                     <label for="aluno">* Aluno:</label>
                     <select name="professor" [(ngModel)]="avaliacao.aluno" [ngModelOptions]="{standalone: true}"
                         required>
-                        <option *ngFor="let aluno of alunos; let index=index" value="{{aluno.nome}}">
+                        <option *ngFor="let aluno of alunos; let index=index" value="{{aluno.email}}">
                             {{aluno.nome}}</option>
                     </select>
 

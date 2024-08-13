@@ -140,7 +140,8 @@ export class CadastrodocComponent {
   }
 
   validaCpf(cpf: string) {
-
+  cpf = cpf.replace(/[^\d]/g, "");
+  this.docente.cpf = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
   }
 
 }

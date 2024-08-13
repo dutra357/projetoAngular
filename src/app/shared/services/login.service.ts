@@ -11,7 +11,6 @@ export class LoginService {
     for (let usr of this.usuarios) {
       localStorage.setItem(`${usr.email}`, JSON.stringify(usr))
     }
-
     localStorage.setItem('countId', JSON.stringify(7))
   }
 
@@ -50,7 +49,6 @@ export class LoginService {
   getAlunos() {
     let usuarios: any = [];
     let alunos = [];
-
     let arrayChaves = Object.keys(localStorage);
 
     for (let chave of arrayChaves) {
@@ -181,6 +179,8 @@ export class LoginService {
 
 
 
+
+
   //Mock inicial a ser carregado no LocalStorage
   countId = 7;
   usuarios = [
@@ -208,6 +208,8 @@ export class LoginService {
         bairro: '',
         referencia: '',
       },
+      avaliacoes: [],
+      notaCountId: '0',
       turma: '',
       materias: {}
     },
@@ -235,6 +237,8 @@ export class LoginService {
         bairro: '',
         referencia: '',
       },
+      avaliacoes: [],
+      notaCountId: '0',
       turma: '',
       materias: {}
     },
@@ -262,6 +266,8 @@ export class LoginService {
         bairro: '',
         referencia: '',
       },
+      avaliacoes: [],
+      notaCountId: '0',
       turma: '',
       materias: {}
     },
@@ -289,6 +295,8 @@ export class LoginService {
         bairro: '',
         referencia: '',
       },
+      avaliacoes: [],
+      notaCountId: '0',
       turma: '',
       materias: {}
     },
@@ -316,7 +324,40 @@ export class LoginService {
         bairro: '',
         referencia: '',
       },
-      turma: 'Excel',
+      avaliacoes: [
+        {
+          id: 1,
+          materia: 'Java POO',
+          nota: '9.5',
+          data: '06/08/2024',
+          avaliacao: 'Prova 1',
+          turma: 'Java',
+          docente: 'Paulo da Silva',
+          aluno: 'Francisco das Neves'
+        },
+        {
+          id: 2,
+          materia: 'Java SpringBoot',
+          nota: '9.0',
+          data: '10/08/2024',
+          avaliacao: 'Prova 2',
+          turma: 'Excel',
+          docente: 'Laura da Silva',
+          aluno: 'Francisco das Neves'
+        },
+        {
+          id: 3,
+          materia: 'Java DataStructures',
+          nota: '10.0',
+          data: '11/07/2024',
+          avaliacao: 'Trabalho (equipe)',
+          turma: 'Java',
+          docente: 'Laura da Silva',
+          aluno: 'Francisco das Neves'
+        }
+      ],
+      notaCountId: '3',
+      turma: 'Java',
       materias: {}
     },
     {
@@ -343,7 +384,40 @@ export class LoginService {
         bairro: '',
         referencia: '',
       },
-      turma: 'Java',
+      avaliacoes: [
+        {
+          id: 1,
+          materia: 'Bancos de Dados SQL',
+          nota: '9.5',
+          data: '06/08/2024',
+          avaliacao: 'Prova 1',
+          turma: 'Oracle DB PL',
+          docente: 'Paulo da Silva',
+          aluno: 'Francisco das Neves'
+        },
+        {
+          id: 2,
+          materia: 'Bancos de dados NoSQL',
+          nota: '9.0',
+          data: '10/08/2024',
+          avaliacao: 'Prova 2',
+          turma: 'Oracle DB PL',
+          docente: 'Laura da Silva',
+          aluno: 'Francisco das Neves'
+        },
+        {
+          id: 3,
+          materia: 'Modelagem de DB',
+          nota: '10.0',
+          data: '11/07/2024',
+          avaliacao: 'Trabalho (equipe)',
+          turma: 'Oracle DB PL',
+          docente: 'Laura da Silva',
+          aluno: 'Francisco das Neves'
+        }
+      ],
+      notaCountId: '3',
+      turma: 'Oracle DB PL',
       materias: {}
     },
     {
@@ -370,7 +444,40 @@ export class LoginService {
         bairro: '',
         referencia: '',
       },
-      turma: 'Java',
+      avaliacoes: [
+        {
+          id: 1,
+          materia: 'Excel Básico',
+          nota: '9.5',
+          data: '06/08/2024',
+          avaliacao: 'Prova 1',
+          turma: 'Oracle DB PL',
+          docente: 'Paulo da Silva',
+          aluno: 'Francisco das Neves'
+        },
+        {
+          id: 2,
+          materia: 'Excel Avançado',
+          nota: '9.0',
+          data: '10/08/2024',
+          avaliacao: 'Prova 2',
+          turma: 'Oracle DB PL',
+          docente: 'Laura da Silva',
+          aluno: 'Francisco das Neves'
+        },
+        {
+          id: 3,
+          materia: 'Macros (Excel)',
+          nota: '10.0',
+          data: '11/07/2024',
+          avaliacao: 'Trabalho (equipe)',
+          turma: 'Oracle DB PL',
+          docente: 'Laura da Silva',
+          aluno: 'Francisco das Neves'
+        }
+      ],
+      notaCountId: '3',
+      turma: 'Excel',
       materias: {}
     }
   ]

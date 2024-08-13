@@ -5,7 +5,6 @@ import { CommonModule } from '@angular/common';
 import { ToolbarComponent } from "../../shared/toolbar/toolbar.component";
 import { MenuComponent } from "../../shared/menu/menu.component";
 import { LoginService } from '../../shared/services/login.service';
-import { timer } from 'rxjs';
 
 @Component({
   selector: 'app-cadastroturma',
@@ -58,7 +57,7 @@ export class CadastroturmaComponent {
     ) {
 
       console.log()
-      // this.turmaService.cadastrarTurma(this.turma)
+      this.turmaService.cadastrarTurma(this.turma)
       alert('Turma cadastrada com sucesso!')
 
     } else {

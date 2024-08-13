@@ -55,7 +55,7 @@
                             </thead>
     
                             <tbody>
-                                <tr *ngFor=" let avaliacao of notas; let index=index">
+                                <tr *ngFor=" let avaliacao of notas; let index=index" (click)="paginaNotas()">
                                     <td>{{avaliacao.avaliacao}}</td>
                                     <td>{{avaliacao.materia}}</td>
                                     <td>{{avaliacao.data}}</td>

@@ -38,7 +38,7 @@ export class CadastroavaComponent {
   ngOnInit() {
     this.docentes = this.loginService.getDocentes();
     this.alunos = this.loginService.getAlunos();
-    this.materias = this.notasService.getMaterias();
+    this.materias = this.notasService.getMateriasPossiveis();
 
     if (this.loginService.getLogado(JSON.parse(sessionStorage['usuarioLogado'])).perfil == 'Administrador') {
       this.isAdm = true;
@@ -48,7 +48,6 @@ export class CadastroavaComponent {
     }
 
     this.avaliacao.data = new Date().toISOString().split('T')[0]
-
   }
 
   cadastrar() {
@@ -58,21 +57,11 @@ export class CadastroavaComponent {
       (this.avaliacao.aluno) && (this.avaliacao.nota) && (parseFloat(this.avaliacao.nota) >= 0) &&
       (parseFloat(this.avaliacao.nota) <= 10)
     ) {
-      this.avaliacao.data = this.formataData(this.avaliacao.data);
-      this.notasService.cadastrarAvaliacao(this.avaliacao)
+      this.notasService.cadastrarAvaliacao(this.avaliacao.aluno, this.avaliacao)
       alert('Nota cadastrada com sucesso!')
 
     } else {
       alert('Por favor, confira os campos.')
     }
-  }
-
-  formataData(data: string) {
-    const array = data.split("-");
-    let ano = array[0];
-    let mes = array[1];
-    let dia = array[2];
-    let dataCadastro = dia + "/" + mes + "/" + ano;
-    return dataCadastro;
   }
 }

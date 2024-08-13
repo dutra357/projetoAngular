@@ -31,17 +31,19 @@ export class NotasComponent {
     let email = JSON.parse(sessionStorage['usuarioLogado']);
     let nome = this.loginService.getLogado(email).nome;
 
-    this.notas = this.notasService.getTodasNotasAluno(nome);
+    this.notas = this.notasService.getTodasNotasAluno(email);
 
     this.aluno = nome;
     this.turma = this.loginService.getLogado(email).turma;
     this.horario = this.turmaService.getHorario(this.turma);
 
-    for (let nota of this.notas) {
-      console.log(this.notasService.getDataAjustada(nota.data))
-    }
   }
 
+
+
+
+
+  
   //Cursos extras - meramente ilustrativo
   opcoesCurso(curso: any) {
     let element = document.getElementById('result');

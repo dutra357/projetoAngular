@@ -3,6 +3,7 @@ import { LoginService } from '../../shared/services/login.service';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { TurmasService } from '../../shared/services/turmas.service';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,7 @@ export class LoginComponent {
 
   constructor(private loginService: LoginService) { }
   router = inject(Router);
+  turmasService = inject(TurmasService)
 
   login = {
     email: "",
@@ -23,6 +25,7 @@ export class LoginComponent {
 
   ngOnInit() {
     this.loginService.start();
+    this.turmasService.startTurmas();
   }
 
   entrar() {
