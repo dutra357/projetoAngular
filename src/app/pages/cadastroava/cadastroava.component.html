@@ -21,7 +21,7 @@
                     </select>
                     <select *ngIf="isDocente" name="professor" [(ngModel)]="avaliacao.professor"
                         [ngModelOptions]="{standalone: true}" required>
-                        <option selected value="{{docenteLogado}}">{{docenteLogado}}</option>
+                        <option value="{{docenteLogado}}" selected>{{docenteLogado}}</option>
                     </select>
 
                     <label for="nomemateria">* Matéria:</label>
