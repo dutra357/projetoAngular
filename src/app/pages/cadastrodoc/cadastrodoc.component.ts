@@ -107,11 +107,11 @@ export class CadastrodocComponent {
   }
 
   excluir(docente: any) {
-    // this.loginService.excluir(docente);
+    this.loginService.excluir(docente);
   }
 
   salvar() {
-    // this.loginService.salvar(docente);
+    this.loginService.salvar(this.docente);
   }
 
   buscaCep() {

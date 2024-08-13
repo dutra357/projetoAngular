@@ -112,15 +112,17 @@ export class CadastroalComponent {
   }
 
   excluir(aluno: any) {
-    // this.loginService.excluir(docente);
+    this.loginService.excluir(aluno);
   }
 
   salvar() {
-    // this.loginService.salvar(docente);
+    this.loginService.salvar(this.aluno);
   }
 
   buscaCep() {
     let inputCep = this.aluno.endereco.cep;
+
+    console.log('aqui')
 
     const viaCep = fetch(`https://viacep.com.br/ws/${inputCep}/json/`);
     viaCep.then(r => r.json())

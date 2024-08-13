@@ -11,6 +11,8 @@ export class LoginService {
     for (let usr of this.usuarios) {
       localStorage.setItem(`${usr.email}`, JSON.stringify(usr))
     }
+
+    localStorage.setItem('countId', JSON.stringify(7))
   }
 
   login(usuario: { email: string, senha: string }): boolean {
@@ -21,39 +23,42 @@ export class LoginService {
       if (usuario.email == chave) {
         usrLogin = JSON.parse(localStorage.getItem(chave) || "{}")
       }
-    }    
+    }
 
-    if(usrLogin) {
+    if (usrLogin) {
       if ((usrLogin.email === usuario.email) && (usrLogin.senha === usuario.senha)) {
         sessionStorage.setItem('usuarioLogado', JSON.stringify(usuario.email));
         alert('Usuário logado com sucesso!');
         return true;
       }
     }
-
     return false;
-
-    // for (let usr of array) {
-    //   if ((usr.email === usuario.email) && (usr.senha === usuario.senha)) {
-    //     sessionStorage.setItem('usuarioLogado', JSON.stringify(usuario.email));
-    //     alert('Usuário logado com sucesso!');
-    //     return true;
-    //   }
-    // }
-    // return false;
   }
 
   getLogado(email: any): any {
-    for (let usr of this.usuarios) {
-      if (usr.email == email) {
-        return usr;
+    let arrayChaves = Object.keys(localStorage);
+    let usrLogin;
+
+    for (let chave of arrayChaves) {
+      if (email == chave) {
+        usrLogin = JSON.parse(localStorage.getItem(chave) || "{}")
+        return usrLogin;
       }
     }
   }
 
   getAlunos() {
+    let usuarios: any = [];
     let alunos = [];
-    for (let usr of this.usuarios) {
+
+    let arrayChaves = Object.keys(localStorage);
+
+    for (let chave of arrayChaves) {
+        let usuario = JSON.parse(localStorage.getItem(chave) || "{}");
+        usuarios.push(usuario);
+    }
+
+    for (let usr of usuarios) {
       if (usr.perfil == 'Aluno') {
         alunos.push(usr);
       }
@@ -62,8 +67,15 @@ export class LoginService {
   }
 
   getDocentes() {
+    let usuarios: any = [];
     let docentes = [];
-    for (let usr of this.usuarios) {
+    let arrayChaves = Object.keys(localStorage);
+    for (let chave of arrayChaves) {
+        let usuario = JSON.parse(localStorage.getItem(chave) || "{}");
+        usuarios.push(usuario);
+    }
+
+    for (let usr of usuarios) {
       if (usr.perfil == 'Docente') {
         docentes.push(usr);
       }
@@ -72,45 +84,48 @@ export class LoginService {
   }
 
   getTotalAlunos() {
+    let usuarios: any = [];
+    let arrayChaves = Object.keys(localStorage);
+    for (let chave of arrayChaves) {
+        let usuario = JSON.parse(localStorage.getItem(chave) || "{}");
+        usuarios.push(usuario);
+    }
+
     let total = 0;
-    for (let usr of this.usuarios) {
+    for (let usr of usuarios) {
       if (usr.perfil == 'Aluno') {
-        total++;
+        ++total;
       }
     }
     return total;
   }
 
   getTotalDocentes() {
+    let usuarios: any = [];
+    let arrayChaves = Object.keys(localStorage);
+    for (let chave of arrayChaves) {
+        let usuario = JSON.parse(localStorage.getItem(chave) || "{}");
+        usuarios.push(usuario);
+    }
+
     let total = 0;
-    for (let usr of this.usuarios) {
+    for (let usr of usuarios) {
       if (usr.perfil == 'Docente') {
-        total++;
+        ++total;
       }
     }
     return total;
-  }
-
-  getTotalTurmas() {
-    let total = 0;
-    for (let usr of this.usuarios) {
-      if (usr.perfil == 'Turma') {
-        total++;
-      }
-    }
-    return total;
-  }
-
-  getTurma(aluno: string): any {
-    for (let usr of this.usuarios) {
-      if (usr.nome == aluno) {
-        return usr.turma;
-      }
-    }
   }
 
   getPerfil(email: string) {
-    for (let usr of this.usuarios) {
+    let usuarios: any = [];
+    let arrayChaves = Object.keys(localStorage);
+    for (let chave of arrayChaves) {
+        let usuario = JSON.parse(localStorage.getItem(chave) || "{}");
+        usuarios.push(usuario);
+    }
+
+    for (let usr of usuarios) {
       if (usr.email == email) {
         return usr.perfil;
       }
@@ -124,23 +139,40 @@ export class LoginService {
   }
 
   cadastrar(usuario: any) {
-    usuario.id = ++this.countId;
-    this.usuarios.push(usuario);
+    let idAtual = JSON.parse(localStorage.getItem('countId') || "{}")
+    usuario.id = ++idAtual;
+    localStorage.setItem(`${usuario.email}`, JSON.stringify(usuario))
   }
 
   excluir(usuario: any) {
-    // let i = 0;
-    // let index = 0
-    // for (let usr of this.usuarios) {
-    //   i++;
-    //   if(usuario.id == usr.id) {
-    //     index = i;
-    //   }
-    // }
+    let usuarios: any = [];
+    let arrayChaves = Object.keys(localStorage);
+    for (let chave of arrayChaves) {
+        let usuario = JSON.parse(localStorage.getItem(chave) || "{}");
+        usuarios.push(usuario);
+    }
+
+    for(let usr of usuarios) {
+      if(usuario.email == usr.email) {
+        localStorage.removeItem(usuario.email);
+      }
+    }
   }
 
   salvar(usuario: any) {
-    // mock
+    let usuarios: any = [];
+    let arrayChaves = Object.keys(localStorage);
+    for (let chave of arrayChaves) {
+        let usuario = JSON.parse(localStorage.getItem(chave) || "{}");
+        usuarios.push(usuario);
+    }
+
+    for(let usr of usuarios) {
+      if(usr.email == usuario.email) {
+        localStorage.removeItem(usr.email);
+        localStorage.setItem(`${usuario.email}`, JSON.stringify(usuario))
+      }
+    }
   }
 
 
@@ -148,7 +180,7 @@ export class LoginService {
 
 
   //Mock inicial a ser carregado no LocalStorage
-  countId = 11;
+  countId = 7;
   usuarios = [
     {
       id: 1,
@@ -286,7 +318,7 @@ export class LoginService {
       materias: {}
     },
     {
-      id: 7,
+      id: 6,
       nome: 'Julia Gonçalves',
       genero: 'Feminino',
       nascimento: '2002-01-01',
@@ -313,7 +345,7 @@ export class LoginService {
       materias: {}
     },
     {
-      id: 8,
+      id: 7,
       nome: 'Bob Field',
       genero: 'Masculino',
       nascimento: '1999-01-01',
