@@ -76,9 +76,9 @@ Ainda, e não menos importante, o acréscimo de mais elementos de cadastro a ser
 Acrescentamos uma observação especial quanto aos 'cursos extras' disponibilizados ao usuario 'aluno', pois encontram-se mockados de forma fixa conforme solicitação do projeto. Neste ponto, anotamos que uma funcionalidade abrangente de atividades complementares, contando com cadastramento, agendamento e edição, seria uma excelente adesão ao projeto.
 
 
-## MER - Relacionamento entre entidades
+## Início - Página /home de usuário Adm
 
-<!-- ![MER](/MER/MER_projeto_avaliativo.png) -->
+![MER](/modelo.jpg)
 
 
 ## Rotas disponibilizadas
