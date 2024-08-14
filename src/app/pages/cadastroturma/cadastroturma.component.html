@@ -3,7 +3,7 @@
     <app-menu></app-menu>
 
     <div class="centro">
-        <app-toolbar></app-toolbar>
+        <app-toolbar [titulo]="titulo"></app-toolbar>
 
         <div class="conteudo">
             <div class="cadastro">
@@ -14,7 +14,7 @@
                     </div>
 
                     <label for="professor">* Professor:</label>
-                    <select *ngIf="isAdm" class="principal" name="professor" [(ngModel)]="turma.professor"
+                    <select *ngIf="isAdm" name="professor" [(ngModel)]="turma.professor"
                         [ngModelOptions]="{standalone: true}" required>
                         <option *ngFor="let docente of docentes; let index=index" value="{{docente.nome}}">
                             {{docente.nome}}</option>

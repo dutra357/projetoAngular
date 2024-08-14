@@ -15,6 +15,7 @@ import { Router } from '@angular/router';
 })
 export class AlunosComponent {
 
+  titulo = `Home - Seja bem-vindo!`;
   notas: any;
   materias: any;
 
@@ -30,7 +31,13 @@ export class AlunosComponent {
   ngOnInit() {
     let email = JSON.parse(sessionStorage['usuarioLogado']);
 
-    this.notas = this.notasService.getTodasNotasAluno(email);
+    this.notas = this.notasService.getTodasNotasAluno(email)
+    .sort((a: any, b: any) => new Date(a.data).getTime() - new Date(b.data).getTime());
+
+    for(let nota of this.notas) {
+      nota.data = this.formataData(nota.data)
+    }
+    
     this.materias = this.notasService.getMateriasAluno(email);
 
     this.nome = this.loginService.getLogado(email).nome;
@@ -41,6 +48,14 @@ export class AlunosComponent {
 
   paginaNotas() {
     this.router.navigate(['/notas']);
+  }
+
+  formataData(data: string) {
+    let arrayData = data.split('-')
+    let dia = arrayData[2];
+    let mes = arrayData[1];
+    let ano = arrayData[0];
+    return dia + '/' + mes + '/' + ano
   }
 
 

@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { ToolbarComponent } from "../../shared/toolbar/toolbar.component";
 import { MenuComponent } from "../../shared/menu/menu.component";
 import { NotasService } from '../../shared/services/notas.service';
-import { CommonModule, DatePipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { LoginService } from '../../shared/services/login.service';
 import { TurmasService } from '../../shared/services/turmas.service';
 
@@ -15,7 +15,7 @@ import { TurmasService } from '../../shared/services/turmas.service';
 })
 export class NotasComponent {
 
-  titulo: string = 'HOME Aluno - Bem-vindo!';
+  titulo: string = 'Minhas Notas';
   notas: any;
 
   aluno: string = '';
@@ -51,10 +51,6 @@ export class NotasComponent {
     let ano = arrayData[0];
     return dia + '/' + mes + '/' + ano
   }
-
-
-
-
 
   //Cursos extras - meramente ilustrativo
   opcoesCurso(curso: any) {
