@@ -120,10 +120,12 @@ export class CadastroalComponent {
 
   excluir(aluno: any) {
     this.loginService.excluir(aluno);
+    alert('Aluno excluido com sucesso!')
   }
 
   salvar() {
     this.loginService.salvar(this.aluno);
+    alert('Aluno editado com sucesso!')
   }
 
   buscaCep() {

@@ -111,10 +111,12 @@ export class CadastrodocComponent {
 
   excluir(docente: any) {
     this.loginService.excluir(docente);
+    alert('Docente excluido com sucesso!')
   }
 
   salvar() {
     this.loginService.salvar(this.docente);
+    alert('Docente editado com sucesso!')
   }
 
   buscaCep() {

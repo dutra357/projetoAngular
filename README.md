@@ -43,6 +43,26 @@ ngOnInit() {
 
 Ademais, anotamos que fizemos uso de expressões regulares (RegEx) paraa formatação e validação de e-mails, telefones e cpf a serem inseridos nos campos de cadastro e login. Valores em desconformidade com o padrão não serão aceitos (000.000.000-00 , (xx)x xxxx-xxxx, etc.).
 
+~~~javascript
+  validaEmail(email: string) {
+    let parametroRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!parametroRegex.test(email)) {
+    }
+    return parametroRegex.test(email);
+  }
+
+  validaCpf(cpf: string) {
+  cpf = cpf.replace(/[^\d]/g, "");
+  this.docente.cpf = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+  }
+
+  validaTelefone(telefone: string) {
+    const ajuste = /^([0-9]{2})([0-9]{4,5})([0-9]{4})$/;
+    let ajustado = telefone.replace(/[^0-9]/g, "").slice(0, 11);
+    this.docente.telefone = ajustado.replace(ajuste, "($1)$2-$3");
+  }
+~~~
+
 Informações e dados de login de cada usuário podem ser encontrados no login.service.ts, no diretório 'shared/services'.
 
 Cadastros de senhas exigem 'passfrase' com mais de 8 caracteres, bem como os campos de nome (input).
@@ -98,6 +118,14 @@ Acrescentamos uma observação especial quanto aos 'cursos extras' disponibiliza
 /listadoc - Listagem de Docentes cadastrados no sistema, exclusivo para Administradores.
 
 /notas - Lista de notas/avaliações do aluno, com listagem em ordem cronológica, e disponível apenas para usuários do perfil Aluno.
+
+A ordenação cronológica das notas é realizada por meio do método '.sort', em conjunto com um arrow function organizadora.
+
+~~~javascript
+    this.notas = this.notasService.getTodasNotasAluno(email)
+    .sort((a: any, b: any) => new Date(a.data).getTime() - new Date(b.data).getTime());
+~~~
+
 
 
 ## Autor
