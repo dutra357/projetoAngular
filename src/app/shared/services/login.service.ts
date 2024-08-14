@@ -297,7 +297,7 @@ export class LoginService {
       },
       avaliacoes: [],
       notaCountId: '0',
-      turma: '',
+      turma: {},
       materias: {}
     },
     {
@@ -331,7 +331,6 @@ export class LoginService {
           nota: '9.5',
           data: '2024-08-06',
           avaliacao: 'Prova 1',
-          turma: 'Java',
           docente: 'Paulo da Silva',
           aluno: 'Francisco das Neves'
         },
@@ -341,7 +340,6 @@ export class LoginService {
           nota: '9.0',
           data: '2024-08-10',
           avaliacao: 'Prova 2',
-          turma: 'Excel',
           docente: 'Laura da Silva',
           aluno: 'Francisco das Neves'
         },
@@ -351,7 +349,6 @@ export class LoginService {
           nota: '10.0',
           data: '2024-07-10',
           avaliacao: 'Trabalho (equipe)',
-          turma: 'Java',
           docente: 'Laura da Silva',
           aluno: 'Francisco das Neves'
         }
@@ -391,7 +388,6 @@ export class LoginService {
           nota: '9.5',
           data: '2024-08-06',
           avaliacao: 'Prova 1',
-          turma: 'Oracle DB PL',
           docente: 'Paulo da Silva',
           aluno: 'Francisco das Neves'
         },
@@ -401,7 +397,6 @@ export class LoginService {
           nota: '9.0',
           data: '2024-08-10',
           avaliacao: 'Prova 2',
-          turma: 'Oracle DB PL',
           docente: 'Laura da Silva',
           aluno: 'Francisco das Neves'
         },
@@ -411,7 +406,6 @@ export class LoginService {
           nota: '10.0',
           data: '2024-07-11',
           avaliacao: 'Trabalho (equipe)',
-          turma: 'Oracle DB PL',
           docente: 'Laura da Silva',
           aluno: 'Francisco das Neves'
         }
@@ -451,7 +445,6 @@ export class LoginService {
           nota: '9.5',
           data: '2024-08-06',
           avaliacao: 'Prova 1',
-          turma: 'Oracle DB PL',
           docente: 'Paulo da Silva',
           aluno: 'Francisco das Neves'
         },
@@ -461,7 +454,6 @@ export class LoginService {
           nota: '9.0',
           data: '2024-08-10',
           avaliacao: 'Prova 2',
-          turma: 'Oracle DB PL',
           docente: 'Laura da Silva',
           aluno: 'Francisco das Neves'
         },
@@ -471,7 +463,6 @@ export class LoginService {
           nota: '10.0',
           data: '2024-07-11',
           avaliacao: 'Trabalho (equipe)',
-          turma: 'Oracle DB PL',
           docente: 'Laura da Silva',
           aluno: 'Francisco das Neves'
         }

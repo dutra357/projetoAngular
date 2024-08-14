@@ -43,34 +43,38 @@ export class CadastroalComponent {
       this.aluno.endereco.complemento = alunoRecebido.endereco.complemento;
       this.aluno.endereco.bairro = alunoRecebido.endereco.bairro;
       this.aluno.endereco.referencia = alunoRecebido.endereco.referencia;
-      this.aluno.turmas = alunoRecebido.turmas;
+      this.aluno.turma = alunoRecebido.turma;
     }
   }
 
   aluno = {
-    id: '',
-    nome: '',
-    genero: '',
-    nascimento: '',
-    idade: '',
-    cpf: '',
-    rg: '',
-    expeditor: '',
-    naturalidade: '',
-    telefone: '',
-    email: '',
-    senha: '',
-    perfil: 'Aluno',
-    endereco: {
-      cep: '',
-      cidade: '',
-      logradouro: '',
-      numero: '',
-      complemento: '',
-      bairro: '',
-      referencia: '',
-    },
-    turmas: {}
+      id: '',
+      nome: '',
+      genero: '',
+      nascimento: '',
+      cpf: '',
+      rg: '',
+      idade: '',
+      expeditor: '',
+      naturalidade: '',
+      estadoCivil: '',
+      telefone: '',
+      email: '',
+      senha: '',
+      perfil: 'Aluno',
+      endereco: {
+        cep: '',
+        cidade: '',
+        logradouro: '',
+        numero: '',
+        complemento: '',
+        bairro: '',
+        referencia: '',
+      },
+      avaliacoes: [],
+      notaCountId: '',
+      turma: {},
+      materias: {}
   }
 
   serviceTurmas = inject(TurmasService);
@@ -79,14 +83,14 @@ export class CadastroalComponent {
 
   cadastrar() {
     let inputs = document.getElementsByTagName("input");
-    let turmas: string[] = []
+    let turma: string[] = []
 
     for (let i = inputs.length - 1; i >= 0; i--) {
       if (inputs[i].type === "checkbox" && inputs[i].checked) {
-        turmas.push(inputs[i].value);
+        turma.push(inputs[i].value);
       }
     }
-    this.aluno.turmas = turmas;
+    this.aluno.turma = turma;
 
     if (
       (this.aluno.nome.length > 8) && (this.aluno.nome.length < 65) &&
@@ -94,7 +98,7 @@ export class CadastroalComponent {
       (this.aluno.rg.length <= 20) && (this.aluno.expeditor.length < 9) &&
       (this.aluno.telefone) && (this.validaEmail(this.aluno.email)) &&
       (this.aluno.naturalidade.length > 8) && (this.aluno.naturalidade.length < 65) &&
-      (this.aluno.senha.length > 7) && (turmas.length != 0)
+      (this.aluno.senha.length > 7) && (turma.length != 0)
     ) {
       if (
         (this.aluno.endereco.cep) && (this.aluno.endereco.bairro) &&

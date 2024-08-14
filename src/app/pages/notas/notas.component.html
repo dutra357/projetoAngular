@@ -2,7 +2,7 @@
     <app-menu></app-menu>
 
     <div class="coluna">
-        <app-toolbar></app-toolbar>
+        <app-toolbar [titulo]="titulo"></app-toolbar>
 
 
         <div class="linha">
@@ -40,7 +40,7 @@
 
                         <tbody>
                             <tr *ngFor=" let avaliacao of notas; let index=index">
-                                <td>{{avaliacao.turma}}</td>
+                                <td>{{turma}}</td>
                                 <td>{{avaliacao.docente}}</td>
                                 <td>{{avaliacao.materia}}</td>
 

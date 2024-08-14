@@ -14,7 +14,12 @@ import { TurmasService } from '../../shared/services/turmas.service';
 })
 export class LoginComponent {
 
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginService) {
+    this.loginService.start();
+    this.turmasService.startTurmas();
+  }
+
+  
   router = inject(Router);
   turmasService = inject(TurmasService)
 
@@ -22,11 +27,6 @@ export class LoginComponent {
     email: "",
     senha: ""
   };
-
-  ngOnInit() {
-    this.loginService.start();
-    this.turmasService.startTurmas();
-  }
 
   entrar() {
     if (this.login.email && this.login.senha) {

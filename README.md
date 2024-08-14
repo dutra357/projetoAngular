@@ -32,11 +32,20 @@ https://trello.com/b/DraeKfFp/m2s11-projetoava
 
 Execute `ng serve` para rodar o servidor de desenvolvimento. Pagina inicial em `http://localhost:4200/`. Aplicação automaticamente recarrecada com o salvamento de qualquer modificação.
 
-Salientamos que o mokc é realocado no localStorage quando do carregamento da rota '/login', de modo que o logout em qualquer parte da aplicação, com o seu redirecionamento à página de login, irá zerar os dados então persistentes.
+Salientamos que o mokc é realocado no localStorage quando do carregamento da rota '/login'. Os dados ali carregados são assim alocados pelo construtor, não sendo 'zerados' com o logout. Caso o usuário prefira redefiní-los ao logar, sugerimos utilizar os métodos de 'starter' em conjunto com o método ngOnInit().
+
+~~~javascript
+ngOnInit() {
+    this.loginService.start();
+    this.turmasService.startTurmas();
+}
+~~~
 
 Ademais, anotamos que fizemos uso de expressões regulares (RegEx) paraa formatação e validação de e-mails, telefones e cpf a serem inseridos nos campos de cadastro e login. Valores em desconformidade com o padrão não serão aceitos (000.000.000-00 , (xx)x xxxx-xxxx, etc.).
 
 Informações e dados de login de cada usuário podem ser encontrados no login.service.ts, no diretório 'shared/services'.
+
+Cadastros de senhas exigem 'passfrase' com mais de 8 caracteres, bem como os campos de nome (input).
 
 
 ## Projeto Angular
@@ -53,9 +62,9 @@ Execute `ng build` para realizar o build da aplicação.
 
 O acesso inicial ao sistema pode se dar por meio de login com uma das contas 'mockadas', seja ela de administrador, docente ou aluno. Cada qual possui as suas funcionalidades e limitações, sendo a mais ampla delas, logicamente, o acesso na qualidade de  administrador.
 
-Reiteramos! A persistência dos dados, ausente o beck-end nesta fase, se dá pelo uso do recurso do localStorage, sendo os dados de usuários inicialmente carregados com o início da rota '/login'.
+A persistência dos dados, ausente o beck-end nesta fase, se dá pelo uso do recurso do localStorage, sendo os dados de usuários inicialmente carregados com o início da rota '/login' através do construtor.
 
-Caso o usuário realize o logout por qualquer motivo, o redirecionamento à página de login fará o mock ser reiniciado conforme o estado inicial, limpando a persistência.
+Optamos pela via do construtor e não do ngOnInit() em razão de este último 'zerar' a persistência dos dados toda vez que acessa a página de '/login', assim o usuário/tester pdoe verificar a persistências dos dados mesmo após efetuar logout e acessar o sistema com um usuário de outro perfil.
 
 
 ## Melhorias a serem implementadas

@@ -2,11 +2,12 @@ import { Component, inject } from '@angular/core';
 import { LoginService } from '../services/login.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { LogoComponent } from "../logo/logo.component";
 
 @Component({
   selector: 'app-menu',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, LogoComponent],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.scss'
 })

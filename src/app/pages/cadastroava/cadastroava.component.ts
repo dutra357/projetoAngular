@@ -15,9 +15,10 @@ import { NotasService } from '../../shared/services/notas.service';
 })
 export class CadastroavaComponent {
 
-  constructor(private notasService: NotasService) { }
   loginService = inject(LoginService);
   titulo = `Cadastro de Avaliações/Notas`;
+
+  constructor(private notasService: NotasService) { }
 
   isAdm: boolean = false;
   isDocente: boolean = false;
@@ -28,10 +29,10 @@ export class CadastroavaComponent {
 
   avaliacao = {
     id: '',
-    nomeMateria: '',
+    materia: '',
     data: '',
-    nomeAvaliacao: '',
-    professor: '',
+    avaliacao: '',
+    docente: '',
     aluno: '',
     nota: ''
   }
@@ -53,8 +54,8 @@ export class CadastroavaComponent {
 
   cadastrar() {
     if (
-      (this.avaliacao.nomeMateria) && (this.avaliacao.data) &&
-      (this.avaliacao.nomeAvaliacao) && (this.avaliacao.professor) &&
+      (this.avaliacao.materia) && (this.avaliacao.data) &&
+      (this.avaliacao.avaliacao) && (this.avaliacao.docente) &&
       (this.avaliacao.aluno) && (this.avaliacao.nota) && (parseFloat(this.avaliacao.nota) >= 0) &&
       (parseFloat(this.avaliacao.nota) <= 10)
     ) {
