@@ -31,9 +31,8 @@ export class NotasComponent {
     let email = JSON.parse(sessionStorage['usuarioLogado']);
     let nome = this.loginService.getLogado(email).nome;
 
-    this.notas = this.notasService.getTodasNotasAluno(email);
-
-    this.notas.sort((a: any, b: any) => new Date(a.data).getTime() - new Date(b.data).getTime());
+    this.notas = this.notasService.getTodasNotasAluno(email)
+    .sort((a: any, b: any) => new Date(a.data).getTime() - new Date(b.data).getTime());
 
     for(let nota of this.notas) {
       nota.data = this.formataData(nota.data)
@@ -50,7 +49,6 @@ export class NotasComponent {
     let dia = arrayData[2];
     let mes = arrayData[1];
     let ano = arrayData[0];
-
     return dia + '/' + mes + '/' + ano
   }
 
