@@ -119,13 +119,14 @@ Acrescentamos uma observação especial quanto aos 'cursos extras' disponibiliza
 
 /notas - Lista de notas/avaliações do aluno, com listagem em ordem cronológica, e disponível apenas para usuários do perfil Aluno.
 
-A ordenação cronológica das notas é realizada por meio do método '.sort', em conjunto com um arrow function organizadora.
+A ordenação cronológica das notas é realizada por meio do método '.sort', em conjunto com uma arrow function organizadora.
 
 ~~~javascript
     this.notas = this.notasService.getTodasNotasAluno(email)
     .sort((a: any, b: any) => new Date(a.data).getTime() - new Date(b.data).getTime());
 ~~~
 
+Para o tratamento de datas, preferimos manter o padrão ISO do JavaScript, fazendo a conversão ao formato dd/mm/yyyy apenas quando da exibição na tela ao usuário. Deste modo, podemos utilizar os elementos 'Date' para armazenamento e cálculo preciso de datas e eventos.
 
 
 ## Autor
