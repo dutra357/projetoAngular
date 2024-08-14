@@ -18,7 +18,7 @@ export class CadastroalComponent {
 
   router = inject(Router);
   statusEdicao: boolean = false;
-  
+
   constructor(private loginService: LoginService) {
     let alunoRecebido = this.router.getCurrentNavigation()?.extras.state?.['event'];
 
@@ -51,6 +51,7 @@ export class CadastroalComponent {
     nome: '',
     genero: '',
     nascimento: '',
+    idade: '',
     cpf: '',
     rg: '',
     expeditor: '',
@@ -99,9 +100,10 @@ export class CadastroalComponent {
         (this.aluno.endereco.cidade) && (this.aluno.endereco.logradouro) &&
         (this.aluno.endereco.numero)
       ) {
+        this.aluno.idade = this.calculaIdade(this.aluno.nascimento).toString();
         this.loginService.cadastrar(this.aluno)
         alert('Aluno cadastrado com sucesso!')
-        
+
       } else {
         alert('Por favor, preencha todos os campos em "endereço".')
       }
@@ -112,11 +114,11 @@ export class CadastroalComponent {
   }
 
   excluir(aluno: any) {
-    // this.loginService.excluir(docente);
+    this.loginService.excluir(aluno);
   }
 
   salvar() {
-    // this.loginService.salvar(docente);
+    this.loginService.salvar(this.aluno);
   }
 
   buscaCep() {
@@ -137,15 +139,25 @@ export class CadastroalComponent {
   }
 
   validaEmail(email: string) {
-    let parametroRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-    if(!parametroRegex.test(email)) {
+    let parametroEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!parametroEmail.test(email)) {
     }
-    return parametroRegex.test(email);
+    return parametroEmail.test(email);
   }
 
   validaCpf(cpf: string) {
-
+    cpf = cpf.replace(/[^\d]/g, "");
+    this.aluno.cpf = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
   }
 
+  validaTelefone(telefone: string) {
+    const ajuste = /^([0-9]{2})([0-9]{4,5})([0-9]{4})$/;
+    let ajustado = telefone.replace(/[^0-9]/g, "").slice(0, 11);
+    this.aluno.telefone = ajustado.replace(ajuste, "($1)$2-$3");
+  }
+
+  calculaIdade(nascimento: string) {
+    var birthday = +new Date(nascimento);
+    return ~~((Date.now() - birthday) / (31557600000));
+  }
 }

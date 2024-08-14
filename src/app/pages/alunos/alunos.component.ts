@@ -4,6 +4,7 @@ import { ToolbarComponent } from "../../shared/toolbar/toolbar.component";
 import { NotasService } from '../../shared/services/notas.service';
 import { CommonModule } from '@angular/common';
 import { LoginService } from '../../shared/services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-alunos',
@@ -24,12 +25,13 @@ export class AlunosComponent {
 
   constructor(private notasService: NotasService) { }
   loginService = inject(LoginService);
+  router = inject(Router);
 
   ngOnInit() {
     let email = JSON.parse(sessionStorage['usuarioLogado']);
 
-    this.notas = this.notasService.getTodasNotas();
-    this.materias = this.notasService.getMaterias();
+    this.notas = this.notasService.getTodasNotasAluno(email);
+    this.materias = this.notasService.getMateriasAluno(email);
 
     this.nome = this.loginService.getLogado(email).nome;
     this.email = this.loginService.getLogado(email).email;
@@ -38,7 +40,7 @@ export class AlunosComponent {
   }
 
   paginaNotas() {
-    console.log('PAGINA DE NOTAS!')
+    this.router.navigate(['/notas']);
   }
 
 

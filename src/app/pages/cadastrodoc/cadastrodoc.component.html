@@ -31,7 +31,7 @@
 
                     <label for="cpf">* CPF:</label>
                     <input type="text" name="cpf" [(ngModel)]="docente.cpf"
-                    [ngModelOptions]="{standalone: true}" required>
+                    [ngModelOptions]="{standalone: true}" required (keyup)="validaCpf(docente.cpf)" maxlength="11">
 
                     <label for="rg">* RG:</label>
                     <input type="text" name="rg" [(ngModel)]="docente.rg"
@@ -58,7 +58,7 @@
 
                     <label for="telefone">* Telefone:</label>
                     <input type="text" name="telefone" [(ngModel)]="docente.telefone"
-                    [ngModelOptions]="{standalone: true}" required>
+                    [ngModelOptions]="{standalone: true}" required (keyup)="validaTelefone(docente.telefone)" max="11">
 
                     <label for="email">* E-mail:</label>
                     <input type="email" name="email" [(ngModel)]="docente.email"

@@ -3,22 +3,28 @@
     <div class="linha-botao">
         <p><b><u>{{perfil}}</u></b></p>
         <img (click)="recolher()" src="https://img.icons8.com/?size=100&id=W0_fb6J3rnlv&format=png&color=000000" alt="">
-
     </div>
 
 
     <div class="menu">
-        <ul>
-            <li (click)="inicio()">Início</li>
-            <li (click)="cadastroDocentes()" *ngIf="isAdm">Docentes</li>
-            <li (click)="cadastroAlunos()" *ngIf="isAdm">Alunos</li>
-            <li (click)="cadastroTurmas()" *ngIf="isAdm || isDocente">Turmas</li>
-            <li (click)="cadastroAvaliacao()" *ngIf="isAdm || isDocente">Avaliações</li>
-            <li (click)="listarDocentes()" *ngIf="isAdm">Listar Docentes</li>
-            <li (click)="notas()" *ngIf="isAluno">Notas</li>
-
-            <li (click)="logout()">Sair</li>
-        </ul>
-
+        <div *ngIf="recolhido">
+            <ul>
+                <li (click)="inicio()">Início</li>
+                <br>
+                <p *ngIf="!isAluno"><b><u>Cadastros</u></b></p>
+                <li (click)="cadastroDocentes()" *ngIf="isAdm">Docentes</li>
+                <li (click)="cadastroAlunos()" *ngIf="isAdm">Alunos</li>
+                <li (click)="cadastroTurmas()" *ngIf="isAdm || isDocente">Turmas</li>
+                <li (click)="cadastroAvaliacao()" *ngIf="isAdm || isDocente">Avaliações</li>
+                <br>
+                <p><b><u>Listas</u></b></p>
+                <li (click)="listarDocentes()" *ngIf="isAdm">Listar Docentes</li>
+                <li (click)="notas()" *ngIf="isAluno">Notas</li>
+    
+                <li (click)="logout()">Sair</li>
+            </ul>
+    
+        </div>
     </div>
-</div>
+    </div>
+

@@ -52,6 +52,7 @@ export class CadastrodocComponent {
     nascimento: '',
     cpf: '',
     rg: '',
+    idade: '',
     expeditor: '',
     naturalidade: '',
     estadoCivil: '',
@@ -95,6 +96,7 @@ export class CadastrodocComponent {
         (this.docente.endereco.cidade) && (this.docente.endereco.logradouro) &&
         (this.docente.endereco.numero)
       ) {
+        this.docente.idade = this.calculaIdade(this.docente.nascimento).toString();
         this.loginService.cadastrar(this.docente)
         alert('Docente cadastrado com sucesso!')
 
@@ -107,11 +109,11 @@ export class CadastrodocComponent {
   }
 
   excluir(docente: any) {
-    // this.loginService.excluir(docente);
+    this.loginService.excluir(docente);
   }
 
   salvar() {
-    // this.loginService.salvar(docente);
+    this.loginService.salvar(this.docente);
   }
 
   buscaCep() {
@@ -133,14 +135,24 @@ export class CadastrodocComponent {
 
   validaEmail(email: string) {
     let parametroRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
     if (!parametroRegex.test(email)) {
     }
     return parametroRegex.test(email);
   }
 
   validaCpf(cpf: string) {
-
+  cpf = cpf.replace(/[^\d]/g, "");
+  this.docente.cpf = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
   }
 
+  validaTelefone(telefone: string) {
+    const ajuste = /^([0-9]{2})([0-9]{4,5})([0-9]{4})$/;
+    let ajustado = telefone.replace(/[^0-9]/g, "").slice(0, 11);
+    this.docente.telefone = ajustado.replace(ajuste, "($1)$2-$3");
+  }
+
+  calculaIdade(nascimento: string) {
+    var birthday = +new Date(nascimento);
+    return ~~((Date.now() - birthday) / (31557600000));
+  }
 }

@@ -6,40 +6,71 @@ import { Injectable } from '@angular/core';
 export class TurmasService {
   constructor() { }
 
+  startTurmas() {
+    let turmasArray = []
+    for (let turma of this.turmas) {
+      turmasArray.push(turma);
+    }
+    localStorage.setItem('Turmas', JSON.stringify(turmasArray))
+    localStorage.setItem('countTurmaId', JSON.stringify(3))
+  }
+
   getTurmas() {
-    return this.turmas;
+    let turmas = JSON.parse(localStorage.getItem('Turmas') || "{}")
+    return turmas;
   }
 
   getStats() {
-    let qty = 0;
-    for(let turma of this.turmas) {
-      ++qty;
+    let turmas = JSON.parse(localStorage.getItem('Turmas') || "{}")
+
+    let qtd = 0;
+    for(let turma of turmas) {
+      ++qtd;
     }
-    return qty;
+    return qtd;
   }
 
   getTurmaById (id: number) {
-    for(let turma of this.turmas) {
+    let turmas = JSON.parse(localStorage.getItem('Turmas') || "{}")
+
+    for(let turma of turmas) {
       if (turma.id == id) {
         return turma;
       }
     }
     return -1;
   }
-
+  
   cadastrarTurma(turma: any) {
-    turma.id = ++this.countId;
-    this.turmas.push(turma);
+    let turmas = JSON.parse(localStorage.getItem('Turmas') || "{}")
+    let idAtual = JSON.parse(localStorage.getItem('countTurmaId') || "{}")
+    turma.id = ++idAtual;
+
+    turmas.push(turma);
+
+    localStorage.removeItem('Turmas');
+    localStorage.setItem('Turmas', JSON.stringify(turmas))
+
+    localStorage.removeItem('countTurmaId');
+    localStorage.setItem('countTurmaId', JSON.stringify(idAtual))
   }
 
+
   getHorario(nomeTurma: string): any {
-    for (let turma of this.turmas) {
+    let turmas = JSON.parse(localStorage.getItem('Turmas') || "{}")
+
+    for (let turma of turmas) {
       if (nomeTurma == turma.nome) {
         return turma.horario;
       }
     }
   }
 
+  
+
+
+
+    //Mock inicial a ser carregado no LocalStorage
   countId = 3;
   turmas = [
     {

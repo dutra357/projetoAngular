@@ -31,16 +31,30 @@ export class NotasComponent {
     let email = JSON.parse(sessionStorage['usuarioLogado']);
     let nome = this.loginService.getLogado(email).nome;
 
-    this.notas = this.notasService.getTodasNotasAluno(nome);
+    this.notas = this.notasService.getTodasNotasAluno(email)
+    .sort((a: any, b: any) => new Date(a.data).getTime() - new Date(b.data).getTime());
 
+    for(let nota of this.notas) {
+      nota.data = this.formataData(nota.data)
+    }
+    
     this.aluno = nome;
     this.turma = this.loginService.getLogado(email).turma;
     this.horario = this.turmaService.getHorario(this.turma);
 
-    for (let nota of this.notas) {
-      console.log(this.notasService.getDataAjustada(nota.data))
-    }
   }
+
+  formataData(data: string) {
+    let arrayData = data.split('-')
+    let dia = arrayData[2];
+    let mes = arrayData[1];
+    let ano = arrayData[0];
+    return dia + '/' + mes + '/' + ano
+  }
+
+
+
+
 
   //Cursos extras - meramente ilustrativo
   opcoesCurso(curso: any) {
