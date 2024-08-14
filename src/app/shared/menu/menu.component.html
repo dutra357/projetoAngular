@@ -1,7 +1,9 @@
 <div class="coluna">
+    <div class="logo">
+        <h1><b><i>Syllabus</i></b></h1>
+    </div>
 
     <div class="linha-botao">
-        <p><b><u>{{perfil}}</u></b></p>
         <img (click)="recolher()" src="https://img.icons8.com/?size=100&id=W0_fb6J3rnlv&format=png&color=000000" alt="">
     </div>
 
@@ -9,15 +11,16 @@
     <div class="menu">
         <div *ngIf="recolhido">
             <ul>
-                <li (click)="inicio()">Início</li>
-                <br>
-                <p *ngIf="!isAluno"><b><u>Cadastros</u></b></p>
+                <p><b>Início</b></p>
+                <li (click)="inicio()">Home</li>
+
+                <p *ngIf="!isAluno"><b>Cadastros</b></p>
                 <li (click)="cadastroDocentes()" *ngIf="isAdm">Docentes</li>
                 <li (click)="cadastroAlunos()" *ngIf="isAdm">Alunos</li>
                 <li (click)="cadastroTurmas()" *ngIf="isAdm || isDocente">Turmas</li>
                 <li (click)="cadastroAvaliacao()" *ngIf="isAdm || isDocente">Avaliações</li>
-                <br>
-                <p><b><u>Listas</u></b></p>
+
+                <p><b>Listas</b></p>
                 <li (click)="listarDocentes()" *ngIf="isAdm">Listar Docentes</li>
                 <li (click)="notas()" *ngIf="isAluno">Notas</li>
     

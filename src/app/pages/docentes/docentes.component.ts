@@ -21,6 +21,9 @@ export class DocentesComponent {
   router = inject(Router);
   turmasService = inject(TurmasService)
 
+  perfil: string = ''
+  titulo = `Início - bem-vindo!`;
+
   isAdm: boolean = false;
   parametro: string = '';
 
@@ -33,6 +36,7 @@ export class DocentesComponent {
 
   ngOnInit() {
     let email = JSON.parse(sessionStorage['usuarioLogado']);
+    this.perfil = this.loginService.getLogado(email).perfil;
     if (this.loginService.getLogado(email).perfil == 'Administrador') {
       this.isAdm = true;
     }

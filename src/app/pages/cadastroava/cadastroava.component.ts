@@ -17,6 +17,7 @@ export class CadastroavaComponent {
 
   constructor(private notasService: NotasService) { }
   loginService = inject(LoginService);
+  titulo = `Cadastro de Avaliações/Notas`;
 
   isAdm: boolean = false;
   isDocente: boolean = false;

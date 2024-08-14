@@ -18,6 +18,7 @@ export class CadastroalComponent {
 
   router = inject(Router);
   statusEdicao: boolean = false;
+  titulo = `Cadastro de Alunos`;
 
   constructor(private loginService: LoginService) {
     let alunoRecebido = this.router.getCurrentNavigation()?.extras.state?.['event'];

@@ -1,27 +1,98 @@
-# ProjetoAngular
+# Syllabus - Gestão de Ambiente Educacional
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.5.
+## Sobre o projeto
 
-## Development server
+O sistema Syllabus consiste em uma aplicação web direcionada à gestão de um ambiente educacional, ela engloba o cadastramento de Professores, Alunos, Cursos, Turmas e Notas, bem como realiza a validação das informações de cadastro, notadamente aquelas pessoais.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+A aplicação foi pensada de forma a reutilizar os componentes para melhor aproveitamento. A exemplo do componente 'card', serve tanto à exibição de professores quanto alunos. Os dados são preenchidos em conformidade com o usuário que estiver logado.
 
-## Code scaffolding
+A reutilização dos componentes ainda é bem presente no menu lateral, gerando os botões, informações e funcionalidades próprios de cada usuário, assim como reaproveitado em cada rota de acesso.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Com a implementação de recursos de tecnologia da informação certamente poderemos imprimir agilidade e eficiência de gestão no trato administrativo de sistemas e estruturas de ensino, seja ele básico ou superior.
+
+Não menos importante, ainda podemos citar a facilidade de acesso aos dados por parte de qualquer usuário por meio da rede mundial de computadores, disponibilizando as informações em qualquer tempo e local do globo, desde que provido de acesso a internet.
+
+
+## Tecnologias utilizadas
+### Front-end
+- Angular
+- JavaScript
+- Typescript
+- HTML, SCSS
+
+
+## Clonar repositório
+https://github.com/dutra357/projetoAngular
+
+## Trello
+https://trello.com/b/DraeKfFp/m2s11-projetoava
+
+
+## Execução e cuidados
+
+Execute `ng serve` para rodar o servidor de desenvolvimento. Pagina inicial em `http://localhost:4200/`. Aplicação automaticamente recarrecada com o salvamento de qualquer modificação.
+
+Salientamos que o mokc é realocado no localStorage quando do carregamento da rota '/login', de modo que o logout em qualquer parte da aplicação, com o seu redirecionamento à página de login, irá zerar os dados então persistentes.
+
+Ademais, anotamos que fizemos uso de expressões regulares (RegEx) paraa formatação e validação de e-mails, telefones e cpf a serem inseridos nos campos de cadastro e login. Valores em desconformidade com o padrão não serão aceitos (000.000.000-00 , (xx)x xxxx-xxxx, etc.).
+
+Informações e dados de login de cada usuário podem ser encontrados no login.service.ts, no diretório 'shared/services'.
+
+
+## Projeto Angular
+
+Projeto criado com através do [Angular CLI](https://github.com/angular/angular-cli), v. 18.0.5.
+
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Execute `ng build` para realizar o build da aplicação.
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Considerações sobre login
 
-## Running end-to-end tests
+O acesso inicial ao sistema pode se dar por meio de login com uma das contas 'mockadas', seja ela de administrador, docente ou aluno. Cada qual possui as suas funcionalidades e limitações, sendo a mais ampla delas, logicamente, o acesso na qualidade de  administrador.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Reiteramos! A persistência dos dados, ausente o beck-end nesta fase, se dá pelo uso do recurso do localStorage, sendo os dados de usuários inicialmente carregados com o início da rota '/login'.
 
-## Further help
+Caso o usuário realize o logout por qualquer motivo, o redirecionamento à página de login fará o mock ser reiniciado conforme o estado inicial, limpando a persistência.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+## Melhorias a serem implementadas
+
+Como sugestões ao aprimoramento do projeto podemos citar a implantação de um design profissional, que não foi aqui objetivo da aplicação, a integração dos dados e criação de tabelas de associação quando da integração com o beck-end, bem como.
+
+Ainda, e não menos importante, o acréscimo de mais elementos de cadastro a serem adicionados às funcionalidades presentes, em atenção à eventuais peculiaridades ou necessidades do usuário final, a exemplo integração de turmas à grupos de cursos, cadastramento de outros profissionais que atuam em auxílio à atividade letiva, bem como funcionalidades de agendamento de atividades, solicitações para provas de recuperação etc.
+
+Acrescentamos uma observação especial quanto aos 'cursos extras' disponibilizados ao usuario 'aluno', pois encontram-se mockados de forma fixa conforme solicitação do projeto. Neste ponto, anotamos que uma funcionalidade abrangente de atividades complementares, contando com cadastramento, agendamento e edição, seria uma excelente adesão ao projeto.
+
+
+## MER - Relacionamento entre entidades
+
+<!-- ![MER](/MER/MER_projeto_avaliativo.png) -->
+
+
+## Rotas disponibilizadas
+
+/login - acesso inicial ao sistema.
+
+/docentes ou /alunos - rota inicial (home) dos usuários Docente/Adm e Aluno, respectivamente.
+
+/cadastroal - rota para cadastramento de alunos, acessível apenas a usuários Administradores.
+
+/cadastroava - Cadastramento de avaliações/notas, para Docentes e Administradores.
+
+/cadastrodoc - Cadastramento de docentes, acessível apenas a Administradores.
+
+/cadastroturma - Cadastramento de turmas, disponível a Docentes e Administradores.
+
+/listadoc - Listagem de Docentes cadastrados no sistema, exclusivo para Administradores.
+
+/notas - Lista de notas/avaliações do aluno, com listagem em ordem cronológica, e disponível apenas para usuários do perfil Aluno.
+
+
+## Autor
+
+David Alves Dutra
+
+contato: dadutra@hotmail.com

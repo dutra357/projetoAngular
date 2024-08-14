@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { LoginService } from '../services/login.service';
 
 @Component({
@@ -10,9 +10,9 @@ import { LoginService } from '../services/login.service';
 })
 export class ToolbarComponent {
 
-  constructor(private loginService: LoginService) { }
+  @Input() titulo: string = '';
 
-  titulo: string = '';
+  constructor(private loginService: LoginService) { }
 
   usrLogado: string = '';
   perfil: string = '';

@@ -20,6 +20,7 @@ export class ListadocComponent {
   router = inject(Router);
 
   parametro: string = '';
+  titulo = `Listagem de Docentes`;
 
   docentes = this.loginService.getDocentes();
   docentesFiltrados: any;

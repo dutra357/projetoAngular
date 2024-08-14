@@ -17,6 +17,7 @@ export class CadastroturmaComponent {
 
   constructor(private turmaService: TurmasService) { }
   loginService = inject(LoginService);
+  titulo = `Cadastro de Turmas`;
 
   isAdm: boolean = false;
   isDocente: boolean = false;
