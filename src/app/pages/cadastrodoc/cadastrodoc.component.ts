@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ToolbarComponent } from "../../shared/toolbar/toolbar.component";
 import { MenuComponent } from "../../shared/menu/menu.component";
 import { FormsModule } from '@angular/forms';
 import { LoginService } from '../../shared/services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastrodoc',
@@ -13,7 +14,37 @@ import { LoginService } from '../../shared/services/login.service';
 })
 export class CadastrodocComponent {
 
-  constructor(private loginService: LoginService) { }
+  router = inject(Router);
+  statusEdicao: boolean = false;
+  titulo = `Cadastro de Docentes`;
+
+  constructor(private loginService: LoginService) {
+    let docenteRecebido = this.router.getCurrentNavigation()?.extras.state?.['event'];
+
+    if (docenteRecebido) {
+      this.statusEdicao = true;
+
+      this.docente.nome = docenteRecebido.nome;
+      this.docente.genero = docenteRecebido.genero;
+      this.docente.nascimento = docenteRecebido.nascimento;
+      this.docente.cpf = docenteRecebido.cpf;
+      this.docente.rg = docenteRecebido.rg;
+      this.docente.expeditor = docenteRecebido.expeditor;
+      this.docente.naturalidade = docenteRecebido.naturalidade;
+      this.docente.estadoCivil = docenteRecebido.estadoCivil;
+      this.docente.telefone = docenteRecebido.telefone;
+      this.docente.email = docenteRecebido.email;
+      this.docente.senha = docenteRecebido.senha;
+      this.docente.endereco.cep = docenteRecebido.endereco.cep;
+      this.docente.endereco.cidade = docenteRecebido.endereco.cidade;
+      this.docente.endereco.logradouro = docenteRecebido.endereco.logradouro;
+      this.docente.endereco.numero = docenteRecebido.endereco.numero;
+      this.docente.endereco.complemento = docenteRecebido.endereco.complemento;
+      this.docente.endereco.bairro = docenteRecebido.endereco.bairro;
+      this.docente.endereco.referencia = docenteRecebido.endereco.referencia;
+      this.docente.materias = docenteRecebido.materias;
+    }
+  }
 
   docente = {
     id: '',
@@ -22,6 +53,7 @@ export class CadastrodocComponent {
     nascimento: '',
     cpf: '',
     rg: '',
+    idade: '',
     expeditor: '',
     naturalidade: '',
     estadoCivil: '',
@@ -40,7 +72,6 @@ export class CadastrodocComponent {
     },
     materias: {}
   }
-
 
   cadastrar() {
     let inputs = document.getElementsByTagName("input");
@@ -66,16 +97,26 @@ export class CadastrodocComponent {
         (this.docente.endereco.cidade) && (this.docente.endereco.logradouro) &&
         (this.docente.endereco.numero)
       ) {
+        this.docente.idade = this.calculaIdade(this.docente.nascimento).toString();
         this.loginService.cadastrar(this.docente)
         alert('Docente cadastrado com sucesso!')
-        
+
       } else {
         alert('Por favor, preencha todos os campos em "endereço".')
       }
     } else {
       alert('Por favor, confira os campos.')
     }
+  }
 
+  excluir(docente: any) {
+    this.loginService.excluir(docente);
+    alert('Docente excluido com sucesso!')
+  }
+
+  salvar() {
+    this.loginService.salvar(this.docente);
+    alert('Docente editado com sucesso!')
   }
 
   buscaCep() {
@@ -97,13 +138,24 @@ export class CadastrodocComponent {
 
   validaEmail(email: string) {
     let parametroRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-    if(!parametroRegex.test(email)) {
+    if (!parametroRegex.test(email)) {
     }
     return parametroRegex.test(email);
   }
 
   validaCpf(cpf: string) {
+  cpf = cpf.replace(/[^\d]/g, "");
+  this.docente.cpf = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+  }
 
+  validaTelefone(telefone: string) {
+    const ajuste = /^([0-9]{2})([0-9]{4,5})([0-9]{4})$/;
+    let ajustado = telefone.replace(/[^0-9]/g, "").slice(0, 11);
+    this.docente.telefone = ajustado.replace(ajuste, "($1)$2-$3");
+  }
+
+  calculaIdade(nascimento: string) {
+    var birthday = +new Date(nascimento);
+    return ~~((Date.now() - birthday) / (31557600000));
   }
 }

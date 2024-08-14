@@ -1,37 +1,43 @@
-<div class="coluna">
-    <app-toolbar></app-toolbar>
+<div class="pagina">
+    <app-menu></app-menu>
 
-    <div class="linha">
-        <app-menu></app-menu>
+    <div class="coluna">
+        <app-toolbar [titulo]="titulo"></app-toolbar>
 
-        <section class="conteudo">
+        <div class="subcoluna">
 
-            <div class="pesquisa">
-                <label for="busca">Pesquisar:</label>
-                <input type="text" name="busca" [(ngModel)]="parametro">
-                <button (click)="buscar(parametro)">Buscar</button>
-            </div>
+            <section class="conteudo">
+                <div class="pesquisa">
+                    <label for="busca">Pesquisar:</label>
+                    <input type="text" name="busca" [(ngModel)]="parametro" (keyup.enter)="buscar(parametro)">
+                    <button (click)="buscar(parametro)">Buscar</button>
+                </div>
 
-            <section class="cards">
-
-                <div *ngFor="let aluno of alunosFiltrados; let index=index">
-
-                    <app-card-aluno [nome]="aluno.nome" [idade]="aluno.idade"
-                    [contato]="aluno.email"></app-card-aluno>
-
+                <div class="cards">
+                    <div *ngFor="let aluno of alunosFiltrados; let index=index">
+                        <app-card (buttonClick)="buttonClicked($event)" [nome]="aluno.nome" [idade]="aluno.idade"
+                            [contato]="aluno.email" [id]="aluno.id" [usuarioSelecionado]="aluno"></app-card>
+                    </div>
                 </div>
             </section>
-
-        </section>
+        </div>
 
         <div class="estatisticas" *ngIf="isAdm">
-            <h4>Estatísticas de cadastro:</h4>
-            <p>Turmas: {{totalTurmas}}</p>
-            <p>Docentes: {{totalDocentes}} </p>
-            <p>Alunos: {{totalAlunos}}</p>
+
+            <div class="titulo">
+                <h4>Estatísticas de cadastro</h4>
+            </div>
+
+            <div class="info">
+                <p>Turmas: {{totalTurmas}}</p>
+                <p>Docentes: {{totalDocentes}} </p>
+                <p>Alunos: {{totalAlunos}}</p>
+            </div>
 
         </div>
 
-    </div>
 
+
+
+    </div>
 </div>

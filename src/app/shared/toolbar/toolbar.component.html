@@ -1,11 +1,12 @@
 <div class="container">
-    <section>
-        <h2>Título da página</h2>
-    </section>
+    <div class="logo">
+        <img src="https://img.icons8.com/?size=100&id=81348&format=png&color=000000" alt="">
+        <h2><i>{{titulo}}</i></h2>
+    </div>
 
-    <section class="usuario">
-        <img src="https://img.icons8.com/?size=100&id=98957&format=png&color=000000" alt="FotoUsuario">
-        <p>UsuarioLogado - PERIL</p>
-        <button (click)="logout()">sair</button>
-    </section>
+    <div class="usuario">
+        <img src="https://img.icons8.com/?size=100&id=22396&format=png&color=000000" alt="FotoUsuario">
+        <p><b>{{usrLogado}}</b> ({{perfil}})</p>
+        <button (click)="logout()">Sair</button>
+    </div>
 </div>

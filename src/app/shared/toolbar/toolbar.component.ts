@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { LoginService } from '../services/login.service';
 
 @Component({
@@ -10,23 +10,22 @@ import { LoginService } from '../services/login.service';
 })
 export class ToolbarComponent {
 
+  @Input() titulo: string = '';
+
   constructor(private loginService: LoginService) { }
 
-  titulo: string = '';
+  usrLogado: string = '';
+  perfil: string = '';
 
-  usuarioNome: string = '';
-  usuarioPerfil : string = '';
+  ngOnInit() {
+    let email = JSON.parse(sessionStorage['usuarioLogado']);
 
-  onInit() {
-    this.usuarioNome = this.loginService.getNome();
-    this.usuarioPerfil = this.loginService.getPerfil();
-    
-    console.log(this.usuarioNome);
-    console.log('this.usuarioNome');
+    this.usrLogado = this.loginService.getLogado(email).nome;
+    this.perfil = this.loginService.getLogado(email).perfil;
   }
 
   logout() {
     this.loginService.logout();
-    }
+  }
 
 }

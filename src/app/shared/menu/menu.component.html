@@ -1,18 +1,31 @@
-<menu>
-    <div class="container">
-        <ul>
-            <li>UP</li>
+<div class="coluna">
+    <app-logo></app-logo>
 
-            <li (click)="inicio()">Início</li>
-
-            <li (click)="cadastroDocentes()" *ngIf="isAdm">Cadastro Docentes</li>
-            <li (click)="cadastroAlunos()" *ngIf="isAdm">Cadastro Alunos</li>
-            <li (click)="cadastroTurmas()" *ngIf="isAdm || isDocente">Cadastro Turmas</li>
-            <li (click)="cadastroAvaliacao()" *ngIf="isAdm || isDocente">Cadastro de Avaliação</li>
-            <li (click)="listarDocentes()" *ngIf="isAdm">Listar Docentes</li>
-            <li (click)="notas()" *ngIf="isAluno">Notas</li>
-
-            <li (click)="logout()">Sair</li>
-        </ul>
+    <div class="linha-botao">
+        <img (click)="recolher()" src="https://img.icons8.com/?size=100&id=W0_fb6J3rnlv&format=png&color=000000" alt="">
     </div>
-</menu>
+
+
+    <div class="menu">
+        <div *ngIf="recolhido">
+            <ul>
+                <p><b>Início</b></p>
+                <li (click)="inicio()">Home</li>
+
+                <p *ngIf="!isAluno"><b>Cadastros</b></p>
+                <li (click)="cadastroDocentes()" *ngIf="isAdm">Docentes</li>
+                <li (click)="cadastroAlunos()" *ngIf="isAdm">Alunos</li>
+                <li (click)="cadastroTurmas()" *ngIf="isAdm || isDocente">Turmas</li>
+                <li (click)="cadastroAvaliacao()" *ngIf="isAdm || isDocente">Avaliações</li>
+
+                <p><b>Listas</b></p>
+                <li (click)="listarDocentes()" *ngIf="isAdm">Listar Docentes</li>
+                <li (click)="notas()" *ngIf="isAluno">Notas</li>
+    
+                <li (click)="logout()">Sair</li>
+            </ul>
+    
+        </div>
+    </div>
+    </div>
+

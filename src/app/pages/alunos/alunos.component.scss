@@ -1,49 +1,66 @@
+.pagina {
+    display: flex;
+    flex-direction: row;
+}
+
 .coluna {
     display: flex;
     flex-direction: column;
+    width: 100%;
+
 }
 
 .linha {
     display: flex;
     flex-direction: row;
+    margin: 20px;
 }
 
-.central {
+.sub-coluna {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.sub-linha {
     display: flex;
     flex-direction: row;
-    height:fit-content;
+    height: 400px;
+    margin-bottom: 20px;
     flex-wrap: wrap;
-    width: 75%;
-    justify-content: center;
-    margin-top: 40px;
 }
 
 .conteudo {
-    border: 1px solid black;
+    border: 1px solid rgb(180, 211, 247);
     margin: 5px;
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     padding: 5px;
-    font-size: 20px;
-    width: 30%;
+    font-size: 18px;
+    width: 400px;
 }
 
 tbody tr:hover {
-    color: rgb(2, 0, 138);
+    background-color: rgb(180, 211, 247);;
     cursor: pointer;
-    text-decoration:underline;
+}
+
+legend {
+    color: rgb(91, 168, 255);
 }
 
 table {
     display: block;
     justify-content: center;
-    width: 60%;
+
     padding: 10px;
 }
 
 td {
     padding: 5px;
     padding-right: 15px;
+    width: 100px;
 }
 
 .titulo {
@@ -60,7 +77,7 @@ td {
 }
 
 img:hover {
-    box-shadow: 5px 5px rgb(2, 0, 138) 
+    box-shadow: 3px 3px rgb(180, 211, 247);
 }
 
 .resultado {

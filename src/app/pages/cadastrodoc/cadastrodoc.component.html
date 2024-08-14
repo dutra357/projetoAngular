@@ -3,13 +3,12 @@
     <app-menu></app-menu>
 
     <div class="centro">
-        <app-toolbar></app-toolbar>
+        <app-toolbar [titulo]="titulo"></app-toolbar>
 
         <div class="conteudo">
-
             <div class="cadastro">
-
                 <section class="principal">
+                    
                     <div class="titulo">
                         <p>Dados Pessoais:</p>
                     </div>
@@ -31,7 +30,7 @@
 
                     <label for="cpf">* CPF:</label>
                     <input type="text" name="cpf" [(ngModel)]="docente.cpf"
-                    [ngModelOptions]="{standalone: true}" required>
+                    [ngModelOptions]="{standalone: true}" required (keyup)="validaCpf(docente.cpf)" maxlength="11">
 
                     <label for="rg">* RG:</label>
                     <input type="text" name="rg" [(ngModel)]="docente.rg"
@@ -58,7 +57,7 @@
 
                     <label for="telefone">* Telefone:</label>
                     <input type="text" name="telefone" [(ngModel)]="docente.telefone"
-                    [ngModelOptions]="{standalone: true}" required>
+                    [ngModelOptions]="{standalone: true}" required (keyup)="validaTelefone(docente.telefone)" max="11">
 
                     <label for="email">* E-mail:</label>
                     <input type="email" name="email" [(ngModel)]="docente.email"
@@ -107,9 +106,9 @@
                     [ngModelOptions]="{standalone: true}">
 
                     <div>
-                        <button (click)="cadastrar()">Cadastrar</button>
-                        <button disabled>Editar</button>
-                        <button disabled>Excluir</button>
+                        <button [disabled]="statusEdicao" (click)="cadastrar()">Cadastrar</button>
+                        <button [disabled]="!statusEdicao" (click)="salvar()">Salvar edição</button>
+                        <button [disabled]="!statusEdicao" (click)="excluir(docente)">Excluir</button>
                     </div>
                 </section>
 

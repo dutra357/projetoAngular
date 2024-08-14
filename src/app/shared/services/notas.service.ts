@@ -8,58 +8,81 @@ export class NotasService {
 
   constructor() { }
 
-  getTodasNotas() {
-    return this.notas;
-  }
-
-  getMaterias() {
-    let saida: string[] = [];
-
-    this.notas.forEach(element => {
-        if (!saida.includes(element.materia)) {
-          saida.push(element.materia);
-        }
-    });
-    
-    return saida;
-  }
-
-  notas = [
-    {
-      materia: 'Matemática',
-      nota: '9.5',
-      data: '06/08/2024',
-      avaliacao: 'Prova 1'
-    },
-    {
-      materia: 'Matemática',
-      nota: '9.0',
-      data: '10/08/2024',
-      avaliacao: 'Prova 2'
-    },
-    {
-      materia: 'Português',
-      nota: '10.0',
-      data: '11/07/2024',
-      avaliacao: 'Prova'
-    },
-    {
-      materia: 'Português',
-      nota: '8.5',
-      data: '10/06/2024',
-      avaliacao: 'Trabalho (equipes)'
-    },
-    {
-      materia: 'Física',
-      nota: '8.9',
-      data: '07/07/2024',
-      avaliacao: 'Prova 1'
-    },
-    {
-      materia: 'Inglês',
-      nota: '8.8',
-      data: '01/06/2024',
-      avaliacao: 'Prova 1'
+  getTodasNotasAluno(email: string) {
+    let usuarios: any = [];
+    let arrayChaves = Object.keys(localStorage);
+    for (let chave of arrayChaves) {
+      let usuario = JSON.parse(localStorage.getItem(chave) || "{}");
+      usuarios.push(usuario);
     }
-  ]
+
+    for (let usr of usuarios) {
+      if (usr.email == email) {
+        return usr.avaliacoes;
+      }
+    }
+    return 'null';
+  }
+
+  getMateriasAluno(email: string) {
+    let materias = []
+    let usuarios: any = [];
+    let arrayChaves = Object.keys(localStorage);
+    for (let chave of arrayChaves) {
+      let usuario = JSON.parse(localStorage.getItem(chave) || "{}");
+      usuarios.push(usuario);
+    }
+
+    for (let usr of usuarios) {
+      if (usr.email == email) {
+        for (let avaliacao of usr.avaliacoes) {
+          materias.push(avaliacao.materia)
+        }
+      }
+    }
+    return materias;
+  }
+
+
+  getMateriasPossiveis() {
+    let possiveis = []
+    let usuarios: any = [];
+    let arrayChaves = Object.keys(localStorage);
+    for (let chave of arrayChaves) {
+      let usuario = JSON.parse(localStorage.getItem(chave) || "{}");
+      usuarios.push(usuario);
+    }
+
+    for (let usr of usuarios) {
+      if (usr.perfil == 'Aluno') {
+        for (let avaliacao of usr.avaliacoes) {
+          possiveis.push(avaliacao.materia)
+        }
+      }
+    }
+    return possiveis;
+  }
+
+  cadastrarAvaliacao(email: string, avaliacao: any) {
+    let usuarios: any = [];
+    let arrayChaves = Object.keys(localStorage);
+    for (let chave of arrayChaves) {
+      let usuario = JSON.parse(localStorage.getItem(chave) || "{}");
+      usuarios.push(usuario);
+    }
+
+    for (let usr of usuarios) {
+      if(usr.perfil == 'Aluno') {
+        if(usr.email == email) {
+          avaliacao.id = ++usr.notaCountId;
+          usr.notaCountId++;
+      
+          usr.avaliacoes.push(avaliacao);
+      
+          localStorage.removeItem(email);
+          localStorage.setItem(email, JSON.stringify(usr))
+        }
+      }
+    }
+  }
 }

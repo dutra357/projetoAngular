@@ -1,0 +1,65 @@
+<div class="pagina">
+    <app-menu></app-menu>
+
+    <div class="centro">
+        <app-toolbar [titulo]="titulo"></app-toolbar>
+
+        <div class="conteudo">
+            
+            <div class="cadastro">
+
+                <section class="principal">
+                    <div class="titulo">
+                        <p>Cadastrar Avaliação:</p>
+                    </div>
+
+                    <label for="professor">* Professor:</label>
+                    <select *ngIf="isAdm" name="professor" [(ngModel)]="avaliacao.docente"
+                        [ngModelOptions]="{standalone: true}" required>
+                        <option *ngFor="let docente of docentes; let index=index" value="{{docente.nome}}">
+                            {{docente.nome}}</option>
+                    </select>
+                    <select *ngIf="isDocente" name="professor" [(ngModel)]="avaliacao.docente"
+                        [ngModelOptions]="{standalone: true}" required>
+                        <option value="{{docenteLogado}}" selected>{{docenteLogado}}</option>
+                    </select>
+
+                    <label for="nomemateria">* Matéria:</label>
+                    <select name="nomemateria" [(ngModel)]="avaliacao.materia"
+                        [ngModelOptions]="{standalone: true}" required>
+                        <option *ngFor="let materia of materias; let index=index" value="{{materia}}">
+                            {{materia}}</option>
+                    </select>
+
+                    <label for="nomeava">* Nome da avaliação:</label>
+                    <input type="text" name="nomeava" [(ngModel)]="avaliacao.avaliacao"
+                        [ngModelOptions]="{standalone: true}" required>
+
+                    <label for="data" id="inicio">* Data:</label>
+                    <input type="date" name="data" [(ngModel)]="avaliacao.data" [ngModelOptions]="{standalone: true}"
+                        required>
+
+                    <label for="aluno">* Aluno:</label>
+                    <select name="professor" [(ngModel)]="avaliacao.aluno" [ngModelOptions]="{standalone: true}"
+                        required>
+                        <option *ngFor="let aluno of alunos; let index=index" value="{{aluno.email}}">
+                            {{aluno.nome}}</option>
+                    </select>
+
+                    <label for="nota">* Nota (0-10):</label>
+                    <input type="number" max="10" min="0" name="nota" [(ngModel)]="avaliacao.nota"
+                        [ngModelOptions]="{standalone: true}" required>
+
+                    <div>
+                        <button (click)="cadastrar()">Cadastrar</button>
+                        <button disabled>Editar</button>
+                        <button disabled>Excluir</button>
+                    </div>
+
+                </section>
+            </div>
+        </div>
+    </div>
+
+
+</div>

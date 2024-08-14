@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MenuComponent } from "../../shared/menu/menu.component";
 import { ToolbarComponent } from "../../shared/toolbar/toolbar.component";
 import { NotasService } from '../../shared/services/notas.service';
 import { CommonModule } from '@angular/common';
+import { LoginService } from '../../shared/services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-alunos',
@@ -13,19 +15,47 @@ import { CommonModule } from '@angular/common';
 })
 export class AlunosComponent {
 
-  titulo: string = 'HOME Aluno - Bem-vindo!';
+  titulo = `Home - Seja bem-vindo!`;
   notas: any;
   materias: any;
 
+  nome: string = '';
+  cpf: string = '';
+  email: string = '';
+  turma: string = '';
+
   constructor(private notasService: NotasService) { }
+  loginService = inject(LoginService);
+  router = inject(Router);
 
   ngOnInit() {
-    this.notas = this.notasService.getTodasNotas();
-    this.materias = this.notasService.getMaterias();
+    let email = JSON.parse(sessionStorage['usuarioLogado']);
+
+    this.notas = this.notasService.getTodasNotasAluno(email)
+    .sort((a: any, b: any) => new Date(a.data).getTime() - new Date(b.data).getTime());
+
+    for(let nota of this.notas) {
+      nota.data = this.formataData(nota.data)
+    }
+    
+    this.materias = this.notasService.getMateriasAluno(email);
+
+    this.nome = this.loginService.getLogado(email).nome;
+    this.email = this.loginService.getLogado(email).email;
+    this.cpf = this.loginService.getLogado(email).cpf;
+    this.turma = this.loginService.getLogado(email).turma;
   }
 
   paginaNotas() {
-    console.log('PAGINA DE NOTAS!')
+    this.router.navigate(['/notas']);
+  }
+
+  formataData(data: string) {
+    let arrayData = data.split('-')
+    let dia = arrayData[2];
+    let mes = arrayData[1];
+    let ano = arrayData[0];
+    return dia + '/' + mes + '/' + ano
   }
 
 

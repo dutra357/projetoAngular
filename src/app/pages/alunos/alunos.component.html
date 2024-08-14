@@ -1,17 +1,50 @@
-<div class="coluna">
-    <app-toolbar></app-toolbar>
+<div class="pagina">
+    <app-menu></app-menu>
 
-    <div class="linha">
-        <app-menu></app-menu>
+    <div class="coluna">
+        <app-toolbar [titulo]="titulo"></app-toolbar>
 
-        <div class="central">
+        <div class="linha">
 
-                <section class="conteudo">
-                    
-                    <div class="titulo">
-                        <h4>Minhas avaliações</h4>
-                    </div>
+            <div class="sub-coluna">
 
+                <div class="sub-linha">
+                    <fieldset class="conteudo">
+                        <legend>Cadastro:</legend>
+
+                        <p>Aluno: {{nome}}</p>
+
+                        <p>E-mail: {{email}}</p>
+
+                        <p>CPF: {{cpf}}</p>
+
+                        <p>Turma: {{turma}}</p>
+                    </fieldset>
+
+                    <fieldset class="conteudo">
+                        <legend>Minhas matérias:</legend>
+
+                        <ul *ngFor=" let materia of materias; let index=index">
+                            <li> {{materia}}</li>
+                        </ul>
+                    </fieldset>
+
+                    <fieldset class="conteudo">
+                        <legend>Cursos extras:</legend>
+
+                        <div class="cursos">
+                            <img *ngFor=" let curso of cursosExtras; let index=index" src="{{curso.url}}"
+                                alt="{{curso.alt}}" (click)="opcoesCurso(curso)">
+                        </div>
+
+                        <div class="resultado" id="result">
+
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="conteudo">
+                        <legend>Minhas avaliações:</legend>
+    
                         <table>
                             <thead>
                                 <tr>
@@ -29,40 +62,9 @@
                                 </tr>
                             </tbody>
                         </table>
-                </section>
-
-
-                <section class="conteudo">
-
-                    <div class="titulo">
-                        <h4>Minhas matérias: </h4>
-                    </div>
-
-                    <ul *ngFor=" let materia of materias; let index=index">
-                        <li> {{materia}}</li>
-                    </ul>
-                </section>
-
-
-                <section class="conteudo">
-
-                    <div class="titulo">
-                        <h4>Cursos extras: </h4>
-                    </div>
-
-                    <div class="cursos">
-                        <img *ngFor=" let curso of cursosExtras; let index=index" src="{{curso.url}}" alt="{{curso.alt}}" (click)="opcoesCurso(curso)">
-                    </div>
-
-                    <div class="resultado" id="result">
-                    
-                    </div>
-
-                
-                </section>
-
+                    </fieldset>
+                </div>
+            </div>
         </div>
-
-
     </div>
 </div>
